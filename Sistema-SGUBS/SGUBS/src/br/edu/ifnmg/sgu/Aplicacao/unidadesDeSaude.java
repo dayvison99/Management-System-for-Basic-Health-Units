@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.sgu.Aplicacao;
-        
+
 import java.util.Objects;
 
 /**
  *
  * @author dayvison
  */
-public class unidadesDeSaude {
+public class unidadesDeSaude{
     private int id;
     private String nome;
     private String endereco;
@@ -76,10 +76,7 @@ public class unidadesDeSaude {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.endereco, other.endereco)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.endereco, other.endereco);
     }
     
     
