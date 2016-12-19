@@ -11,32 +11,32 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Paciente {
+public class Medico {
     private int id;
+    private int idEspecialidade;
     private String nome;
-    private String cpf;
+    private String crm;
     private String rua;
     private String bairro;
     private String cidade;
     private int telefone;
     private int celular;
-    private String tipoSanguineo;
-    private String localTrabalho;
+    private String observacoes;
 
-    public Paciente() {
+    public Medico() {
     }
 
-    public Paciente(int id, String nome, String cpf, String rua, String bairro, String cidade, int telefone, int celular, String tipoSanguineo, String localTrabalho) {
+    public Medico(int id, int idEspecialidade, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, String observacoes) {
         this.id = id;
+        this.idEspecialidade = idEspecialidade;
         this.nome = nome;
-        this.cpf = cpf;
+        this.crm = crm;
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.telefone = telefone;
         this.celular = celular;
-        this.tipoSanguineo = tipoSanguineo;
-        this.localTrabalho = localTrabalho;
+        this.observacoes = observacoes;
     }
 
     public int getId() {
@@ -47,6 +47,14 @@ public class Paciente {
         this.id = id;
     }
 
+    public int getIdEspecialidade() {
+        return idEspecialidade;
+    }
+
+    public void setIdEspecialidade(int idEspecialidade) {
+        this.idEspecialidade = idEspecialidade;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -55,12 +63,12 @@ public class Paciente {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getCrm() {
+        return crm;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCrm(String crm) {
+        this.crm = crm;
     }
 
     public String getRua() {
@@ -103,35 +111,27 @@ public class Paciente {
         this.celular = celular;
     }
 
-    public String getTipoSanguineo() {
-        return tipoSanguineo;
+    public String getObservacoes() {
+        return observacoes;
     }
 
-    public void setTipoSanguineo(String tipoSanguineo) {
-        this.tipoSanguineo = tipoSanguineo;
-    }
-
-    public String getLocalTrabalho() {
-        return localTrabalho;
-    }
-
-    public void setLocalTrabalho(String localTrabalho) {
-        this.localTrabalho = localTrabalho;
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + this.id;
-        hash = 71 * hash + Objects.hashCode(this.nome);
-        hash = 71 * hash + Objects.hashCode(this.cpf);
-        hash = 71 * hash + Objects.hashCode(this.rua);
-        hash = 71 * hash + Objects.hashCode(this.bairro);
-        hash = 71 * hash + Objects.hashCode(this.cidade);
-        hash = 71 * hash + this.telefone;
-        hash = 71 * hash + this.celular;
-        hash = 71 * hash + Objects.hashCode(this.tipoSanguineo);
-        hash = 71 * hash + Objects.hashCode(this.localTrabalho);
+        int hash = 5;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + this.idEspecialidade;
+        hash = 23 * hash + Objects.hashCode(this.nome);
+        hash = 23 * hash + Objects.hashCode(this.crm);
+        hash = 23 * hash + Objects.hashCode(this.rua);
+        hash = 23 * hash + Objects.hashCode(this.bairro);
+        hash = 23 * hash + Objects.hashCode(this.cidade);
+        hash = 23 * hash + this.telefone;
+        hash = 23 * hash + this.celular;
+        hash = 23 * hash + Objects.hashCode(this.observacoes);
         return hash;
     }
 
@@ -146,8 +146,11 @@ public class Paciente {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Paciente other = (Paciente) obj;
+        final Medico other = (Medico) obj;
         if (this.id != other.id) {
+            return false;
+        }
+        if (this.idEspecialidade != other.idEspecialidade) {
             return false;
         }
         if (this.telefone != other.telefone) {
@@ -159,7 +162,7 @@ public class Paciente {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.cpf, other.cpf)) {
+        if (!Objects.equals(this.crm, other.crm)) {
             return false;
         }
         if (!Objects.equals(this.rua, other.rua)) {
@@ -171,17 +174,13 @@ public class Paciente {
         if (!Objects.equals(this.cidade, other.cidade)) {
             return false;
         }
-        if (!Objects.equals(this.tipoSanguineo, other.tipoSanguineo)) {
-            return false;
-        }
-        if (!Objects.equals(this.localTrabalho, other.localTrabalho)) {
+        if (!Objects.equals(this.observacoes, other.observacoes)) {
             return false;
         }
         return true;
     }
     
     
- 
     
     
 }
