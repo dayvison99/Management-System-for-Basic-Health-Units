@@ -11,22 +11,24 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class tecEnfermagem {
+public class Funcionario {
     private int id;
     private String nome;
-    private String corem;
-    private int telefone;
     private String endereco;
+    private int telefone;
+    private String funcao;
+    private String cpf;
 
-    public tecEnfermagem() {
+    public Funcionario() {
     }
 
-    public tecEnfermagem(int id, String nome, String corem, int telefone, String endereco) {
+    public Funcionario(int id, String nome, String endereco, int telefone, String funcao, String cpf) {
         this.id = id;
         this.nome = nome;
-        this.corem = corem;
-        this.telefone = telefone;
         this.endereco = endereco;
+        this.telefone = telefone;
+        this.funcao = funcao;
+        this.cpf = cpf;
     }
 
     public int getId() {
@@ -45,12 +47,12 @@ public class tecEnfermagem {
         this.nome = nome;
     }
 
-    public String getCorem() {
-        return corem;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setCorem(String corem) {
-        this.corem = corem;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public int getTelefone() {
@@ -61,22 +63,31 @@ public class tecEnfermagem {
         this.telefone = telefone;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getFuncao() {
+        return funcao;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
         hash = 41 * hash + this.id;
         hash = 41 * hash + Objects.hashCode(this.nome);
-        hash = 41 * hash + Objects.hashCode(this.corem);
-        hash = 41 * hash + this.telefone;
         hash = 41 * hash + Objects.hashCode(this.endereco);
+        hash = 41 * hash + this.telefone;
+        hash = 41 * hash + Objects.hashCode(this.funcao);
+        hash = 41 * hash + Objects.hashCode(this.cpf);
         return hash;
     }
 
@@ -91,7 +102,7 @@ public class tecEnfermagem {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final tecEnfermagem other = (tecEnfermagem) obj;
+        final Funcionario other = (Funcionario) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -101,10 +112,13 @@ public class tecEnfermagem {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.corem, other.corem)) {
+        if (!Objects.equals(this.endereco, other.endereco)) {
             return false;
         }
-        if (!Objects.equals(this.endereco, other.endereco)) {
+        if (!Objects.equals(this.funcao, other.funcao)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
         return true;
