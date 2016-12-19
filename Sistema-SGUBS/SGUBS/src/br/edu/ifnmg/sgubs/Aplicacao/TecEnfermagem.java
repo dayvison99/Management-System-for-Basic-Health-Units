@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.sgu.Aplicacao;
+package br.edu.ifnmg.sgubs.Aplicacao;
 
 import java.util.Objects;
 
@@ -11,17 +11,21 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class UnidadesDeSaude{
+public class TecEnfermagem {
     private int id;
     private String nome;
+    private String corem;
+    private int telefone;
     private String endereco;
 
-    public UnidadesDeSaude() {
+    public TecEnfermagem() {
     }
 
-    public UnidadesDeSaude(int id, String nome, String endereco) {
+    public TecEnfermagem(int id, String nome, String corem, int telefone, String endereco) {
         this.id = id;
         this.nome = nome;
+        this.corem = corem;
+        this.telefone = telefone;
         this.endereco = endereco;
     }
 
@@ -41,6 +45,22 @@ public class UnidadesDeSaude{
         this.nome = nome;
     }
 
+    public String getCorem() {
+        return corem;
+    }
+
+    public void setCorem(String corem) {
+        this.corem = corem;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
     public String getEndereco() {
         return endereco;
     }
@@ -51,10 +71,12 @@ public class UnidadesDeSaude{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + this.id;
-        hash = 71 * hash + Objects.hashCode(this.nome);
-        hash = 71 * hash + Objects.hashCode(this.endereco);
+        int hash = 7;
+        hash = 41 * hash + this.id;
+        hash = 41 * hash + Objects.hashCode(this.nome);
+        hash = 41 * hash + Objects.hashCode(this.corem);
+        hash = 41 * hash + this.telefone;
+        hash = 41 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -69,14 +91,23 @@ public class UnidadesDeSaude{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UnidadesDeSaude other = (UnidadesDeSaude) obj;
+        final TecEnfermagem other = (TecEnfermagem) obj;
         if (this.id != other.id) {
+            return false;
+        }
+        if (this.telefone != other.telefone) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        return Objects.equals(this.endereco, other.endereco);
+        if (!Objects.equals(this.corem, other.corem)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        return true;
     }
     
     
