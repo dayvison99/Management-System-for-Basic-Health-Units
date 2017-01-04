@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Medico {
+public class Medico implements Entidade{
     private int id;
     private int idEspecialidade;
     private String nome;
@@ -178,6 +178,11 @@ public class Medico {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Medico{" + "id=" + id + ", idEspecialidade=" + idEspecialidade + ", nome=" + nome + ", crm=" + crm + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", telefone=" + telefone + ", celular=" + celular + ", observacoes=" + observacoes + '}';
     }
     
     

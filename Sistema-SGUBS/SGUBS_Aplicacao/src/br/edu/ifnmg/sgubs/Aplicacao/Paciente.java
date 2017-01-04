@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Paciente {
+public class Paciente implements Entidade{
     private int id;
     private String nome;
     private String cpf;
@@ -178,6 +178,11 @@ public class Paciente {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", telefone=" + telefone + ", celular=" + celular + ", tipoSanguineo=" + tipoSanguineo + ", localTrabalho=" + localTrabalho + '}';
     }
     
     

@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Agendamento {
+public class Agendamento implements Entidade{
     private int id;
     private int idUnidadeSaude;
     private int idMedico;
@@ -124,6 +124,11 @@ public class Agendamento {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Agendamento{" + "id=" + id + ", idUnidadeSaude=" + idUnidadeSaude + ", idMedico=" + idMedico + ", idPaciente=" + idPaciente + ", horario=" + horario + ", data=" + data + '}';
     }
     
     

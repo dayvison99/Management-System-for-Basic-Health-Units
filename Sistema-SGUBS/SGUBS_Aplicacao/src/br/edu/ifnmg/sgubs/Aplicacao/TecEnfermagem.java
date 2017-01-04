@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class TecEnfermagem {
+public class TecEnfermagem implements Entidade{
     private int id;
     private String nome;
     private String corem;
@@ -108,6 +108,11 @@ public class TecEnfermagem {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "TecEnfermagem{" + "id=" + id + ", nome=" + nome + ", corem=" + corem + ", telefone=" + telefone + ", endereco=" + endereco + '}';
     }
     
     

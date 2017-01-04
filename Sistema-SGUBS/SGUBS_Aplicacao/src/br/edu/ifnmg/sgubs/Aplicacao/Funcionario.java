@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Funcionario {
+public class Funcionario implements Entidade{
     private int id;
     private String nome;
     private String endereco;
@@ -122,6 +122,11 @@ public class Funcionario {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", funcao=" + funcao + ", cpf=" + cpf + '}';
     }
     
     

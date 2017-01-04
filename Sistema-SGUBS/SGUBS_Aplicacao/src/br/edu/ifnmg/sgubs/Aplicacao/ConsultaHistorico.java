@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class ConsultaHistorico {
+public class ConsultaHistorico implements Entidade {
     private int id;
     private int idMedicamento;
     private int idMedico;
@@ -177,6 +177,11 @@ public class ConsultaHistorico {
             return false;
         }
         return Objects.equals(this.horario, other.horario);
+    }
+
+    @Override
+    public String toString() {
+        return "ConsultaHistorico{" + "id=" + id + ", idMedicamento=" + idMedicamento + ", idMedico=" + idMedico + ", idPaciente=" + idPaciente + ", date=" + date + ", horario=" + horario + ", prescricaoMedica=" + prescricaoMedica + ", pressaoArterial=" + pressaoArterial + ", peso=" + peso + ", altura=" + altura + '}';
     }
     
   

@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.sgubs.Persistencia;
-import br.edu.ifnmg.sgubs.Aplicacao.Entidade;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ import java.util.List;
  * @param <T>
  */
 
-    public abstract class DAOGenerico<T extends Entidade{
+    public abstract class DAOGenerico implements Repositorio<T>{
     protected Connection conn;
     
     private String consultaAbrir;

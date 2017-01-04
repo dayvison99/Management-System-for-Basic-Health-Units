@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class UnidadesDeSaude{
+public class UnidadesDeSaude implements Entidade{
     private int id;
     private String nome;
     private String endereco;
@@ -77,6 +77,11 @@ public class UnidadesDeSaude{
             return false;
         }
         return Objects.equals(this.endereco, other.endereco);
+    }
+
+    @Override
+    public String toString() {
+        return "UnidadesDeSaude{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
     }
     
     

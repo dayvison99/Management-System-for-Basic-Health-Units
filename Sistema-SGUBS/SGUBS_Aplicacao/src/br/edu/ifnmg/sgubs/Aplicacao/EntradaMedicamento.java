@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class EntradaMedicamento {
+public class EntradaMedicamento implements Entidade{
     private int id;
     private int idMedicamento;
     private int numeroNota;
@@ -111,12 +111,10 @@ public class EntradaMedicamento {
         }
         return true;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "EntradaMedicamento{" + "id=" + id + ", idMedicamento=" + idMedicamento + ", numeroNota=" + numeroNota + ", dataEntrada=" + dataEntrada + ", horario=" + horario + '}';
+    } 
+      
 }

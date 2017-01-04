@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Medicamento {
+public class Medicamento implements Entidade{
     private int id;
     private String descricao;
     private int quantidade;
@@ -94,6 +94,11 @@ public class Medicamento {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Medicamento{" + "id=" + id + ", descricao=" + descricao + ", quantidade=" + quantidade + ", nome=" + nome + '}';
     }
     
     

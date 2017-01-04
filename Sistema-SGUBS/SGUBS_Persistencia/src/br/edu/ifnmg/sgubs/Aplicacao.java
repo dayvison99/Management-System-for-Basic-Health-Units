@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.sgubs.Aplicacao;
+package br.edu.ifnmg.sgubs;
 
 /**
  *
  * @author dayvison
  */
-public interface EntidadeGenerica {
-    public Long getId();
+public class Aplicacao {
     
 }

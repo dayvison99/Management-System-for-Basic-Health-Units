@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class ControleUsuario {
+public class ControleUsuario implements Entidade{
     private int id;
     private int idMedico;
     private int idFuncionario;
@@ -122,6 +122,11 @@ public class ControleUsuario {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ControleUsuario{" + "id=" + id + ", idMedico=" + idMedico + ", idFuncionario=" + idFuncionario + ", idTecenfermagem=" + idTecenfermagem + ", senha=" + senha + ", nomeUsuario=" + nomeUsuario + '}';
     }
     
     

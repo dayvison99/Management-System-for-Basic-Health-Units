@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author dayvison
  */
-public class Especialidade {
+public class Especialidade implements Entidade{
     private int id;
     private String especialidade;
 
@@ -66,6 +66,11 @@ public class Especialidade {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Especialidade{" + "id=" + id + ", especialidade=" + especialidade + '}';
     }
     
     
