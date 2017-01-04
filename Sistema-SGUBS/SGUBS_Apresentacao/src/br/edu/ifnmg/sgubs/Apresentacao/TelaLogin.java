@@ -5,6 +5,8 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao;
 
+import javax.swing.JPasswordField;
+
 /**
  *
  * @author dayvison
@@ -28,11 +30,11 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         textoLogin = new javax.swing.JTextField();
-        textaSenha = new javax.swing.JTextField();
         Senha = new javax.swing.JLabel();
         Usuario = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
+        campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.cyan);
@@ -42,12 +44,6 @@ public class TelaLogin extends javax.swing.JFrame {
         textoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoLoginActionPerformed(evt);
-            }
-        });
-
-        textaSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textaSenhaActionPerformed(evt);
             }
         });
 
@@ -69,6 +65,12 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
+        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoSenhaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,16 +81,16 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(Senha)
                     .addComponent(Usuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 52, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(campoSenha))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(btnEntrar)
                 .addGap(28, 28, 28)
                 .addComponent(btnFechar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,8 +101,8 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(Usuario))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Senha))
+                    .addComponent(Senha)
+                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar)
@@ -112,10 +114,6 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textaSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textaSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textaSenhaActionPerformed
-
     private void textoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoLoginActionPerformed
@@ -125,9 +123,15 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         this.
+         TelaPrincipal entrar = new TelaPrincipal();
+          entrar.setVisible(true);
+          dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,7 +171,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JTextField textaSenha;
+    private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField textoLogin;
     // End of variables declaration//GEN-END:variables
 
@@ -176,6 +180,10 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     private void TelaPrincipal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void Dipose() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

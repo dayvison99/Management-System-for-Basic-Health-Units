@@ -9,6 +9,7 @@ package br.edu.ifnmg.sgubs.Aplicacao;
  *
  * @author dayvison
  */
-class datetime {
+public interface EntidadeGenerica {
+    public Long getId();
     
 }

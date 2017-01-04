@@ -5,6 +5,8 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao;
 
+import static java.awt.AWTEventMulticaster.add;
+
 /**
  *
  * @author dayvison
@@ -32,7 +34,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
+        btnFechar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,23 +57,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu5.setText("Farmacia");
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setForeground(java.awt.Color.black);
-        jMenu6.setText("Fechar");
-        jMenu6.addMenuListener(new javax.swing.event.MenuListener() {
+        btnFechar.setForeground(java.awt.Color.black);
+        btnFechar.setText("Fechar");
+        btnFechar.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuSelected(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
-                jMenu6MenuCanceled(evt);
+                btnFecharMenuCanceled(evt);
             }
         });
-        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6ActionPerformed(evt);
+                btnFecharActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(btnFechar);
 
         setJMenuBar(jMenuBar1);
 
@@ -89,13 +91,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu6ActionPerformed
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
 
-    private void jMenu6MenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu6MenuCanceled
+    private void btnFecharMenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_btnFecharMenuCanceled
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu6MenuCanceled
+    }//GEN-LAST:event_btnFecharMenuCanceled
 
     /**
      * @param args the command line arguments
@@ -133,10 +135,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu btnFechar;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
