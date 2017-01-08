@@ -6,6 +6,10 @@
 package br.edu.ifnmg.sgubs.Persistencia;
 
 
+import br.edu.ifnmg.sgubs.Aplicacao.Entidade;
+import br.edu.ifnmg.sgubs.Aplicacao.Repositorio;
+//import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
+//import br.edu.ifnmg.sgubs.Aplicacao.Repositorio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +23,7 @@ import java.util.List;
  * @param <T>
  */
 
-    public abstract class DAOGenerico implements Repositorio<T>{
+    public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     protected Connection conn;
     
     private String consultaAbrir;
@@ -28,7 +32,7 @@ import java.util.List;
     private String consultaAlterar;
     private String consultaBusca;
     
-    private final String where = "";
+    private String where = "";
 
     public DAOGenerico(){
     try {
