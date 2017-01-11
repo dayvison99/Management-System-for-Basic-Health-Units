@@ -10,5 +10,6 @@ package br.edu.ifnmg.sgubs.Aplicacao;
  * @author dayvison
  */
 public interface MedicoRepositorio extends Repositorio<Medico>{
+    public Medico Abrir (String crm);
     
 }

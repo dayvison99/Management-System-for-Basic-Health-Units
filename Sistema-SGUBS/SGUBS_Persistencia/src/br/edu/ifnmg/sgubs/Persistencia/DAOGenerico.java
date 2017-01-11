@@ -29,9 +29,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     private String consultaApagar;
     private String consultaInserir;
     private String consultaAlterar;
-    private String consultaBusca;
-    
-    private String where = "";
+  
 
     public DAOGenerico(){
     try {
@@ -48,8 +46,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     
     protected abstract T preencheObjeto(ResultSet resultado);
     protected abstract void preencheConsulta(PreparedStatement sql, T obj);
-    protected abstract void preencheFiltros(T filtro);
-    protected abstract void preencheParametros(PreparedStatement sql, T filtro);
+ 
     
     @Override
     public boolean Salvar(T obj) {
@@ -141,49 +138,6 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
         return null;
     }
 
-    @Override
-    public List<T> Buscar(T filtro) {
-        List<T> ret = new ArrayList<>();
-        
-        preencheFiltros(filtro);
-        
-        if(where.length() > 0 )
-            where = "WHERE " + where;
-        
-        try {
-            
-            // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement(getConsultaBusca() + where);
-            
-            preencheParametros(sql,filtro);
-            
-            // Executo a consulta sql e pego os resultados
-            ResultSet resultado = sql.executeQuery();
-                        
-            // Verifica se algum registro foi retornado na consulta
-            while(resultado.next()){
-                
-                T tmp = preencheObjeto(resultado);
-                
-                // Adiciona o objeto à lista
-                ret.add(tmp);
-            }            
-            
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
-        }
-        
-        return ret;
-    }
-    
-    protected void adicionarFiltro(String campo, String operador){
-        if(where.length() > 0)
-            where = where + " and ";
-        
-        where = where + campo + " " + operador + " ?";
-    }
-
     public String getConsultaAbrir() {
         return consultaAbrir;
     }
@@ -216,13 +170,9 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
         this.consultaAlterar = consultaAlterar;
     }
 
-    public String getConsultaBusca() {
-        return consultaBusca;
-    }
+   
 
-    public void setConsultaBusca(String consultaBusca) {
-        this.consultaBusca = consultaBusca;
-    }
+   
     
     
 }

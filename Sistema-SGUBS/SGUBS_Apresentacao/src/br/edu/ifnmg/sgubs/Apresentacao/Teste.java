@@ -84,7 +84,7 @@ public class Teste {
     public static void abrir() {
         Medico m;
         
-        MedicoRepositorio SGUBS = new DAOMedico();;
+        MedicoRepositorio SGUBS = new DAOMedico();
         
         
         m = SGUBS.Abrir(1);

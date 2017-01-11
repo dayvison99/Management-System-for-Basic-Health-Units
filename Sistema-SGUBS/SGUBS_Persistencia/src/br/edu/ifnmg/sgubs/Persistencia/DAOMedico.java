@@ -9,6 +9,8 @@ import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 
 /**
@@ -18,50 +20,53 @@ import java.sql.ResultSet;
 public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
     
      public DAOMedico() {
-        consultaAbrir("select idMedico,especialidades_idespecialidade, nome, crm from medico where id = ?");
-        consultaApagar("delete from medico where id = ?");
-        consultaInserir("insert into medico(especialidades_idespecialidade, nome, crm) values(?,?)");
-        consultaAlterar("update medicos set nome = ?, crm = ? where id = ?");
-        consultaBusca("select idMedico, nome, crm from medico ");
+        setConsultaAbrir("select idMedico, nome, crm from medico where id = ?");
+        setConsultaApagar("delete from medico where id = ?");
+        setConsultaInserir("insert into medico(especialidades_idespecialidade, nome, crm) values(?,?,?)");
+        setConsultaAlterar("update medicos set nome = ?, crm = ? where id = ?");
+        
     }
 
     @Override
     protected Medico preencheObjeto(ResultSet resultado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+          Medico tmp = new Medico();
+          tmp.setId(resultado.getInt(1));
+          tmp.setNome(resultado.getString(2));
+          tmp.setCrm(resultado.getString(3));
+          return tmp;
+        } catch (SQLException ex) {
+           System.out.println(ex);
+        }
+       return null;
     }
 
     @Override
     protected void preencheConsulta(PreparedStatement sql, Medico obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try{
+       sql.setInt(1, obj.getIdEspecialidade());
+       sql.setString(2, obj.getNome());
+       sql.setString(3, obj.getCrm());
+       } catch(SQLException ex){
+         System.out.println(ex);
+       }
     }
 
     @Override
-    protected void preencheFiltros(Medico filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Medico Abrir(String crm) {
+        try{
+        PreparedStatement sql=conn.prepareStatement("select idMedico, nome, crm from medico where crm=?");
+        sql.setString(1, crm);
+        ResultSet resultado=sql.executeQuery();
+        if(resultado.next()) return preencheObjeto(resultado);
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return null;
     }
 
     @Override
-    protected void preencheParametros(PreparedStatement sql, Medico filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void consultaAbrir(String select_idMedicoespecialidades_idespeciali) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void consultaApagar(String delete_from_medico_where_id__) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void consultaInserir(String insert_into_medicoespecialidades_idespeci) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void consultaAlterar(String update_medicos_set_nome___crm___where_id_) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void consultaBusca(String select_idMedico_nome_crm_from_medico_) {
+    public List<Medico> Buscar(Medico filtro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
