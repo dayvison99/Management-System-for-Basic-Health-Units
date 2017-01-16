@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -22,7 +24,7 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
      public DAOMedico() {
         setConsultaAbrir("select idMedico,especialidade_idEspecialidade, nome, crm,rua,bairro,cidade,telefone,celular,observacoes from medico where id = ?");
         setConsultaApagar("delete from medico where id = ?");
-        setConsultaInserir("insert into medico(especialidades_idespecialidade, nome, crm) values(?,?,?)");
+        setConsultaInserir("insert into medico(especialidade_idEspecialidade, nome, crm,rua,bairro,cidade,telefone,celular,observacoes) values(?,?,?,?,?,?,?,?,?)");
         setConsultaAlterar("update medico set especialidade_idEspecialidade =?, nome=?, crm=?,rua=?,bairro=?,cidade=?,telefone=?,celular=?,observacoes=? where id = ?");
         
     }
@@ -34,6 +36,12 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
           tmp.setId(resultado.getInt(1));
           tmp.setNome(resultado.getString(2));
           tmp.setCrm(resultado.getString(3));
+          tmp.setRua(resultado.getString(4));
+          tmp.setBairro(resultado.getString(5));
+          tmp.setCidade(resultado.getString(6));
+          tmp.setTelefone(resultado.getInt(7));
+          tmp.setCelular(resultado.getInt(8));
+          tmp.setObservacoes(resultado.getString(9));
           return tmp;
         } catch (SQLException ex) {
            System.out.println(ex);
@@ -47,6 +55,12 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
        sql.setInt(1, obj.getIdEspecialidade());
        sql.setString(2, obj.getNome());
        sql.setString(3, obj.getCrm());
+       sql.setString(4, obj.getRua());
+       sql.setString(5, obj.getBairro());
+       sql.setString(6, obj.getCidade());
+       sql.setInt(7, obj.getTelefone());
+       sql.setInt(8, obj.getCelular());
+       sql.setString(9, obj.getObservacoes());
        } catch(SQLException ex){
          System.out.println(ex);
        }
@@ -72,12 +86,26 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
 
     @Override
     protected void preencheFiltros(Medico filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(filtro.getId() > 0) adicionarFiltro("id", "=");
+        if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
+        if(filtro.getCrm()!= null) adicionarFiltro("cpf", "=");
+   
     }
 
     @Override
     protected void preencheParametros(PreparedStatement sql, Medico filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         try {
+            int cont = 1;
+            if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
+            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()); cont++; }
+            if(filtro.getCrm()!= null){ sql.setString(cont, filtro.getCrm()); cont++; }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOMedico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    }
+        
    
-}
+
