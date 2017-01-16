@@ -10,5 +10,6 @@ package br.edu.ifnmg.sgubs.Aplicacao;
  * @author dayvison
  */
 public interface FuncionarioRepositorio extends Repositorio<Funcionario> {
+    public Funcionario Abrir (String cpf);
     
 }

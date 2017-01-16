@@ -95,10 +95,10 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
     @Override
     protected void preencheParametros(PreparedStatement sql, Medico filtro) {
          try {
-            int cont = 1;
-            if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
-            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()); cont++; }
-            if(filtro.getCrm()!= null){ sql.setString(cont, filtro.getCrm()); cont++; }
+            int contador = 1;
+            if(filtro.getId() > 0){ sql.setInt(contador, filtro.getId()); contador++; }
+            if(filtro.getNome() != null ){ sql.setString(contador, filtro.getNome()); contador++; }
+            if(filtro.getCrm()!= null){ sql.setString(contador, filtro.getCrm()); contador++; }
             
         } catch (SQLException ex) {
             Logger.getLogger(DAOMedico.class.getName()).log(Level.SEVERE, null, ex);
