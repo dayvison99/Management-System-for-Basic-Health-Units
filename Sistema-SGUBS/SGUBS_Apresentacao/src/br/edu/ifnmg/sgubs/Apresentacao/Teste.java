@@ -31,7 +31,7 @@ public class Teste {
        
 //       buscar();      
        
-    }
+    
     /*
     public static void buscar() {
         Medico filtro = new Medico();
@@ -66,8 +66,14 @@ public class Teste {
         SGUBS.Salvar(m);
         
     }
+    */
     
-     public static void apagar() {
+    int op=0;
+    System.out.println("1-Salvar 2-Apagar");}
+
+    public Teste() {
+    }
+     public static void Apagar() {
         Medico m;
         
         MedicoRepositorio SGUBS = new DAOMedico();
@@ -79,7 +85,7 @@ public class Teste {
         
         SGUBS.Apagar(m);
         
-    }*/
+    }
     
     public static void abrir() {
         Medico m;

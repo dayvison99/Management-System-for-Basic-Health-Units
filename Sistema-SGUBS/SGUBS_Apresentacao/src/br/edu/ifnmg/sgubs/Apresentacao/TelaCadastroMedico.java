@@ -316,6 +316,7 @@ public class TelaCadastroMedico extends javax.swing.JFrame {
         Teste teste=new Teste();
 
         Teste.criar();
+       // Teste.Apagar();
         Teste.abrir();
     }//GEN-LAST:event_CMedicoActionPerformed
 

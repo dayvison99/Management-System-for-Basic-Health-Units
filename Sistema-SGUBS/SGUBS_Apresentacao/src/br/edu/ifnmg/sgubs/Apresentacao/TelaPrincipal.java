@@ -109,11 +109,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-          this.dispose(); 
+           System.exit(0);
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnFecharMenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_btnFecharMenuCanceled
-        // TODO add your handling code here:
+           System.exit(0);
     }//GEN-LAST:event_btnFecharMenuCanceled
 
     private void CPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPacienteActionPerformed
