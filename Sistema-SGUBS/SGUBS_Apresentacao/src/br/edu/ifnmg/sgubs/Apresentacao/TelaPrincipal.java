@@ -10,12 +10,13 @@ package br.edu.ifnmg.sgubs.Apresentacao;
  * @author dayvison
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        
     }
 
     /**
@@ -28,69 +29,81 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        CPaciente = new javax.swing.JMenuItem();
-        CMedico = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        CConsultas = new javax.swing.JMenu();
-        MenuPrincipal = new javax.swing.JMenu();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        btnFechar = new javax.swing.JMenu();
+        Cadastros = new javax.swing.JMenu();
+        Pacientes = new javax.swing.JMenuItem();
+        Medicos = new javax.swing.JMenuItem();
+        Funcionarios = new javax.swing.JMenuItem();
+        Consultas = new javax.swing.JMenu();
+        Farmacia = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(6);
+        setFocusableWindowState(false);
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jMenuBar1.setBackground(java.awt.SystemColor.controlHighlight);
+        Cadastros.setText("Cadastros");
 
-        jMenu3.setBackground(java.awt.Color.black);
-        jMenu3.setForeground(java.awt.Color.black);
-        jMenu3.setText("Cadastros");
-
-        CPaciente.setText("Paciente");
-        CPaciente.addActionListener(new java.awt.event.ActionListener() {
+        Pacientes.setText("Pacientes");
+        Pacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPacienteActionPerformed(evt);
+                PacientesActionPerformed(evt);
             }
         });
-        jMenu3.add(CPaciente);
+        Cadastros.add(Pacientes);
 
-        CMedico.setText("Medico");
-        CMedico.addActionListener(new java.awt.event.ActionListener() {
+        Medicos.setText("Medicos");
+        Medicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CMedicoActionPerformed(evt);
+                MedicosActionPerformed(evt);
             }
         });
-        jMenu3.add(CMedico);
-        jMenu3.add(jSeparator1);
+        Cadastros.add(Medicos);
 
-        jMenuBar1.add(jMenu3);
-
-        CConsultas.setForeground(java.awt.Color.black);
-        CConsultas.setText("Consultas");
-        jMenuBar1.add(CConsultas);
-
-        MenuPrincipal.setForeground(java.awt.Color.black);
-        MenuPrincipal.setText("Farmacia");
-        MenuPrincipal.add(jSeparator2);
-
-        jMenuBar1.add(MenuPrincipal);
-
-        btnFechar.setForeground(java.awt.Color.black);
-        btnFechar.setText("Fechar");
-        btnFechar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-                btnFecharMenuCanceled(evt);
-            }
-        });
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+        Funcionarios.setText("Funcionarios");
+        Funcionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharActionPerformed(evt);
+                FuncionariosActionPerformed(evt);
             }
         });
-        jMenuBar1.add(btnFechar);
+        Cadastros.add(Funcionarios);
+
+        jMenuBar1.add(Cadastros);
+
+        Consultas.setText("Consultas");
+        jMenuBar1.add(Consultas);
+
+        Farmacia.setText("Farmacia");
+        jMenuBar1.add(Farmacia);
+
+        jMenu1.setText("Sair/Logoff");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Logoff");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem1.setText("Sair");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -98,39 +111,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 524, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-           System.exit(0);
-    }//GEN-LAST:event_btnFecharActionPerformed
+    private void PacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PacientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PacientesActionPerformed
 
-    private void btnFecharMenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_btnFecharMenuCanceled
-           System.exit(0);
-    }//GEN-LAST:event_btnFecharMenuCanceled
+    private void MedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicosActionPerformed
+        TelaMedicoListagem tela=new TelaMedicoListagem();
+                this.add(tela);
+                tela.setVisible(true);
+    }//GEN-LAST:event_MedicosActionPerformed
 
-    private void CPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPacienteActionPerformed
-        TelaCadastroPaciente entrar = new TelaCadastroPaciente();
-          entrar.setVisible(true);
-          dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_CPacienteActionPerformed
+    private void FuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FuncionariosActionPerformed
 
-    private void CMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMedicoActionPerformed
-        /*Teste teste=new Teste();
-        Teste.criar();
-        Teste.abrir();*/
-        TelaCadastroMedico entrar=new TelaCadastroMedico();
-        entrar.setVisible(true);
-        dispose();
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.exit(0);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    }//GEN-LAST:event_CMedicoActionPerformed
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        System.exit(0);
+        System.exit(0);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new TelaLogin().setVisible(true);
+      
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,22 +181,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new TelaPrincipal().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu CConsultas;
-    private javax.swing.JMenuItem CMedico;
-    private javax.swing.JMenuItem CPaciente;
-    private javax.swing.JMenu MenuPrincipal;
-    private javax.swing.JMenu btnFechar;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu Cadastros;
+    private javax.swing.JMenu Consultas;
+    private javax.swing.JMenu Farmacia;
+    private javax.swing.JMenuItem Funcionarios;
+    private javax.swing.JMenuItem Medicos;
+    private javax.swing.JMenuItem Pacientes;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

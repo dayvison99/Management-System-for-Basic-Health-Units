@@ -119,7 +119,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_textoLoginActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-         this.dispose();        // TODO add your handling code here:
+         System.exit(0);       // TODO add your handling code here:
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
@@ -130,7 +130,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_campoSenhaActionPerformed
 
     /**
