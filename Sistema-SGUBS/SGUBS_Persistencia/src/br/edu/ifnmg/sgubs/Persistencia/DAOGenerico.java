@@ -112,31 +112,17 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     }
     
     @Override
-    public T Abrir(int id) {
-        try {
-            
-            
-            PreparedStatement sql = conn.prepareStatement(getConsultaAbrir());
-            
-            
-            sql.setInt(1, id);
-            
-          
-            ResultSet resultado = sql.executeQuery();
-            
-            
-            if(resultado.next()){
-                
-               
-                return preencheObjeto(resultado);
-            }            
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
-        }
-        
-        return null;
-    }
+    public T Abrir(int id){
+           try {
+               PreparedStatement sql = conn.prepareStatement(consultaAbrir);
+               sql.setInt(1, id);
+               ResultSet resultado = sql.executeQuery();
+               if(resultado.next()) return preencheObjeto(resultado);
+           } catch (SQLException ex) {
+               System.out.println(ex);
+           }
+           return null;
+       }
     protected void adicionarFiltro(String campo, String operador) {
         if (where.length() > 0) {
             where = where + " and ";

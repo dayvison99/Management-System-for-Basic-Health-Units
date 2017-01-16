@@ -26,13 +26,13 @@ public class Teste {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-       // DB.Iniciar();
+        //DB.Iniciar();
        // DB.criarConexao();
        
-       buscar();      
+//       buscar();      
        
     }
-    
+    /*
     public static void buscar() {
         Medico filtro = new Medico();
         
@@ -79,7 +79,7 @@ public class Teste {
         
         SGUBS.Apagar(m);
         
-    }
+    }*/
     
     public static void abrir() {
         Medico m;
@@ -96,21 +96,18 @@ public class Teste {
     public static void criar() {
         Medico m = new Medico();
        
-       try {
-           m.setNome("Yoshua");
-           m.setCrm("101.000.000-00");
-           //c.setDataNascimento(new Date());
-           
-           MedicoRepositorio SGUBS = new DAOMedico();
-           
-           SGUBS.Salvar(m);
-           
-           System.out.print(m);
-       }
-       catch(ErroValidacao ex) {
-           System.out.println("Aconteceu um erro! :-(") ;
-           System.out.println(ex);
-       } 
+        m.setNome("Dayvison");
+        m.setCrm("101000000");
+        m.setRua("B");
+        m.setBairro("Boa vista");
+        m.setCidade("Januaria");
+        m.setTelefone(36211480);
+        m.setCelular(92047149);
+        m.setObservacoes("teste bd");
+        
+        MedicoRepositorio SGUBS = new DAOMedico();
+        SGUBS.Salvar(m);
+        System.out.print(m); 
     }
     
 }

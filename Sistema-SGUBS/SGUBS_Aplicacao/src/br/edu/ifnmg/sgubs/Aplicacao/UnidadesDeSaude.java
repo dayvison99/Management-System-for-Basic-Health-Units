@@ -14,15 +14,17 @@ import java.util.Objects;
 public class UnidadesDeSaude implements Entidade{
     private int id;
     private String nome;
-    private String endereco;
+    private String rua;
+    private String bairro;
 
     public UnidadesDeSaude() {
     }
 
-    public UnidadesDeSaude(int id, String nome, String endereco) {
+    public UnidadesDeSaude(int id, String nome, String rua, String bairro) {
         this.id = id;
         this.nome = nome;
-        this.endereco = endereco;
+        this.rua = rua;
+        this.bairro = bairro;
     }
 
     public int getId() {
@@ -41,20 +43,29 @@ public class UnidadesDeSaude implements Entidade{
         this.nome = nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 71 * hash + this.id;
-        hash = 71 * hash + Objects.hashCode(this.nome);
-        hash = 71 * hash + Objects.hashCode(this.endereco);
+        hash = 17 * hash + this.id;
+        hash = 17 * hash + Objects.hashCode(this.nome);
+        hash = 17 * hash + Objects.hashCode(this.rua);
+        hash = 17 * hash + Objects.hashCode(this.bairro);
         return hash;
     }
 
@@ -76,14 +87,20 @@ public class UnidadesDeSaude implements Entidade{
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        return Objects.equals(this.endereco, other.endereco);
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "UnidadesDeSaude{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
+        return "UnidadesDeSaude{" + "id=" + id + ", nome=" + nome + ", rua=" + rua + ", bairro=" + bairro + '}';
     }
-    
+
     
     
 }

@@ -29,9 +29,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        CPaciente = new javax.swing.JMenuItem();
+        CMedico = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        CConsultas = new javax.swing.JMenu();
+        MenuPrincipal = new javax.swing.JMenu();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         btnFechar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,23 +45,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setForeground(java.awt.Color.black);
         jMenu3.setText("Cadastros");
 
-        jMenuItem1.setText("Paciente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        CPaciente.setText("Paciente");
+        CPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                CPacienteActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(CPaciente);
+
+        CMedico.setText("Medico");
+        CMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMedicoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(CMedico);
+        jMenu3.add(jSeparator1);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setForeground(java.awt.Color.black);
-        jMenu4.setText("Consultas");
-        jMenuBar1.add(jMenu4);
+        CConsultas.setForeground(java.awt.Color.black);
+        CConsultas.setText("Consultas");
+        jMenuBar1.add(CConsultas);
 
-        jMenu5.setForeground(java.awt.Color.black);
-        jMenu5.setText("Farmacia");
-        jMenuBar1.add(jMenu5);
+        MenuPrincipal.setForeground(java.awt.Color.black);
+        MenuPrincipal.setText("Farmacia");
+        MenuPrincipal.add(jSeparator2);
+
+        jMenuBar1.add(MenuPrincipal);
 
         btnFechar.setForeground(java.awt.Color.black);
         btnFechar.setText("Fechar");
@@ -102,11 +116,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFecharMenuCanceled
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void CPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPacienteActionPerformed
         TelaCadastroPaciente entrar = new TelaCadastroPaciente();
           entrar.setVisible(true);
           dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_CPacienteActionPerformed
+
+    private void CMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMedicoActionPerformed
+        /*Teste teste=new Teste();
+        Teste.criar();
+        Teste.abrir();*/
+        TelaCadastroMedico entrar=new TelaCadastroMedico();
+        entrar.setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_CMedicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +169,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu CConsultas;
+    private javax.swing.JMenuItem CMedico;
+    private javax.swing.JMenuItem CPaciente;
+    private javax.swing.JMenu MenuPrincipal;
     private javax.swing.JMenu btnFechar;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
