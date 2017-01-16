@@ -23,7 +23,7 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
         setConsultaAbrir("select idMedico, nome, crm from medico where id = ?");
         setConsultaApagar("delete from medico where id = ?");
         setConsultaInserir("insert into medico(especialidades_idespecialidade, nome, crm) values(?,?,?)");
-        setConsultaAlterar("update medicos set nome = ?, crm = ? where id = ?");
+        setConsultaAlterar("update medico set nome = ?, crm = ? where id = ?");
         
     }
 
