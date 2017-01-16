@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/dayvison/NetBeansProjects/SGUBS_Persistencia/src/br/edu/ifnmg/sgubs/Persistencia/DAOGenerico.java</file>
             <file>file:/home/dayvison/NetBeansProjects/SGUBS_Persistencia/src/br/edu/ifnmg/sgubs/Persistencia/DAOMedico.java</file>
+            <file>file:/home/dayvison/NetBeansProjects/SGUBS_Persistencia/src/br/edu/ifnmg/sgubs/Persistencia/DAOAgendamento.java</file>
             <file>file:/home/dayvison/NetBeansProjects/SGUBS_Persistencia/src/br/edu/ifnmg/sgubs/Persistencia/DAOPaciente.java</file>
         </group>
     </open-files>

@@ -42,7 +42,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setForeground(java.awt.Color.black);
         jMenu3.setText("Cadastros");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Paciente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem1);
 
         jMenuBar1.add(jMenu3);
@@ -90,12 +95,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        this.dispose();
+          this.dispose(); 
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnFecharMenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_btnFecharMenuCanceled
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFecharMenuCanceled
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaCadastroPaciente entrar = new TelaCadastroPaciente();
+          entrar.setVisible(true);
+          dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

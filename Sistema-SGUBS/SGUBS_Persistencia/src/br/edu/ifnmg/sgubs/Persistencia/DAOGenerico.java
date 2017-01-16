@@ -12,8 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import static sun.misc.MessageUtils.where;
 
 /**
  *
@@ -29,6 +28,8 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     private String consultaApagar;
     private String consultaInserir;
     private String consultaAlterar;
+    
+    private String where = "";
   
 
     public DAOGenerico(){
@@ -46,6 +47,8 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     
     protected abstract T preencheObjeto(ResultSet resultado);
     protected abstract void preencheConsulta(PreparedStatement sql, T obj);
+    protected abstract void preencheFiltros(T filtro);
+    protected abstract void preencheParametros(PreparedStatement sql, T filtro);
  
     
     @Override
@@ -133,6 +136,13 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
         }
         
         return null;
+    }
+    protected void adicionarFiltro(String campo, String operador) {
+        if (where.length() > 0) {
+            where = where + " and ";
+        }
+
+        where = where + campo + " " + operador + " ?";
     }
 
     public String getConsultaAbrir() {

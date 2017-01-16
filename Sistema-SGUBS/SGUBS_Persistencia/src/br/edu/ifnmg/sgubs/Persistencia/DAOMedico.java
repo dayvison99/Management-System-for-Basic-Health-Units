@@ -20,10 +20,10 @@ import java.util.List;
 public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
     
      public DAOMedico() {
-        setConsultaAbrir("select idMedico, nome, crm from medico where id = ?");
+        setConsultaAbrir("select idMedico,especialidade_idEspecialidade, nome, crm,rua,bairro,cidade,telefone,celular,observacoes from medico where id = ?");
         setConsultaApagar("delete from medico where id = ?");
         setConsultaInserir("insert into medico(especialidades_idespecialidade, nome, crm) values(?,?,?)");
-        setConsultaAlterar("update medico set nome = ?, crm = ? where id = ?");
+        setConsultaAlterar("update medico set especialidade_idEspecialidade =?, nome=?, crm=?,rua=?,bairro=?,cidade=?,telefone=?,celular=?,observacoes=? where id = ?");
         
     }
 
@@ -67,6 +67,16 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
 
     @Override
     public List<Medico> Buscar(Medico filtro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void preencheFiltros(Medico filtro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void preencheParametros(PreparedStatement sql, Medico filtro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
