@@ -6,6 +6,7 @@
 package br.edu.ifnmg.sgubs.Aplicacao;
 
 import java.util.Objects;
+import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -39,6 +40,7 @@ public class Medico implements Entidade{
         this.observacoes = observacoes;
     }
 
+     
     @Override
     public int getId() {
         return id;

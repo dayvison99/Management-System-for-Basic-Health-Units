@@ -79,11 +79,7 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
         return null;
     }
 
-    @Override
-    public List<Medico> Buscar(Medico filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     @Override
     protected void preencheFiltros(Medico filtro) {
         if(filtro.getId() > 0) adicionarFiltro("id", "=");

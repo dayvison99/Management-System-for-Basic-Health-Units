@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import static sun.misc.MessageUtils.where;
 
 /**
@@ -28,6 +30,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     private String consultaApagar;
     private String consultaInserir;
     private String consultaAlterar;
+    private String consultaBuscar;
     
     private String where = "";
   
@@ -130,6 +133,47 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
 
         where = where + campo + " " + operador + " ?";
     }
+    
+    @Override
+    public List<T> Buscar(T filtro) {
+        List<T> ret = new ArrayList<>();
+
+        if(filtro != null){
+            preencheFiltros(filtro);
+
+            if (where.length() > 0) {
+                where = "WHERE " + where;
+            }
+        }
+
+        try {
+
+            // Crio a consulta sql
+            PreparedStatement sql = conn.prepareStatement(getConsultaBuscar() + where);
+
+            if(filtro != null)
+                preencheParametros(sql, filtro);
+
+            // Executo a consulta sql e pego os resultados
+            ResultSet resultado = sql.executeQuery();
+
+            // Verifica se algum registro foi retornado na consulta
+            while (resultado.next()) {
+
+                T tmp = preencheObjeto(resultado);
+
+                // Adiciona o objeto à lista
+                ret.add(tmp);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return ret;
+    }
+
+    
 
     public String getConsultaAbrir() {
         return consultaAbrir;
@@ -161,6 +205,14 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
 
     public void setConsultaAlterar(String consultaAlterar) {
         this.consultaAlterar = consultaAlterar;
+    }
+
+     public String getConsultaBuscar() {
+        return consultaBuscar;
+    }
+
+    public void setConsultaBuscar(String consultaBusca) {
+        this.consultaBuscar = consultaBusca;
     }
     
 }
