@@ -93,7 +93,7 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
          try {
             int contador = 1;
             if(filtro.getId() > 0){ sql.setInt(contador, filtro.getId()); contador++; }
-            if(filtro.getNome() != null ){ sql.setString(contador, filtro.getNome()); contador++; }
+            if(filtro.getNome() != null ){ sql.setString(contador, filtro.getNome()+"%"); contador++; }
             if(filtro.getCrm()!= null){ sql.setString(contador, filtro.getCrm()); contador++; }
             
         } catch (SQLException ex) {
