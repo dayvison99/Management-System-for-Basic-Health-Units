@@ -62,7 +62,8 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
 
     @Override
     protected void preencheFiltros(Agendamento filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // if(filtro.getId() > 0) adicionarFiltro("id", "=");
+       // if(filtro.getIdUnidadeSaude() >0)adicionarFiltro(campo, operador)
     }
 
     @Override
