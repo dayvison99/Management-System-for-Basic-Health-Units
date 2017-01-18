@@ -9,6 +9,9 @@ import br.edu.ifnmg.sgubs.Aplicacao.TecEnfermagem;
 import br.edu.ifnmg.sgubs.Aplicacao.TecEnfermagemRepositorio;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,22 +29,67 @@ public class DAOTecEnfermagem extends DAOGenerico<TecEnfermagem> implements TecE
 
     @Override
     protected TecEnfermagem preencheObjeto(ResultSet resultado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            TecEnfermagem tmp = new TecEnfermagem();
+            tmp.setId(resultado.getInt(1));
+            tmp.setNome(resultado.getString(2));
+            tmp.setCoren(resultado.getString(3));
+            tmp.setRua(resultado.getString(4));
+            tmp.setBairro(resultado.getString(5));
+            tmp.setCidade(resultado.getString(6));
+            tmp.setTelefone(resultado.getInt(7));
+            tmp.setCelular(resultado.getInt(8));
+            return tmp;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
 
     @Override
     protected void preencheConsulta(PreparedStatement sql, TecEnfermagem obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            sql.setString(1, obj.getNome());
+            sql.setString(2, obj.getCoren());
+            sql.setString(3, obj.getRua());
+            sql.setString(4, obj.getBairro());
+            sql.setString(5, obj.getCidade());
+            sql.setInt(6, obj.getTelefone());
+            sql.setInt(7, obj.getCelular());
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     @Override
     protected void preencheFiltros(TecEnfermagem filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(filtro.getId()>0) adicionarFiltro("id","=");
+        if(filtro.getNome() != null) adicionarFiltro("nome","like");
+        if(filtro.getCoren()!=null) adicionarFiltro("coren","=");
     }
 
     @Override
     protected void preencheParametros(PreparedStatement sql, TecEnfermagem filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            int contador = 1;
+            if(filtro.getId()>0){sql.setInt(contador, filtro.getId()); contador++;}
+            if(filtro.getNome() != null ) { sql.setString(contador, filtro.getNome()+"%");contador++;}
+            if(filtro.getCoren() != null ) {sql.setString(contador, filtro.getCoren());contador++;}
+            
+        } catch (SQLException ex) {
+                Logger.getLogger(DAOTecEnfermagem.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+  
+    @Override
+    public TecEnfermagem Abrir(String corem) {
+        try {
+            PreparedStatement sql=conn.prepareStatement("select idTecEnfermagem, nome ,coren from tecEnfermagem from tecEnfermagem where coren");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
     
 }

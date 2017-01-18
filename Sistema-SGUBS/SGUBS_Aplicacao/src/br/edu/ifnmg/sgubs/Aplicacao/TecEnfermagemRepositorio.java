@@ -10,5 +10,5 @@ package br.edu.ifnmg.sgubs.Aplicacao;
  * @author dayvison
  */
 public interface TecEnfermagemRepositorio extends Repositorio<TecEnfermagem> {
-    
+    public TecEnfermagem Abrir(String corem);
 }
