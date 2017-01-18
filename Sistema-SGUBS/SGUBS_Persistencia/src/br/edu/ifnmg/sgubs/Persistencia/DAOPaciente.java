@@ -97,7 +97,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         int contador=1;
         if(filtro.getId()>0){sql.setInt(contador, filtro.getId());
         contador++;}
-        if(filtro.getNome()!=null){sql.setString(contador,filtro.getNome());
+        if(filtro.getNome()!=null){sql.setString(contador,filtro.getNome()+"%");
         contador++;}
         if(filtro.getCpf()!=null){sql.setString(contador,filtro.getCpf());
         contador++;}

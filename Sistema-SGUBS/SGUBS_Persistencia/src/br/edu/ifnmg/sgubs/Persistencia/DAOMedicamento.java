@@ -65,7 +65,7 @@ public class DAOMedicamento extends DAOGenerico<Medicamento> implements Medicame
         try {
             int contador = 1;
             if(filtro.getId()>0){ sql.setInt(contador, filtro.getId());contador++;}
-            if(filtro.getNome() != null){sql.setString(contador, filtro.getNome());contador++;}
+            if(filtro.getNome() != null){sql.setString(contador, filtro.getNome()+"%");contador++;}
        
         } catch (SQLException ex) {
             Logger.getLogger(DAOMedicamento.class.getName()).log(Level.SEVERE, null, ex);
