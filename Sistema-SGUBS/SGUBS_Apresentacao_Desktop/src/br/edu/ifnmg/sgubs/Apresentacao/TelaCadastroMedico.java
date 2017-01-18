@@ -5,17 +5,14 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao;
 
-import br.edu.ifnmg.sgubs.Aplicacao.Medico;
-import br.edu.ifnmg.sgubs.Apresentacao.Teste;
-
 /**
  *
  * @author dayvison
  */
-public class TelaCadastroMedico extends javax.swing.JFrame {
+public class TelaCadastroMedico extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form TelaCadastroMedico
+     * Creates new form TelaCadastroMedico2
      */
     public TelaCadastroMedico() {
         initComponents();
@@ -30,99 +27,36 @@ public class TelaCadastroMedico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField7 = new javax.swing.JTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        TextoCod = new javax.swing.JLabel();
-        TextoNome = new javax.swing.JLabel();
-        TextoCrm = new javax.swing.JLabel();
-        TextoRua = new javax.swing.JLabel();
-        TextoBairro = new javax.swing.JLabel();
-        TextoCel = new javax.swing.JLabel();
-        TextoEspecialista = new javax.swing.JLabel();
-        TextoObservacao = new javax.swing.JLabel();
-        MedicoCelula = new javax.swing.JTextField();
-        MedicoEspecialidade = new javax.swing.JComboBox<>();
-        MedicoBairro = new javax.swing.JTextField();
-        MedicoCod = new javax.swing.JTextField();
-        MedicoNome = new javax.swing.JTextField();
-        MedicoCrm = new javax.swing.JTextField();
-        MedicoRua = new javax.swing.JTextField();
-        TextoCidade = new javax.swing.JLabel();
-        MedicoCidade = new javax.swing.JComboBox<>();
-        TextoTelefone = new javax.swing.JLabel();
-        MedicoObservacoes = new javax.swing.JTextField();
-        MedicoTelefone = new javax.swing.JTextField();
         bntSalvar = new javax.swing.JButton();
         bntEditar = new javax.swing.JButton();
         bntExcluir = new javax.swing.JButton();
-        bntPesquisar = new javax.swing.JButton();
-        MenuPrincipal = new javax.swing.JMenuBar();
-        Cadastros = new javax.swing.JMenu();
-        CPaciente = new javax.swing.JMenuItem();
-        CMedico = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        Consultas = new javax.swing.JMenu();
-        Farmacia = new javax.swing.JMenu();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        Sair = new javax.swing.JMenu();
+        jButton1 = new javax.swing.JButton();
+        TextoCod = new javax.swing.JLabel();
+        MedicoCod = new javax.swing.JTextField();
+        TextoNome = new javax.swing.JLabel();
+        MedicoNome = new javax.swing.JTextField();
+        TextoCrm = new javax.swing.JLabel();
+        MedicoCrm = new javax.swing.JTextField();
+        TextoRua = new javax.swing.JLabel();
+        MedicoRua = new javax.swing.JTextField();
+        TextoBairro = new javax.swing.JLabel();
+        MedicoBairro = new javax.swing.JTextField();
+        MedicoCidade = new javax.swing.JComboBox<>();
+        TextoCidade = new javax.swing.JLabel();
+        TextoCel = new javax.swing.JLabel();
+        MedicoCelula = new javax.swing.JTextField();
+        TextoTelefone = new javax.swing.JLabel();
+        MedicoTelefone = new javax.swing.JTextField();
+        TextoEspecialista = new javax.swing.JLabel();
+        MedicoEspecialidade = new javax.swing.JComboBox<>();
+        TextoObservacao = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextField7.setText("jTextField7");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        TextoCod.setText("CodMedico:");
-
-        TextoNome.setText("Nome:");
-
-        TextoCrm.setText("Crm:");
-
-        TextoRua.setText("Rua:");
-
-        TextoBairro.setText("Bairro:");
-
-        TextoCel.setText("Cel:");
-
-        TextoEspecialista.setText("Especialidade:");
-
-        TextoObservacao.setText("Obs:");
-
-        MedicoEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        MedicoCod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedicoCodActionPerformed(evt);
-            }
-        });
-
-        MedicoNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedicoNomeActionPerformed(evt);
-            }
-        });
-
-        MedicoCrm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedicoCrmActionPerformed(evt);
-            }
-        });
-
-        TextoCidade.setText("Cidade:");
-
-        MedicoCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        TextoTelefone.setText("Telefone:");
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setAutoscrolls(true);
 
         bntSalvar.setText("Salvar");
 
@@ -135,135 +69,128 @@ public class TelaCadastroMedico extends javax.swing.JFrame {
 
         bntExcluir.setText("Excluir");
 
-        bntPesquisar.setText("Pesquisar");
+        jButton1.setText("Novo");
 
-        MenuPrincipal.setBackground(java.awt.SystemColor.controlHighlight);
+        TextoCod.setText("CodMedico:");
 
-        Cadastros.setBackground(java.awt.Color.black);
-        Cadastros.setForeground(java.awt.Color.black);
-        Cadastros.setText("Cadastros");
-
-        CPaciente.setText("Paciente");
-        CPaciente.addActionListener(new java.awt.event.ActionListener() {
+        MedicoCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPacienteActionPerformed(evt);
+                MedicoCodActionPerformed(evt);
             }
         });
-        Cadastros.add(CPaciente);
 
-        CMedico.setText("Medico");
-        CMedico.addActionListener(new java.awt.event.ActionListener() {
+        TextoNome.setText("Nome:");
+
+        MedicoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CMedicoActionPerformed(evt);
+                MedicoNomeActionPerformed(evt);
             }
         });
-        Cadastros.add(CMedico);
-        Cadastros.add(jSeparator1);
 
-        MenuPrincipal.add(Cadastros);
+        TextoCrm.setText("Crm:");
 
-        Consultas.setForeground(java.awt.Color.black);
-        Consultas.setText("Consultas");
-        MenuPrincipal.add(Consultas);
-
-        Farmacia.setForeground(java.awt.Color.black);
-        Farmacia.setText("Farmacia");
-        Farmacia.add(jSeparator2);
-
-        MenuPrincipal.add(Farmacia);
-
-        Sair.setForeground(java.awt.Color.black);
-        Sair.setText("Fechar");
-        Sair.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-                SairMenuCanceled(evt);
-            }
-        });
-        Sair.addActionListener(new java.awt.event.ActionListener() {
+        MedicoCrm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SairActionPerformed(evt);
+                MedicoCrmActionPerformed(evt);
             }
         });
-        MenuPrincipal.add(Sair);
 
-        setJMenuBar(MenuPrincipal);
+        TextoRua.setText("Rua:");
+
+        TextoBairro.setText("Bairro:");
+
+        MedicoCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        TextoCidade.setText("Cidade:");
+
+        TextoCel.setText("Cel:");
+
+        TextoTelefone.setText("Telefone:");
+
+        TextoEspecialista.setText("Especialidade:");
+
+        MedicoEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        TextoObservacao.setText("Obs:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(bntSalvar)
+                        .addGap(30, 30, 30)
+                        .addComponent(bntEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bntExcluir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextoObservacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(MedicoObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextoEspecialista)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(MedicoEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextoBairro)
-                                    .addComponent(TextoCel))
+                                    .addComponent(TextoCel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(91, 91, 91)
+                                        .addComponent(MedicoCelula, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TextoEspecialista)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(MedicoEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(238, 238, 238)
-                                        .addComponent(TextoCidade)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(MedicoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(224, 224, 224)
                                         .addComponent(TextoTelefone)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(MedicoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(TextoNome)
-                            .addComponent(TextoCod)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(TextoCrm)
-                                    .addGap(58, 58, 58)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(MedicoCod, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(MedicoCrm, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(MedicoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(TextoRua)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(MedicoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(MedicoRua, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(MedicoCelula, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bntSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bntEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bntExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bntPesquisar)
-                        .addGap(12, 12, 12))))
+                                        .addComponent(MedicoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TextoCidade)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(MedicoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextoNome)
+                                    .addComponent(TextoCod)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(TextoCrm)
+                                            .addGap(58, 58, 58)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(MedicoCod, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(MedicoCrm, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(MedicoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(TextoRua)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(MedicoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(MedicoRua, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TextoObservacao)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(341, 341, 341))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bntSalvar)
                     .addComponent(bntEditar)
                     .addComponent(bntExcluir)
-                    .addComponent(bntPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButton1))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoCod)
                     .addComponent(MedicoCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -286,110 +213,44 @@ public class TelaCadastroMedico extends javax.swing.JFrame {
                         .addComponent(MedicoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(TextoCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(MedicoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MedicoCelula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoCel)
+                    .addComponent(TextoTelefone)
+                    .addComponent(MedicoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MedicoCelula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextoCel)
-                            .addComponent(TextoTelefone)
-                            .addComponent(MedicoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MedicoEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MedicoEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoEspecialista))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextoObservacao)
-                    .addComponent(MedicoObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPacienteActionPerformed
-        TelaCadastroPaciente entrar = new TelaCadastroPaciente();
-        entrar.setVisible(true);
-        dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_CPacienteActionPerformed
-
-    private void CMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMedicoActionPerformed
-        Teste teste=new Teste();
-
-        Teste.criar();
-       // Teste.Apagar();
-        Teste.abrir();
-    }//GEN-LAST:event_CMedicoActionPerformed
-
-    private void SairMenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_SairMenuCanceled
-      this.dispose();
-    }//GEN-LAST:event_SairMenuCanceled
-
-    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_SairActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void bntEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_bntEditarActionPerformed
 
     private void MedicoCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicoCodActionPerformed
-        
+
     }//GEN-LAST:event_MedicoCodActionPerformed
 
     private void MedicoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicoNomeActionPerformed
-        
+
     }//GEN-LAST:event_MedicoNomeActionPerformed
 
     private void MedicoCrmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicoCrmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MedicoCrmActionPerformed
 
-    private void bntEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bntEditarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroMedico().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem CMedico;
-    private javax.swing.JMenuItem CPaciente;
-    private javax.swing.JMenu Cadastros;
-    private javax.swing.JMenu Consultas;
-    private javax.swing.JMenu Farmacia;
     private javax.swing.JTextField MedicoBairro;
     private javax.swing.JTextField MedicoCelula;
     private javax.swing.JComboBox<String> MedicoCidade;
@@ -397,11 +258,8 @@ public class TelaCadastroMedico extends javax.swing.JFrame {
     private javax.swing.JTextField MedicoCrm;
     private javax.swing.JComboBox<String> MedicoEspecialidade;
     private javax.swing.JTextField MedicoNome;
-    private javax.swing.JTextField MedicoObservacoes;
     private javax.swing.JTextField MedicoRua;
     private javax.swing.JTextField MedicoTelefone;
-    private javax.swing.JMenuBar MenuPrincipal;
-    private javax.swing.JMenu Sair;
     private javax.swing.JLabel TextoBairro;
     private javax.swing.JLabel TextoCel;
     private javax.swing.JLabel TextoCidade;
@@ -414,14 +272,9 @@ public class TelaCadastroMedico extends javax.swing.JFrame {
     private javax.swing.JLabel TextoTelefone;
     private javax.swing.JButton bntEditar;
     private javax.swing.JButton bntExcluir;
-    private javax.swing.JButton bntPesquisar;
     private javax.swing.JButton bntSalvar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

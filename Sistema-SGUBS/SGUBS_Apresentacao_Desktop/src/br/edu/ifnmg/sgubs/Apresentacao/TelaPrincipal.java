@@ -41,9 +41,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setExtendedState(6);
+        setTitle("SGUBS");
+        setAlwaysOnTop(true);
+        setExtendedState(4);
         setFocusableWindowState(false);
         setMinimumSize(new java.awt.Dimension(800, 600));
+        getContentPane().setLayout(null);
 
         MenuCadastros.setText("Cadastros");
 
@@ -105,17 +108,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuPrincipal.add(MenuSairLogoff);
 
         setJMenuBar(MenuPrincipal);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
-        );
 
         pack();
         setLocationRelativeTo(null);
