@@ -114,7 +114,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPacientesActionPerformed
-        // TODO add your handling code here:
+       SGUBS_Apresentacao teste = new SGUBS_Apresentacao();
+       SGUBS_Apresentacao.apagar();
+       
     }//GEN-LAST:event_MenuPacientesActionPerformed
 
     private void MenuMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMedicosActionPerformed

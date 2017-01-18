@@ -92,23 +92,19 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     public boolean Apagar(T obj) {
         try {
             if(obj.getId() > 0){
-                
-
-               
+                              
                 PreparedStatement sql = conn.prepareStatement(getConsultaApagar());
                 
-
                 sql.setInt(1, obj.getId());
                                 
-                
                 sql.executeUpdate();
             
             }
             
             return true;
         
-        } catch(SQLException e){
-            System.out.print(e);
+        } catch(SQLException ex){
+            System.out.println(ex);
             
         }
         return false;
