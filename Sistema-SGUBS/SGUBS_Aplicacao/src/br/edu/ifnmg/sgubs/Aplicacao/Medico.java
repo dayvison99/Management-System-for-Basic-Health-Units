@@ -40,6 +40,8 @@ public class Medico implements Entidade{
         this.observacoes = observacoes;
     }
 
+
+
      
     @Override
     public int getId() {
