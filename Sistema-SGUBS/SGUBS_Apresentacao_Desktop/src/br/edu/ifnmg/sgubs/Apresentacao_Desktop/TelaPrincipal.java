@@ -5,21 +5,17 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
-import br.edu.ifnmg.sgubs.Apresentacao.SGUBS_Apresentacao;
-
 /**
  *
  * @author dayvison
  */
 public class TelaPrincipal extends javax.swing.JFrame {
- 
+
     /**
-     * Creates new form TelaPrincipal
+     * Creates new form TelaPrincipal1
      */
     public TelaPrincipal() {
         initComponents();
-        
-        
     }
 
     /**
@@ -43,12 +39,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SGUBS");
-        setAlwaysOnTop(true);
-        setExtendedState(4);
-        setFocusableWindowState(false);
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        getContentPane().setLayout(null);
 
         MenuCadastros.setText("Cadastros");
 
@@ -111,41 +101,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(MenuPrincipal);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 883, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 582, Short.MAX_VALUE)
+        );
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPacientesActionPerformed
-       SGUBS_Apresentacao teste = new SGUBS_Apresentacao();
-       SGUBS_Apresentacao.apagar();
        
     }//GEN-LAST:event_MenuPacientesActionPerformed
 
     private void MenuMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMedicosActionPerformed
         TelaMedicoListagem tela=new TelaMedicoListagem();
-                this.add(tela);
-                tela.setVisible(true);
+        this.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_MenuMedicosActionPerformed
 
     private void MenuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFuncionariosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuFuncionariosActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new TelaLogin().setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
-// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void MenuSairLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairLogoffActionPerformed
         System.exit(0);
-        System.exit(0);
-// TODO add your handling code here:
+               // TODO add your handling code here:
     }//GEN-LAST:event_MenuSairLogoffActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new TelaLogin().setVisible(true);
-      
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,12 +171,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
-                
             }
         });
     }

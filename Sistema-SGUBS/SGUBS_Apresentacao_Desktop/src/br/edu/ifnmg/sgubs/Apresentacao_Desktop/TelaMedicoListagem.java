@@ -18,7 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class TelaMedicoListagem extends javax.swing.JInternalFrame {
     
     MedicoRepositorio dao = GerenciadorReferencias.getMedico();
-    /**
+    
+    TelaMedicoEditar editar;/**
      * Creates new form TelaMedicoListagem
      */
     public TelaMedicoListagem() {
@@ -68,7 +69,7 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblBusca1 = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtBusca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusca = new javax.swing.JTable();
         bntBuscar = new javax.swing.JButton();
@@ -154,7 +155,11 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField1.setText("jTextField1");
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaActionPerformed(evt);
+            }
+        });
 
         tblBusca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,6 +185,11 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
             }
         });
         tblBusca.getTableHeader().setReorderingAllowed(false);
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
         if (tblBusca.getColumnModel().getColumnCount() > 0) {
             tblBusca.getColumnModel().getColumn(0).setResizable(false);
@@ -198,18 +208,16 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(bntBuscar)
-                        .addGap(76, 76, 76))))
+                        .addComponent(txtBusca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bntBuscar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,32 +226,80 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(bntBuscar)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-        
+        buscar( txtBusca.getText());
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        TelaMedicoEditar editarMedico=new TelaMedicoEditar();
-        this.add(editarMedico);
-        //this.setVisible(false);
-        editarMedico.setVisible(true);
-        
+        editarMedico(0);     
         
     }//GEN-LAST:event_btnNovoActionPerformed
 
+     public void editarCliente(int id){
+        Medico entidade;
+        if(id == 0)
+            entidade = new Medico(0,0, " ", null, null, null , null, 0, 0, null);
+        else
+            entidade = dao.Abrir(id);
+        
+        editar = new TelaMedicoEditar();
+        
+        editar.setEntidade(entidade);
+        
+        editar.setListagem(this);
+        
+        this.getParent().add(editar);
+        editar.setVisible(true);
+        this.setVisible(false);
+    }
+    
     private void bntBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarActionPerformed
-//        buscar( txtBusca.getText() );// TODO add your handling code here:
+       buscar( txtBusca.getText() );
     }//GEN-LAST:event_bntBuscarActionPerformed
 
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaActionPerformed
+
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+       int selecionada =tblBusca.getSelectedRow();
+       
+       int id =Integer.parseInt( tblBusca.getModel().getValueAt(selecionada,0).toString() );
+       
+       editarMedico(id);
+    }//GEN-LAST:event_tblBuscaMouseClicked
+
+    public void editarMedico(int id){
+        Medico entidade;
+        
+        if(id == 0)
+            entidade =new Medico(0,0, null, null, null, null , null, 0, 0, null);
+        else
+            entidade = dao.Abrir(id);
+        
+        editar = new TelaMedicoEditar();
+        
+        editar.setEntidade(entidade);
+        
+        editar.setListagem(this);
+        
+        this.getParent().add(editar);
+        
+        editar.setVisible(true);
+        
+        this.setVisible(false);
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntBuscar;
@@ -253,9 +309,9 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblBusca;
     private javax.swing.JTable tblBusca1;
+    private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtBusca1;
     // End of variables declaration//GEN-END:variables
 
