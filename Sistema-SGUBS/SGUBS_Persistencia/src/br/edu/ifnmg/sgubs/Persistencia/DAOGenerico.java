@@ -144,21 +144,21 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
 
         try {
 
-            // Crio a consulta sql
+            
             PreparedStatement sql = conn.prepareStatement(getConsultaBuscar() + where);
 
             if(filtro != null)
                 preencheParametros(sql, filtro);
 
-            // Executo a consulta sql e pego os resultados
+            
             ResultSet resultado = sql.executeQuery();
 
-            // Verifica se algum registro foi retornado na consulta
+           
             while (resultado.next()) {
 
                 T tmp = preencheObjeto(resultado);
 
-                // Adiciona o objeto à lista
+               
                 ret.add(tmp);
             }
 

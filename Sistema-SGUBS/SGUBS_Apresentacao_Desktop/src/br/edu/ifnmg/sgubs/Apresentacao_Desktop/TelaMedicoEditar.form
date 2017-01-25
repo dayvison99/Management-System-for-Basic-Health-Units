@@ -42,22 +42,13 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="TextoEspecialista" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      <Component id="selecaoEspecialidade" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="TextoBairro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TextoCel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtBairro" max="32767" attributes="0"/>
-                                          <Component id="txtCelular" pref="225" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="TextoBairro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextoCel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtBairro" max="32767" attributes="0"/>
+                                  <Component id="txtCelular" pref="225" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -67,7 +58,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtTelefone" max="32767" attributes="0"/>
-                                  <Component id="selecaoCidade" max="32767" attributes="0"/>
+                                  <Component id="txtCidade" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -77,8 +68,8 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="TextoObservacao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="txtObs" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -99,6 +90,11 @@
                                   </Group>
                                   <Component id="txtRua" alignment="1" min="-2" pref="530" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="TextoEspecialista" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Component id="txtEspecialidade" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -143,11 +139,15 @@
                   <Component id="txtRua" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="TextoBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TextoCidade" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="selecaoCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="TextoCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="TextoBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -159,14 +159,14 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TextoEspecialista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="selecaoEspecialidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEspecialidade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="TextoObservacao" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtObs" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -264,44 +264,28 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtRua">
     </Component>
-    <Component class="javax.swing.JComboBox" name="selecaoCidade">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtCelular">
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelefone">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtObs">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtCidade">
     </Component>
-    <Component class="javax.swing.JComboBox" name="selecaoEspecialidade">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtEspecialidade">
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
-    </Component>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtObs">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

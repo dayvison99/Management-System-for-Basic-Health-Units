@@ -42,9 +42,9 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
             modelo.addRow(linha);
         }
         tblBusca.setModel(modelo);
-    }     //int id, int idEspecialidade, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, String observacoes
+    }    
      public void buscar(String nome){
-        Medico filtro = new Medico(0,0, null, null, null, null , null, 0, 0, null);
+        Medico filtro = new Medico(0, 0, nome, null, null, null , null, 0, 0, null);
         
         List<Medico> busca = dao.Buscar(filtro);
         
