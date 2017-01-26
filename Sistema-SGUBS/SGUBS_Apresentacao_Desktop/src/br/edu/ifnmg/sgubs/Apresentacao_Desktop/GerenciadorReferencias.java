@@ -5,7 +5,9 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
+import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
+import br.edu.ifnmg.sgubs.Persistencia.DAOEspecialidade;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
 
 /**
@@ -20,6 +22,15 @@ public class GerenciadorReferencias {
        if(MedicoDao==null)
            MedicoDao =new DAOMedico();
         return MedicoDao;
+    }
+    
+    private static  EspecialidadeRepositorio EspecialidadeDao;
+    
+    
+    public static EspecialidadeRepositorio getEspecialidade(){
+        if(EspecialidadeDao == null )
+            EspecialidadeDao = new DAOEspecialidade();
+        return EspecialidadeDao;
     }
     
     

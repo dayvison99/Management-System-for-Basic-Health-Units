@@ -64,10 +64,12 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtEspecialidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
+        blbEspecialidade = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Editar Medico");
         setAutoscrolls(true);
 
         bntSalvar.setText("Salvar");
@@ -121,6 +123,8 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtObs.setColumns(20);
         txtObs.setRows(5);
         jScrollPane1.setViewportView(txtObs);
+
+        blbEspecialidade.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,7 +185,9 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TextoEspecialista)
                                 .addGap(4, 4, 4)
-                                .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(blbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -229,7 +235,8 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoEspecialista)
-                    .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(blbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextoObservacao)
@@ -344,6 +351,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel TextoObservacao;
     private javax.swing.JLabel TextoRua;
     private javax.swing.JLabel TextoTelefone;
+    private javax.swing.JLabel blbEspecialidade;
     private javax.swing.JButton bntExcluir;
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;

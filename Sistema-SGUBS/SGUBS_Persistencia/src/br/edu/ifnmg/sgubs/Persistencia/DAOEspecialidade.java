@@ -20,10 +20,11 @@ import java.util.logging.Logger;
 public class DAOEspecialidade extends DAOGenerico<Especialidade> implements EspecialidadeRepositorio{
     
     public DAOEspecialidade(){
-        setConsultaAbrir("select idEspecialidade,especialidade from especialidade where id = ?");
-        setConsultaApagar("delete from especialidade where id = ?");
-        setConsultaInserir("insert into especialida(especialidade) values(?)");
-        setConsultaAlterar("update especialidade set especialidade? where id = ?");
+        setConsultaAbrir("select idEspecialidade,especialidade from especialidade where idEspecialidade = ?");
+        setConsultaApagar("delete from especialidade where idEspecialidade = ?");
+        setConsultaInserir("insert into especialidade(especialidade) values(?)");
+        setConsultaAlterar("update especialidade set especialidade? where idEspecialidade = ?");
+        setConsultaBuscar("select idEspecialidade,especialidade from especialidade " );
         
         
     }
@@ -54,7 +55,7 @@ public class DAOEspecialidade extends DAOGenerico<Especialidade> implements Espe
     @Override
     protected void preencheFiltros(Especialidade filtro) {
         if(filtro.getId()>0) adicionarFiltro("id", "=");
-        if(filtro.getEspecialidade() != null) adicionarFiltro("nome"," like ");
+        if(filtro.getEspecialidade() != null) adicionarFiltro("especialidade"," like ");
     }
 
     @Override

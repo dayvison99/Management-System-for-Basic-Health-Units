@@ -31,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuCadastros = new javax.swing.JMenu();
         MenuPacientes = new javax.swing.JMenuItem();
         MenuMedicos = new javax.swing.JMenuItem();
+        MenuEspecialidade = new javax.swing.JMenuItem();
         MenuFuncionarios = new javax.swing.JMenuItem();
         MenuConsultas = new javax.swing.JMenu();
         MenuFarmacia = new javax.swing.JMenu();
@@ -57,6 +58,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuCadastros.add(MenuMedicos);
+
+        MenuEspecialidade.setText("Especialidade");
+        MenuEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEspecialidadeActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuEspecialidade);
 
         MenuFuncionarios.setText("Funcionarios");
         MenuFuncionarios.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +154,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                // TODO add your handling code here:
     }//GEN-LAST:event_MenuSairLogoffActionPerformed
 
+    private void MenuEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEspecialidadeActionPerformed
+       TelaEspecialidadeListagem tela = new TelaEspecialidadeListagem();
+       this.add(tela);
+       tela.setVisible(true);
+    }//GEN-LAST:event_MenuEspecialidadeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,6 +199,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuCadastros;
     private javax.swing.JMenu MenuConsultas;
+    private javax.swing.JMenuItem MenuEspecialidade;
     private javax.swing.JMenu MenuFarmacia;
     private javax.swing.JMenuItem MenuFuncionarios;
     private javax.swing.JMenuItem MenuMedicos;
