@@ -253,7 +253,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntListarActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-       entidade =new Medico(1,0, " ", null, null, null , null, 0, 0, null);
+       entidade =new Medico(0, " ", null, null, null , null, 0, 0,0, null);
        preencheCampos();
     }//GEN-LAST:event_bntNovoActionPerformed
 
@@ -262,7 +262,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
            
            if(dao.Apagar(entidade)){
                JOptionPane.showMessageDialog(rootPane, "Dados salvos com sucesso !");
-               entidade = new Medico(1,0, " ", null, null, null , null, 0, 0, null);
+               entidade = new Medico(0, " ", null, null, null , null, 0, 0,0, null);
                preencheCampos();
            }
            else
@@ -328,6 +328,9 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         entidade.setRua( txtRua.getText());
         entidade.setBairro( txtBairro.getText());
         entidade.setCidade( txtCidade.getText());
+        entidade.setCelular(0);
+        entidade.setTelefone(0);
+        entidade.setIdEspecialidade(0);
         entidade.setObservacoes( txtObs.getText());
     }
     

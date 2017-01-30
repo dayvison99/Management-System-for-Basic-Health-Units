@@ -16,6 +16,8 @@ import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
  */
 public class GerenciadorReferencias {
     
+    //medico
+    
     private static MedicoRepositorio MedicoDao;
 
     public static MedicoRepositorio getMedico() {
@@ -23,6 +25,8 @@ public class GerenciadorReferencias {
            MedicoDao =new DAOMedico();
         return MedicoDao;
     }
+    
+    //especialidade
     
     private static  EspecialidadeRepositorio EspecialidadeDao;
     

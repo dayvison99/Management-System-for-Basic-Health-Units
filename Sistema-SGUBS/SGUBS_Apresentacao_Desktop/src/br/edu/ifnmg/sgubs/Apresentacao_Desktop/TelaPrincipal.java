@@ -36,8 +36,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuConsultas = new javax.swing.JMenu();
         MenuFarmacia = new javax.swing.JMenu();
         MenuSairLogoff = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MenuLogoff = new javax.swing.JMenuItem();
+        MenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,21 +90,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem2.setText("Logoff");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        MenuLogoff.setText("Logoff");
+        MenuLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                MenuLogoffActionPerformed(evt);
             }
         });
-        MenuSairLogoff.add(jMenuItem2);
+        MenuSairLogoff.add(MenuLogoff);
 
-        jMenuItem1.setText("Sair");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        MenuSair.setText("Sair");
+        MenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                MenuSairActionPerformed(evt);
             }
         });
-        MenuSairLogoff.add(jMenuItem1);
+        MenuSairLogoff.add(MenuSair);
 
         MenuPrincipal.add(MenuSairLogoff);
 
@@ -139,18 +139,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuFuncionariosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void MenuLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoffActionPerformed
         new TelaLogin().setVisible(true);
 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_MenuLogoffActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
         System.exit(0);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        
+    }//GEN-LAST:event_MenuSairActionPerformed
 
     private void MenuSairLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairLogoffActionPerformed
-        System.exit(0);
+        //System.exit(0);
                // TODO add your handling code here:
     }//GEN-LAST:event_MenuSairLogoffActionPerformed
 
@@ -202,11 +202,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEspecialidade;
     private javax.swing.JMenu MenuFarmacia;
     private javax.swing.JMenuItem MenuFuncionarios;
+    private javax.swing.JMenuItem MenuLogoff;
     private javax.swing.JMenuItem MenuMedicos;
     private javax.swing.JMenuItem MenuPacientes;
     private javax.swing.JMenuBar MenuPrincipal;
+    private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenu MenuSairLogoff;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

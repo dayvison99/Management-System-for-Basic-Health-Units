@@ -27,7 +27,7 @@ public class Medico implements Entidade{
     public Medico() {
     }
 
-    public Medico(int id, int idEspecialidade, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, String observacoes) {
+    public Medico(int id, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, int idEspecialidade, String observacoes) {
         this.id = id;
         this.idEspecialidade = idEspecialidade;
         this.nome = nome;

@@ -316,11 +316,11 @@ public class TelaCadastroMedico1 extends javax.swing.JFrame {
     }//GEN-LAST:event_CPacienteActionPerformed
 
     private void CMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMedicoActionPerformed
-        Teste teste=new Teste();
+       /* Teste teste=new Teste();
 
         Teste.criar();
        // Teste.Apagar();
-        Teste.abrir();
+        Teste.abrir();*/
     }//GEN-LAST:event_CMedicoActionPerformed
 
     private void SairMenuCanceled(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_SairMenuCanceled
