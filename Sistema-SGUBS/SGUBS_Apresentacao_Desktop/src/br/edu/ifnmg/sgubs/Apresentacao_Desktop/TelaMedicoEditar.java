@@ -6,6 +6,7 @@
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
+import br.edu.ifnmg.sgubs.Aplicacao.Especialidade;
 import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import javax.swing.JOptionPane;
@@ -61,10 +62,9 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtCelular = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
-        txtEspecialidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
-        blbEspecialidade = new javax.swing.JLabel();
+        cbxMedico = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setMaximizable(true);
@@ -124,7 +124,11 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtObs.setRows(5);
         jScrollPane1.setViewportView(txtObs);
 
-        blbEspecialidade.setText("jLabel1");
+        cbxMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,10 +188,8 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                                     .addComponent(txtRua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TextoEspecialista)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(blbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(2, 2, 2)
+                                .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -232,11 +234,10 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                     .addComponent(TextoTelefone)
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TextoEspecialista)
-                    .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(blbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextoObservacao)
@@ -298,6 +299,10 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_bntSalvarActionPerformed
 
+    private void cbxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxMedicoActionPerformed
+
     public Medico getEntidade() {
         return entidade;
     }
@@ -316,7 +321,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtCidade.setText( entidade.getCidade());
         txtCelular.setText( Integer.toString(entidade.getCelular()));
         txtTelefone.setText( Integer.toString(entidade.getTelefone()));
-        txtEspecialidade.setText( Integer.toString(entidade.getIdEspecialidade()));
+        cbxMedico.setSelectedItem(Integer.toString(entidade.getIdEspecialidade()));
         txtObs.setText( entidade.getObservacoes());
                 
         
@@ -328,9 +333,9 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         entidade.setRua( txtRua.getText());
         entidade.setBairro( txtBairro.getText());
         entidade.setCidade( txtCidade.getText());
-        entidade.setCelular(0);
-        entidade.setTelefone(0);
-        entidade.setIdEspecialidade(0);
+        entidade.setCelular(Integer.getInteger(txtCelular.getText()));
+        entidade.setTelefone( Integer.getInteger(txtTelefone.getText()));
+        entidade.setIdEspecialidade((Especialidade)cbxMedico.getSelectedItem());
         entidade.setObservacoes( txtObs.getText());
     }
     
@@ -354,18 +359,17 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel TextoObservacao;
     private javax.swing.JLabel TextoRua;
     private javax.swing.JLabel TextoTelefone;
-    private javax.swing.JLabel blbEspecialidade;
     private javax.swing.JButton bntExcluir;
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntSalvar;
+    private javax.swing.JComboBox<String> cbxMedico;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCrm;
-    private javax.swing.JTextField txtEspecialidade;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextArea txtObs;
     private javax.swing.JTextField txtRua;
