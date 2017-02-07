@@ -6,33 +6,29 @@
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
-import br.edu.ifnmg.sgubs.Aplicacao.Especialidade;
-import br.edu.ifnmg.sgubs.Aplicacao.Medico;
-import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
-import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
+import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
+import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author dayvison
  */
-public class TelaMedicoEditar extends javax.swing.JInternalFrame {
+public class TelaPacienteEditar extends javax.swing.JInternalFrame {
+    
+    Paciente entidade;
+    
+    PacienteRepositorio dao;
+    
+    TelaPacienteListagem listagem;
 
-    Medico entidade;
-    
-    MedicoRepositorio dao;
-    
-    TelaMedicoListagem listagem;
-   
     /**
-     * Creates new form TelaCadastroMedico2
+     * Creates new form TelaPacienteEditar
      */
-    public TelaMedicoEditar() {
+    public TelaPacienteEditar() {
         initComponents();
         
-        dao = GerenciadorReferencias.getMedico();
+        dao = GerenciadorReferencias.getPaciente();
     }
 
     /**
@@ -48,33 +44,31 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         bntListar = new javax.swing.JButton();
         bntExcluir = new javax.swing.JButton();
         bntNovo = new javax.swing.JButton();
+        TextoBairro = new javax.swing.JLabel();
+        txtCelular = new javax.swing.JTextField();
+        TextoCidade = new javax.swing.JLabel();
+        txtTelefone = new javax.swing.JTextField();
+        TextoCel = new javax.swing.JLabel();
+        txtCidade = new javax.swing.JTextField();
+        TextoTelefone = new javax.swing.JLabel();
+        TextoTipoSanguineo = new javax.swing.JLabel();
+        TextoLocalTrabalho = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtCpf = new javax.swing.JTextField();
         TextoCod = new javax.swing.JLabel();
         TextoNome = new javax.swing.JLabel();
         TextoCrm = new javax.swing.JLabel();
-        TextoRua = new javax.swing.JLabel();
-        TextoBairro = new javax.swing.JLabel();
-        TextoCidade = new javax.swing.JLabel();
-        TextoCel = new javax.swing.JLabel();
-        TextoTelefone = new javax.swing.JLabel();
-        TextoEspecialista = new javax.swing.JLabel();
-        TextoObservacao = new javax.swing.JLabel();
-        lblCodigo = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        txtCrm = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
+        TextoRua = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
-        txtCelular = new javax.swing.JTextField();
-        txtTelefone = new javax.swing.JTextField();
-        txtCidade = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtObs = new javax.swing.JTextArea();
-        cbxMedico = new javax.swing.JComboBox<>();
+        txtTipoSanguineo = new javax.swing.JTextField();
+        txtLocalTrabalho = new javax.swing.JTextField();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Editar Medico");
-        setAutoscrolls(true);
+        setTitle("Editar Paciênte");
 
         bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,14 +98,6 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
             }
         });
 
-        TextoCod.setText("CodMedico:");
-
-        TextoNome.setText("Nome:");
-
-        TextoCrm.setText("Crm:");
-
-        TextoRua.setText("Rua:");
-
         TextoBairro.setText("Bairro:");
 
         TextoCidade.setText("Cidade:");
@@ -120,19 +106,17 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
 
         TextoTelefone.setText("Telefone:");
 
-        TextoEspecialista.setText("Especialidade:");
+        TextoTipoSanguineo.setText("Tipo Sanguineo :");
 
-        TextoObservacao.setText("Obs:");
+        TextoLocalTrabalho.setText("Local de Trabalho :");
 
-        txtObs.setColumns(20);
-        txtObs.setRows(5);
-        jScrollPane1.setViewportView(txtObs);
+        TextoCod.setText("CodPaciente:");
 
-        cbxMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxMedicoActionPerformed(evt);
-            }
-        });
+        TextoNome.setText("Nome:");
+
+        TextoCrm.setText("Cpf :");
+
+        TextoRua.setText("Rua:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +125,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(117, 117, 117)
                         .addComponent(bntNovo)
                         .addGap(18, 18, 18)
                         .addComponent(bntSalvar)
@@ -150,16 +134,16 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(bntExcluir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextoBairro)
                                     .addComponent(TextoCel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtBairro)
-                                    .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                                    .addComponent(txtCelular)
+                                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextoCidade)
@@ -169,32 +153,38 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                                     .addComponent(txtTelefone)
                                     .addComponent(txtCidade)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextoCod)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextoObservacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextoNome)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(TextoRua)
-                                        .addComponent(TextoCrm)))
+                                    .addComponent(TextoTipoSanguineo)
+                                    .addComponent(TextoLocalTrabalho))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtCrm)
-                                            .addGap(236, 236, 236)))
-                                    .addComponent(txtRua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtTipoSanguineo)
+                                        .addGap(305, 305, 305))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtLocalTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextoEspecialista)
-                                .addGap(2, 2, 2)
-                                .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(107, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TextoNome)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(TextoRua)
+                                                .addComponent(TextoCrm)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtCpf)
+                                                .addGap(236, 236, 236))
+                                            .addComponent(txtRua)
+                                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TextoCod)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,21 +195,18 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                     .addComponent(bntListar)
                     .addComponent(bntExcluir)
                     .addComponent(bntNovo))
-                .addGap(62, 62, 62)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TextoCod)
-                        .addGap(22, 22, 22))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
+                    .addComponent(TextoCod)
+                    .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoCrm)
-                    .addComponent(txtCrm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoRua)
@@ -232,125 +219,124 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TextoBairro)
                         .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoCel)
                     .addComponent(TextoTelefone)
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextoEspecialista)
-                    .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextoObservacao)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextoTipoSanguineo)
+                    .addComponent(txtTipoSanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextoLocalTrabalho)
+                    .addComponent(txtLocalTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
+
+        try {
+            
+
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
+                
+                preencheObjeto();
+              
+                if(dao.Salvar(entidade))
+                
+                    JOptionPane.showMessageDialog(rootPane, "Dados salvos com sucesso !");
+
+                else
+                
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante o processo !");
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
+            }
+
+        } catch (ErroValidacao ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+
+        }
+    }//GEN-LAST:event_bntSalvarActionPerformed
 
     private void bntListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntListarActionPerformed
         listagem.setVisible( true);
         this.setVisible(false);
     }//GEN-LAST:event_bntListarActionPerformed
 
-    private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-       entidade =new Medico(0, " ", null, null, null , null, 0, 0,0, null);
-       preencheCampos();
-    }//GEN-LAST:event_bntNovoActionPerformed
-
     private void bntExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExcluirActionPerformed
-       if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
-           
-           if(dao.Apagar(entidade)){
-               JOptionPane.showMessageDialog(rootPane, "Dados salvos com sucesso !");
-               entidade = new Medico(0, " ", null, null, null , null, 0, 0,0, null);
-               preencheCampos();
-           }
-           else
-               JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante o processo !");
-       }
-           else{
-               JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
-           }
-         
+        if(JOptionPane.showConfirmDialog(rootPane, "Deseja Excluir Esse Paciente ?") == 0){
+
+            if(dao.Apagar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Dados Excluidos com sucesso !");
+                entidade = new Paciente(0, "", "", "", "", "", 0, 0, "", "");
+                preencheCampos();
+            }
+            else
+            JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante o processo !");
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
+        }
+
     }//GEN-LAST:event_bntExcluirActionPerformed
 
-    private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
-        
-        try {
-            
-            if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
-                
-                preencheObjeto();
-                
-                if(dao.Salvar(entidade))
-                      JOptionPane.showMessageDialog(rootPane, "Dados salvos com sucesso !");
-               
-                else
-                      JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante o processo !");
-            }
-           else{
-               JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
-             }
-         
-        } catch (ErroValidacao ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-                    
-        }
-    }//GEN-LAST:event_bntSalvarActionPerformed
+    private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
+        entidade =new Paciente(0, "", "", "", "", "", 0, 0, "", "");
+        preencheCampos();
+    }//GEN-LAST:event_bntNovoActionPerformed
 
-    private void cbxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMedicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxMedicoActionPerformed
-
-    public Medico getEntidade() {
+    public Paciente getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Medico entidade) {
+    public void setEntidade(Paciente entidade) {
         this.entidade = entidade;
         preencheCampos();
     }
-    
-    private void preencheCampos(){
+   
+      private void preencheCampos(){
         lblCodigo.setText( Integer.toString( entidade.getId()));
         txtNome.setText( entidade.getNome());
-        txtCrm.setText( entidade.getCrm());
+        txtCpf.setText( entidade.getCpf());
         txtRua.setText( entidade.getRua());
         txtBairro.setText( entidade.getBairro());
         txtCidade.setText( entidade.getCidade());
         txtCelular.setText( Integer.toString(entidade.getCelular()));
         txtTelefone.setText( Integer.toString(entidade.getTelefone()));
-        cbxMedico.setSelectedItem(Integer.toString(entidade.getIdEspecialidade()));
-        txtObs.setText( entidade.getObservacoes());
+        txtTipoSanguineo.setText( entidade.getTipoSanguineo());
+        txtLocalTrabalho.setText( entidade.getLocalTrabalho());
                 
         
     }
-    
+      
     private void preencheObjeto() throws ErroValidacao{
-        entidade.setNome( txtNome.getText());
-        entidade.setCrm( txtCrm.getText());
+        entidade.setNome(txtNome.getText());
+        entidade.setCpf( txtCpf.getText());
         entidade.setRua( txtRua.getText());
         entidade.setBairro( txtBairro.getText());
         entidade.setCidade( txtCidade.getText());
         entidade.setCelular(Integer.parseInt(txtCelular.getText()));
         entidade.setTelefone( Integer.parseInt(txtTelefone.getText()));
-       // entidade.setIdEspecialidade((Especialidade)cbxMedico.getSelectedItem());
-        entidade.setObservacoes( txtObs.getText());
+        entidade.setTipoSanguineo( txtTipoSanguineo.getText());
+        entidade.setLocalTrabalho(txtLocalTrabalho.getText());
+                
     }
     
-    public TelaMedicoListagem getListagem() {
+    public TelaPacienteListagem getListagem(){
         return listagem;
     }
-
-    public void setListagem(TelaMedicoListagem listagem) {
+    
+    public void setListagem(TelaPacienteListagem listagem){
         this.listagem = listagem;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TextoBairro;
@@ -358,25 +344,24 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel TextoCidade;
     private javax.swing.JLabel TextoCod;
     private javax.swing.JLabel TextoCrm;
-    private javax.swing.JLabel TextoEspecialista;
+    private javax.swing.JLabel TextoLocalTrabalho;
     private javax.swing.JLabel TextoNome;
-    private javax.swing.JLabel TextoObservacao;
     private javax.swing.JLabel TextoRua;
     private javax.swing.JLabel TextoTelefone;
+    private javax.swing.JLabel TextoTipoSanguineo;
     private javax.swing.JButton bntExcluir;
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntSalvar;
-    private javax.swing.JComboBox<String> cbxMedico;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCidade;
-    private javax.swing.JTextField txtCrm;
+    private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtLocalTrabalho;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextArea txtObs;
     private javax.swing.JTextField txtRua;
     private javax.swing.JTextField txtTelefone;
+    private javax.swing.JTextField txtTipoSanguineo;
     // End of variables declaration//GEN-END:variables
 }

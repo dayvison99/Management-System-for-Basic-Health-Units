@@ -49,6 +49,9 @@ public class TelaEspecialidadeEditar extends javax.swing.JInternalFrame {
         Especialidade = new javax.swing.JLabel();
         txtEspecialidade = new javax.swing.JTextField();
 
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Editar Especialidade");
 
         jLabel1.setText("CodEspecialidade");

@@ -21,16 +21,18 @@ import java.util.logging.Logger;
 public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteRepositorio{
     
     public DAOPaciente(){
-        setConsultaAbrir("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente where id=?");
-        setConsultaAlterar("update paciente set nome = ?,cpf= ?,rua = ?,bairro = ?,cidade = ?,telefone = ?,celular = ?,tipoSanguineo = ?,localTrabalho =? where id = ?");
-        setConsultaApagar("delete from paciente where id = ?");
+        setConsultaAbrir("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente where idpaciente=?");
+        setConsultaAlterar("update paciente set nome = ?,cpf= ?,rua = ?,bairro = ?,cidade = ?,telefone = ?,celular = ?,tipoSanguineo = ?,localTrabalho =? where idpaciente = ?");
+        setConsultaApagar("delete from paciente where idpaciente = ?");
         setConsultaInserir("insert into paciente(nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho) values(?,?,?,?,?,?,?,?,?)");
+         setConsultaBuscar("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente " );
     }
 
     @Override
     protected Paciente preencheObjeto(ResultSet resultado) {
-        try {
-           Paciente tmp=new Paciente(); 
+         Paciente tmp=new Paciente(); 
+        
+         try {
            tmp.setId(resultado.getInt(1));
            tmp.setNome(resultado.getString(2));
            tmp.setCpf(resultado.getString(3));
@@ -60,17 +62,15 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
             sql.setInt(7, obj.getCelular());
             sql.setString(8, obj.getTipoSanguineo());
             sql.setString(9, obj.getLocalTrabalho());
+            
+            if(obj.getId()>0) sql.setInt(10,obj.getId());
 
         } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
 
-    @Override
-    public List<Paciente> Buscar(Paciente filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     @Override
     public Paciente Abrir(String cpf) {
         try {
@@ -86,7 +86,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
 
     @Override
     protected void preencheFiltros(Paciente filtro) {
-        if(filtro.getId()>0) adicionarFiltro("id","=");
+        if(filtro.getId()>0) adicionarFiltro("idpaciente","=");
         if(filtro.getNome()!=null)adicionarFiltro("nome","like");
         if(filtro.getCpf()!=null)adicionarFiltro("cpf", "=");
                 }

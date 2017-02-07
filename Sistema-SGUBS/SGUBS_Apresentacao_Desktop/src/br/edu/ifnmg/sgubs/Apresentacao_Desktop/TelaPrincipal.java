@@ -59,7 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         MenuCadastros.add(MenuMedicos);
 
-        MenuEspecialidade.setText("Especialidade");
+        MenuEspecialidade.setText("Especialidades");
         MenuEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuEspecialidadeActionPerformed(evt);
@@ -126,7 +126,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPacientesActionPerformed
-       
+        TelaPacienteListagem tela=new TelaPacienteListagem();
+        this.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_MenuPacientesActionPerformed
 
     private void MenuMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMedicosActionPerformed

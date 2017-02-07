@@ -7,8 +7,10 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
+import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import br.edu.ifnmg.sgubs.Persistencia.DAOEspecialidade;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
+import br.edu.ifnmg.sgubs.Persistencia.DAOPaciente;
 
 /**
  *
@@ -37,7 +39,15 @@ public class GerenciadorReferencias {
         return EspecialidadeDao;
     }
     
+    // paciente
     
+    private static PacienteRepositorio PacienteDao;
+    
+    public static PacienteRepositorio getPaciente(){
+        if(PacienteDao==null)
+            PacienteDao = new DAOPaciente();
+        return PacienteDao;
+    }
     
     
     
