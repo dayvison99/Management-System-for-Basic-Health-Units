@@ -19,7 +19,8 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
     
     MedicoRepositorio dao = GerenciadorReferencias.getMedico();
     
-    TelaMedicoEditar editar;/**
+    TelaMedicoEditar editar;
+    /**
      * Creates new form TelaMedicoListagem
      */
     public TelaMedicoListagem() {
@@ -44,7 +45,7 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         tblBusca.setModel(modelo);
     }    
      public void buscar(String nome){
-        Medico filtro = new Medico(0, nome, null, null, null , null, 0, 0,0, null);
+        Medico filtro = new Medico(0, null, null, null, null , null, 0, 0,0, null);
         
         List<Medico> busca = dao.Buscar(filtro);
         

@@ -258,16 +258,16 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntListarActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-       entidade =new Medico(0, " ", null, null, null , null, 0, 0,0, null);
+       entidade =new Medico(0, " ", "", "", "" , "",0, 0,0, "");
        preencheCampos();
     }//GEN-LAST:event_bntNovoActionPerformed
 
     private void bntExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExcluirActionPerformed
-       if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
+       if(JOptionPane.showConfirmDialog(rootPane, "Deseja Excluir Esse Medico ?") == 0){
            
            if(dao.Apagar(entidade)){
-               JOptionPane.showMessageDialog(rootPane, "Dados salvos com sucesso !");
-               entidade = new Medico(0, " ", null, null, null , null, 0, 0,0, null);
+               JOptionPane.showMessageDialog(rootPane, "Dados Excluidos com sucesso !");
+               entidade = new Medico(0, " ", "", "", "" , "", 0, 0,0, "");
                preencheCampos();
            }
            else

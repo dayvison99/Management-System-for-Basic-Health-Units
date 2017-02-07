@@ -24,9 +24,9 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
      public DAOMedico() {
         setConsultaAbrir("select idMedico , nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes from medico where idMedico = ?");
         setConsultaApagar("delete from medico where idMedico = ?");
-            setConsultaInserir("insert into medico( nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes) values(?,?,?,?,?,?,?,?,?)");
+        setConsultaInserir("insert into medico( nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes) values(?,?,?,?,?,?,?,?,?)");
         setConsultaAlterar("update medico set  nome=?, crm=?,rua=?,bairro=?,cidade=?,telefone=?,celular=?,especialidade_idEspecialidade =?,observacoes=? where idMedico = ?");
-         setConsultaBuscar("select idMedico, nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes from medico " );
+        setConsultaBuscar("select idMedico, nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes from medico " );
     }
 
     @Override
@@ -62,6 +62,9 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
        sql.setInt(7, obj.getCelular());
        sql.setInt(8, obj.getIdEspecialidade());
        sql.setString(9, obj.getObservacoes());
+       
+       if(obj.getId()>0) sql.setInt(10,obj.getId());
+       
        } catch(SQLException ex){
          System.out.println(ex);
        }
