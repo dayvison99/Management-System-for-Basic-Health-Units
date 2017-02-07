@@ -23,10 +23,11 @@ import java.util.logging.Logger;
  */
 public class DAOUnidadesDeSaude extends DAOGenerico<UnidadesDeSaude> implements UnidadesDeSaudeRepositorio{
     public DAOUnidadesDeSaude(){
-        setConsultaAbrir("select idUnidadeDeSaude,nome,rua,bairro from unidadeDeSaude where id=?");
-        setConsultaAlterar("update unidadeDeSaude set nome = ?,rua = ?,bairro = ? where id = ?");
-        setConsultaApagar("delete from unidadeDeSaude where id = ?");
+        setConsultaAbrir("select idUnidadeDeSaude,nome,rua,bairro from unidadeDeSaude where idUnidadeDeSaude=?");
+        setConsultaAlterar("update unidadeDeSaude set nome = ?,rua = ?,bairro = ? where idUnidadeDeSaude = ?");
+        setConsultaApagar("delete from unidadeDeSaude where idUnidadeDeSaude = ?");
         setConsultaInserir("insert into unidadeDeSaude(nome,rua,bairro) values(?,?,?)");
+        setConsultaBuscar("select idUnidadeDeSaude,nome,rua,bairro from unidadeDeSaude " );
     }
 
     @Override
@@ -50,6 +51,8 @@ public class DAOUnidadesDeSaude extends DAOGenerico<UnidadesDeSaude> implements 
             sql.setString(1, obj.getNome());
             sql.setString(2, obj.getRua());
             sql.setString(3, obj.getBairro());
+            
+            if(obj.getId()>0) sql.setInt(4, obj.getId());
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -58,7 +61,7 @@ public class DAOUnidadesDeSaude extends DAOGenerico<UnidadesDeSaude> implements 
 
     @Override
     protected void preencheFiltros(UnidadesDeSaude filtro) {
-        if(filtro.getId()>0) adicionarFiltro("id", "=");
+        if(filtro.getId()>0) adicionarFiltro("idUnidadeDeSaude", "=");
         if(filtro.getNome()!=null) adicionarFiltro("nome", "like");
         
     }
@@ -77,9 +80,6 @@ public class DAOUnidadesDeSaude extends DAOGenerico<UnidadesDeSaude> implements 
     }
     
 
-    @Override
-    public List<UnidadesDeSaude> Buscar(UnidadesDeSaude filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
 }

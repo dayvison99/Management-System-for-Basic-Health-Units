@@ -68,7 +68,7 @@ public class TelaPacienteEditar extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Editar Paciênte");
+        setTitle("Cadastro Paciênte");
 
         bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -195,11 +195,11 @@ public class TelaPacienteEditar extends javax.swing.JInternalFrame {
                     .addComponent(bntListar)
                     .addComponent(bntExcluir)
                     .addComponent(bntNovo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextoCod)
-                    .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextoCod, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

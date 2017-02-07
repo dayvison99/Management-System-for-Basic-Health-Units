@@ -29,10 +29,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal = new javax.swing.JMenuBar();
         MenuCadastros = new javax.swing.JMenu();
-        MenuPacientes = new javax.swing.JMenuItem();
-        MenuMedicos = new javax.swing.JMenuItem();
         MenuEspecialidade = new javax.swing.JMenuItem();
         MenuFuncionarios = new javax.swing.JMenuItem();
+        MenuMedicos = new javax.swing.JMenuItem();
+        MenuPacientes = new javax.swing.JMenuItem();
+        MenuUnidadeDeSaude = new javax.swing.JMenuItem();
         MenuConsultas = new javax.swing.JMenu();
         MenuFarmacia = new javax.swing.JMenu();
         MenuSairLogoff = new javax.swing.JMenu();
@@ -40,24 +41,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SGUBS-Sistema De Gerenciamento De Unidade Basíca De Saúde");
+
+        MenuPrincipal.setName(""); // NOI18N
 
         MenuCadastros.setText("Cadastros");
-
-        MenuPacientes.setText("Pacientes");
-        MenuPacientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuPacientesActionPerformed(evt);
-            }
-        });
-        MenuCadastros.add(MenuPacientes);
-
-        MenuMedicos.setText("Medicos");
-        MenuMedicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuMedicosActionPerformed(evt);
-            }
-        });
-        MenuCadastros.add(MenuMedicos);
 
         MenuEspecialidade.setText("Especialidades");
         MenuEspecialidade.addActionListener(new java.awt.event.ActionListener() {
@@ -67,13 +55,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         MenuCadastros.add(MenuEspecialidade);
 
-        MenuFuncionarios.setText("Funcionarios");
+        MenuFuncionarios.setText("Funcionários");
         MenuFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuFuncionariosActionPerformed(evt);
             }
         });
         MenuCadastros.add(MenuFuncionarios);
+
+        MenuMedicos.setText("Medicos");
+        MenuMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuMedicosActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuMedicos);
+
+        MenuPacientes.setText("Pacientes");
+        MenuPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuPacientesActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuPacientes);
+
+        MenuUnidadeDeSaude.setText("Unidades De Saúde");
+        MenuUnidadeDeSaude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuUnidadeDeSaudeActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuUnidadeDeSaude);
 
         MenuPrincipal.add(MenuCadastros);
 
@@ -162,6 +174,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
        tela.setVisible(true);
     }//GEN-LAST:event_MenuEspecialidadeActionPerformed
 
+    private void MenuUnidadeDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUnidadeDeSaudeActionPerformed
+       TelaUnidadeDeSaudeListagem tela = new TelaUnidadeDeSaudeListagem();
+       this.add(tela);
+       tela.setVisible(true);
+        
+    }//GEN-LAST:event_MenuUnidadeDeSaudeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,5 +229,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenu MenuSairLogoff;
+    private javax.swing.JMenuItem MenuUnidadeDeSaude;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
     <Property name="closable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Editar Paci&#xea;nte"/>
+    <Property name="title" type="java.lang.String" value="Cadastro Paci&#xea;nte"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -123,12 +123,12 @@
                   <Component id="bntExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bntNovo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="TextoCod" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCodigo" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="TextoCod" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo" alignment="1" min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TextoNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
