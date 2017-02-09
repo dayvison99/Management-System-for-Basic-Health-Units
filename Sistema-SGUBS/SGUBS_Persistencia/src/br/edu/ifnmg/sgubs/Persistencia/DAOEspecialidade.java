@@ -23,7 +23,7 @@ public class DAOEspecialidade extends DAOGenerico<Especialidade> implements Espe
         setConsultaAbrir("select idEspecialidade,especialidade from especialidade where idEspecialidade = ?");
         setConsultaApagar("delete from especialidade where idEspecialidade = ?");
         setConsultaInserir("insert into especialidade(especialidade) values(?)");
-        setConsultaAlterar("update especialidade set especialidade? where idEspecialidade = ?");
+        setConsultaAlterar("update especialidade set especialidade = ? where idEspecialidade = ?");
         setConsultaBuscar("select idEspecialidade,especialidade from especialidade " );
         
         
@@ -45,8 +45,11 @@ public class DAOEspecialidade extends DAOGenerico<Especialidade> implements Espe
     @Override
     protected void preencheConsulta(PreparedStatement sql, Especialidade obj) {
         try {
-            sql.setInt(1, obj.getId());
-            sql.setString(2, obj.getEspecialidade());
+            
+            sql.setString(1, obj.getEspecialidade());
+            
+            if(obj.getId()>0) sql.setInt(2,obj.getId());
+
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -54,7 +57,7 @@ public class DAOEspecialidade extends DAOGenerico<Especialidade> implements Espe
 
     @Override
     protected void preencheFiltros(Especialidade filtro) {
-        if(filtro.getId()>0) adicionarFiltro("id", "=");
+        if(filtro.getId()>0) adicionarFiltro("idEspecialidade", "=");
         if(filtro.getEspecialidade() != null) adicionarFiltro("especialidade"," like ");
     }
 

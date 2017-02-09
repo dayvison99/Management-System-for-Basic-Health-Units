@@ -34,7 +34,7 @@ public class TelaEspecialidadeListagem extends javax.swing.JInternalFrame {
     
     private void preencheTabela(List<Especialidade> lista){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("IdEspecialidade");
+        modelo.addColumn("ID");
         modelo.addColumn("Especialidade");
         
         for(Especialidade e : lista){
@@ -49,7 +49,7 @@ public class TelaEspecialidadeListagem extends javax.swing.JInternalFrame {
     
     public void buscar(String especialidade){
         
-        Especialidade filtro = new Especialidade(0, especialidade);
+        Especialidade filtro = new Especialidade(0, null);
         
         List<Especialidade> busca = dao.Buscar(filtro);
         
@@ -94,7 +94,7 @@ public class TelaEspecialidadeListagem extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "IdEspecialidade", "Especialidade"
+                "ID", "Especialidade"
             }
         ) {
             Class[] types = new Class [] {
@@ -175,7 +175,7 @@ public class TelaEspecialidadeListagem extends javax.swing.JInternalFrame {
         Especialidade entidade;
         
         if(id == 0)
-            entidade = new Especialidade(0, null);
+            entidade = new Especialidade(0, "");
         else
             entidade = dao.Abrir(id);
         
