@@ -33,6 +33,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuFuncionarios = new javax.swing.JMenuItem();
         MenuMedicos = new javax.swing.JMenuItem();
         MenuPacientes = new javax.swing.JMenuItem();
+        MenuTecEnfermagem = new javax.swing.JMenuItem();
         MenuUnidadeDeSaude = new javax.swing.JMenuItem();
         MenuConsultas = new javax.swing.JMenu();
         MenuFarmacia = new javax.swing.JMenu();
@@ -78,6 +79,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuCadastros.add(MenuPacientes);
+
+        MenuTecEnfermagem.setText("Téc Enfermagem");
+        MenuTecEnfermagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuTecEnfermagemActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuTecEnfermagem);
 
         MenuUnidadeDeSaude.setText("Unidades De Saúde");
         MenuUnidadeDeSaude.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +190,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MenuUnidadeDeSaudeActionPerformed
 
+    private void MenuTecEnfermagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTecEnfermagemActionPerformed
+       TelaTecEnfermagemListagem tela = new TelaTecEnfermagemListagem();
+       this.add(tela);
+       tela.setVisible(true);
+    }//GEN-LAST:event_MenuTecEnfermagemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +244,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenu MenuSairLogoff;
+    private javax.swing.JMenuItem MenuTecEnfermagem;
     private javax.swing.JMenuItem MenuUnidadeDeSaude;
     // End of variables declaration//GEN-END:variables
 }

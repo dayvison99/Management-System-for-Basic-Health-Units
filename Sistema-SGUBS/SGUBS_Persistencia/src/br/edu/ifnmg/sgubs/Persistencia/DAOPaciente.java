@@ -25,7 +25,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         setConsultaAlterar("update paciente set nome = ?,cpf= ?,rua = ?,bairro = ?,cidade = ?,telefone = ?,celular = ?,tipoSanguineo = ?,localTrabalho =? where idpaciente = ?");
         setConsultaApagar("delete from paciente where idpaciente = ?");
         setConsultaInserir("insert into paciente(nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho) values(?,?,?,?,?,?,?,?,?)");
-         setConsultaBuscar("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente " );
+        setConsultaBuscar("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente " );
     }
 
     @Override

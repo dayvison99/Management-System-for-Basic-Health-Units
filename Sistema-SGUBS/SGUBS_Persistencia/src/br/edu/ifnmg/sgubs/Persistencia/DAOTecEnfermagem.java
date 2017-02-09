@@ -20,17 +20,19 @@ import java.util.logging.Logger;
 public class DAOTecEnfermagem extends DAOGenerico<TecEnfermagem> implements TecEnfermagemRepositorio{
     
     public DAOTecEnfermagem(){
-        setConsultaAbrir("select idTecEnfermagem, nome, coren, rua,bairro,cidade,telefone,celular from tecEnfermagem where id = ?");
-        setConsultaApagar("delete from tecEnfermagem where id = ?");
+        setConsultaAbrir("select idTecEnfermagem, nome, coren, rua,bairro,cidade,telefone,celular from tecEnfermagem where idTecEnfermagem = ?");
+        setConsultaApagar("delete from tecEnfermagem where idTecEnfermagem = ?");
         setConsultaInserir("insert into tecEnfermagem(nome, coren, rua,bairro,cidade,telefone,celular) values(?,?,?,?,?,?,?)");
-        setConsultaAlterar("update tecEnfermagem set nome=?, coren=?,rua=?,bairro=?,cidade=?,telefone=?,celular=? where id = ?");
-     
+        setConsultaAlterar("update tecEnfermagem set nome=?, coren=?,rua=?,bairro=?,cidade=?,telefone=?,celular=? where idTecEnfermagem = ?");
+        setConsultaBuscar("select idTecEnfermagem, nome, coren, rua,bairro,cidade,telefone,celular from tecEnfermagem " );
     }
 
     @Override
     protected TecEnfermagem preencheObjeto(ResultSet resultado) {
+        
+        TecEnfermagem tmp = new TecEnfermagem();
+         
         try {
-            TecEnfermagem tmp = new TecEnfermagem();
             tmp.setId(resultado.getInt(1));
             tmp.setNome(resultado.getString(2));
             tmp.setCoren(resultado.getString(3));
@@ -57,6 +59,9 @@ public class DAOTecEnfermagem extends DAOGenerico<TecEnfermagem> implements TecE
             sql.setString(5, obj.getCidade());
             sql.setInt(6, obj.getTelefone());
             sql.setInt(7, obj.getCelular());
+            
+            if(obj.getId()>0) sql.setInt(8, obj.getId());
+            
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -64,7 +69,7 @@ public class DAOTecEnfermagem extends DAOGenerico<TecEnfermagem> implements TecE
 
     @Override
     protected void preencheFiltros(TecEnfermagem filtro) {
-        if(filtro.getId()>0) adicionarFiltro("id","=");
+        if(filtro.getId()>0) adicionarFiltro("idTecEnfermagem","=");
         if(filtro.getNome() != null) adicionarFiltro("nome","like");
         if(filtro.getCoren()!=null) adicionarFiltro("coren","=");
     }
@@ -85,7 +90,10 @@ public class DAOTecEnfermagem extends DAOGenerico<TecEnfermagem> implements TecE
     @Override
     public TecEnfermagem Abrir(String corem) {
         try {
-            PreparedStatement sql=conn.prepareStatement("select idTecEnfermagem, nome ,coren from tecEnfermagem from tecEnfermagem where coren");
+            PreparedStatement sql=conn.prepareStatement("select idTecEnfermagem, nome ,coren from tecEnfermagem from tecEnfermagem where coren=?");
+            sql.setString(1, corem);
+            ResultSet resultado=sql.executeQuery();
+            if(resultado.next()) return preencheObjeto(resultado);
         } catch (SQLException ex) {
             System.out.println(ex);
         }

@@ -44,6 +44,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuPacientesActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuTecEnfermagem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xe9;c Enfermagem"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuTecEnfermagemActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuUnidadeDeSaude">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Unidades De Sa&#xfa;de"/>
