@@ -45,8 +45,8 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         tblBusca.setModel(modelo);
     }
     
-    public void buscar(String nome){
-        Paciente filtro = new Paciente (0, null, null, null,null, null, 0, 0, null, null);
+    public void buscar(String Nome){
+        Paciente filtro = new Paciente (0, Nome, null, null,null, null, 0, 0, null, null);
         
         List<Paciente> busca = dao.Buscar(filtro);
         

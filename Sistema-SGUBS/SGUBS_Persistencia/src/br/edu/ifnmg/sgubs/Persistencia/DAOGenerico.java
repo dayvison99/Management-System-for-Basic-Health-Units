@@ -31,6 +31,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     private String consultaInserir;
     private String consultaAlterar;
     private String consultaBuscar;
+    private String consultaUltimoId;
     
     private String where = "";
   
@@ -69,6 +70,17 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
                
                 sql.executeUpdate();
                 
+                PreparedStatement sql2 = conn.prepareStatement(getConsultaUltimoId());
+
+                preencheConsulta(sql2, obj);
+
+                ResultSet resultado = sql2.executeQuery();
+
+                if (resultado.next()) {
+
+                obj.setId( resultado.getInt(1) );
+                }
+
             } else {
               
                 PreparedStatement sql = conn.prepareStatement(getConsultaAlterar());
@@ -116,19 +128,15 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
                PreparedStatement sql = conn.prepareStatement(consultaAbrir);
                sql.setInt(1, id);
                ResultSet resultado = sql.executeQuery();
+               
                if(resultado.next()) return preencheObjeto(resultado);
            } catch (SQLException ex) {
                System.out.println(ex);
            }
            return null;
        }
-    protected void adicionarFiltro(String campo, String operador) {
-        if (where.length() > 0) {
-            where = where + " and ";
-        }
-
-        where = where + campo + " " + operador + " ?";
-    }
+    
+    
     
     @Override
     public List<T> Buscar(T filtro) {
@@ -167,6 +175,14 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
         }
 
         return ret;
+    }
+    
+    protected void adicionarFiltro(String campo, String operador) {
+        if (where.length() > 0) {
+            where = where + " and ";
+        }
+
+        where = where + campo + " " + operador + " ?";
     }
 
     
@@ -209,6 +225,14 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
 
     public void setConsultaBuscar(String consultaBusca) {
         this.consultaBuscar = consultaBusca;
+    }
+
+    public String getConsultaUltimoId() {
+        return consultaUltimoId;
+    }
+
+    public void setConsultaUltimoId(String consultaUltimoId) {
+        this.consultaUltimoId = consultaUltimoId;
     }
     
 }

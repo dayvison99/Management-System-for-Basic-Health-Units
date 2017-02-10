@@ -26,11 +26,13 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         setConsultaApagar("delete from paciente where idpaciente = ?");
         setConsultaInserir("insert into paciente(nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho) values(?,?,?,?,?,?,?,?,?)");
         setConsultaBuscar("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente " );
+        setConsultaUltimoId("select max(idpaciente) from paciente where nome = ? and cpf= ? and rua = ? and bairro = ? and cidade = ? and telefone = ? and celular = ? and tipoSanguineo = ? and localTrabalho =?");
     }
 
     @Override
     protected Paciente preencheObjeto(ResultSet resultado) {
-         Paciente tmp=new Paciente(); 
+         
+        Paciente tmp=new Paciente(); 
         
          try {
            tmp.setId(resultado.getInt(1));
@@ -74,7 +76,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
     @Override
     public Paciente Abrir(String cpf) {
         try {
-            PreparedStatement sql=conn.prepareStatement("select idpaciente, nome ,cpf for, paciente where cpf=?");
+            PreparedStatement sql=conn.prepareStatement("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente where cpf=?");
             sql.setString(1, cpf);
             ResultSet resultado=sql.executeQuery();
             if(resultado.next()) return preencheObjeto(resultado);
@@ -97,7 +99,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         int contador=1;
         if(filtro.getId()>0){sql.setInt(contador, filtro.getId());
         contador++;}
-        if(filtro.getNome()!=null){sql.setString(contador,filtro.getNome()+"%");
+        if(filtro.getNome()!=null){sql.setString(contador,filtro.getNome() +"%");
         contador++;}
         if(filtro.getCpf()!=null){sql.setString(contador,filtro.getCpf());
         contador++;}
