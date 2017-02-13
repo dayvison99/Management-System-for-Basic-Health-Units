@@ -52,7 +52,7 @@ public class TelaUnidadeDeSaudeListagem extends javax.swing.JInternalFrame {
     }
      
       public void buscar(String nome){
-        UnidadesDeSaude filtro = new UnidadesDeSaude (0, null, null, null);
+        UnidadesDeSaude filtro = new UnidadesDeSaude (0, nome, null, null);
         
         List<UnidadesDeSaude> busca = dao.Buscar(filtro);
         

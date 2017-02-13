@@ -91,6 +91,14 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         if(filtro.getId()>0) adicionarFiltro("idpaciente","=");
         if(filtro.getNome()!=null)adicionarFiltro("nome","like");
         if(filtro.getCpf()!=null)adicionarFiltro("cpf", "=");
+        if(filtro.getRua()!=null)adicionarFiltro("rua", "=");
+        if(filtro.getBairro()!=null)adicionarFiltro("bairro", "=");
+        if(filtro.getCidade()!=null)adicionarFiltro("cidade", "=");
+        if(filtro.getTelefone()>0)adicionarFiltro("telefone", "=");
+        if(filtro.getCelular()>0)adicionarFiltro("celular", "=");
+        if(filtro.getTipoSanguineo()!=null)adicionarFiltro("tipoSanguineo", "=");
+        if(filtro.getLocalTrabalho()!=null)adicionarFiltro("localTrabalho", "=");
+        
                 }
 
     @Override
@@ -103,6 +111,21 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         contador++;}
         if(filtro.getCpf()!=null){sql.setString(contador,filtro.getCpf());
         contador++;}
+        if(filtro.getRua()!=null){sql.setString(contador, filtro.getRua());
+        contador++;}
+        if(filtro.getBairro()!=null){sql.setString(contador, filtro.getBairro());
+        contador++;}
+        if(filtro.getCidade()!=null){sql.setString(contador, filtro.getCidade());
+        contador++;}
+        if(filtro.getTelefone()>0){sql.setInt(contador, filtro.getTelefone());
+        contador++;}
+        if(filtro.getCelular()>0){sql.setInt(contador, filtro.getCelular());
+        contador++;}
+        if(filtro.getTipoSanguineo()!=null){sql.setString(contador, filtro.getTipoSanguineo());
+        contador++;}
+        if(filtro.getLocalTrabalho()!=null){sql.setString(contador, filtro.getTipoSanguineo());
+        contador++;}
+                
         }
         
     catch (SQLException ex) {

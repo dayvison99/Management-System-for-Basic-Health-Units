@@ -47,9 +47,9 @@ public class TelaEspecialidadeListagem extends javax.swing.JInternalFrame {
         tblBusca.setModel(modelo);
     }
     
-    public void buscar(String especialidade){
+    public void buscar(String nome){
         
-        Especialidade filtro = new Especialidade(0, null);
+        Especialidade filtro = new Especialidade(0, nome);
         
         List<Especialidade> busca = dao.Buscar(filtro);
         

@@ -47,7 +47,7 @@ public class TelaTecEnfermagemListagem extends javax.swing.JInternalFrame {
     }
     
     public void buscar(String nome){
-        TecEnfermagem filtro = new TecEnfermagem(0, null,  null, null, null, null, 0, 0);
+        TecEnfermagem filtro = new TecEnfermagem(0, nome,  null, null, null, null, 0, 0);
         
         List<TecEnfermagem> busca = dao.Buscar(filtro);
         
