@@ -28,6 +28,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuFuncionariosActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuMedicamentos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Medicamentos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuMedicamentosActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuMedicos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Medicos"/>

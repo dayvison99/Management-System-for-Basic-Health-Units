@@ -31,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuCadastros = new javax.swing.JMenu();
         MenuEspecialidade = new javax.swing.JMenuItem();
         MenuFuncionarios = new javax.swing.JMenuItem();
+        MenuMedicamentos = new javax.swing.JMenuItem();
         MenuMedicos = new javax.swing.JMenuItem();
         MenuPacientes = new javax.swing.JMenuItem();
         MenuTecEnfermagem = new javax.swing.JMenuItem();
@@ -63,6 +64,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuCadastros.add(MenuFuncionarios);
+
+        MenuMedicamentos.setText("Medicamentos");
+        MenuMedicamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuMedicamentosActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuMedicamentos);
 
         MenuMedicos.setText("Medicos");
         MenuMedicos.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +205,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
        tela.setVisible(true);
     }//GEN-LAST:event_MenuTecEnfermagemActionPerformed
 
+    private void MenuMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMedicamentosActionPerformed
+        TelaMedicamentoListagem tela = new TelaMedicamentoListagem();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuMedicamentosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,6 +254,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuFarmacia;
     private javax.swing.JMenuItem MenuFuncionarios;
     private javax.swing.JMenuItem MenuLogoff;
+    private javax.swing.JMenuItem MenuMedicamentos;
     private javax.swing.JMenuItem MenuMedicos;
     private javax.swing.JMenuItem MenuPacientes;
     private javax.swing.JMenuBar MenuPrincipal;

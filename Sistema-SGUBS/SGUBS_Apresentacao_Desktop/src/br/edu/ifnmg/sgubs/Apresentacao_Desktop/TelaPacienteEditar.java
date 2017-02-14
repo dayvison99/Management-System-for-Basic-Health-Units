@@ -68,7 +68,7 @@ public class TelaPacienteEditar extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Cadastro Paciênte");
+        setTitle("Cadastro de Paciêntes");
 
         bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(new java.awt.event.ActionListener() {

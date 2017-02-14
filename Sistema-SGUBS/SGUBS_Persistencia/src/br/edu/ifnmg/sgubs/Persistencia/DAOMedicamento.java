@@ -19,18 +19,23 @@ import java.util.logging.Logger;
  */
 public class DAOMedicamento extends DAOGenerico<Medicamento> implements MedicamentoRepositorio{
     
+    
     public DAOMedicamento(){
-        setConsultaAbrir("select idMedicamento, nome, descricao, quantidade from medicamento where id = ?");
-        setConsultaApagar("delete from medicamento where id = ?");
+        setConsultaAbrir("select idMedicamento, nome, descricao, quantidade from medicamento where idMedicamento = ?");
+        setConsultaApagar("delete from medicamento where idMedicamento = ?");
         setConsultaInserir("insert into medicamento(nome, descricao, quantidade) values(?,?,?)");
-        setConsultaAlterar("update medicamento set nome=?, descricao=?, quantidade=? where id = ?");
-        
-    }
+        setConsultaAlterar("update medicamento set nome=?, descricao=?, quantidade=? where idMedicamento = ?");
+        setConsultaBuscar("select idMedicamento, nome, descricao, quantidade from medicamento " );
+        setConsultaUltimoId("select max(idMedicamento) from medicamento where nome = ? and descricao= ? and quantidade= ? ");
+     }
 
+   
     @Override
     protected Medicamento preencheObjeto(ResultSet resultado) {
+             
+        Medicamento tmp = new Medicamento();
+        
         try {
-            Medicamento tmp = new Medicamento();
             tmp.setId(resultado.getInt(1));
             tmp.setNome(resultado.getString(2));
             tmp.setDescricao(resultado.getString(3));
@@ -48,6 +53,8 @@ public class DAOMedicamento extends DAOGenerico<Medicamento> implements Medicame
             sql.setString(1, obj.getNome());
             sql.setString(2,obj.getDescricao());
             sql.setInt(3, obj.getQuantidade());
+            
+            if(obj.getId()>0) sql.setInt(4,obj.getId());
         }catch(SQLException ex){
             System.out.println();
         }
@@ -55,8 +62,11 @@ public class DAOMedicamento extends DAOGenerico<Medicamento> implements Medicame
 
     @Override
     protected void preencheFiltros(Medicamento filtro) {
-        if(filtro.getId()> 0) adicionarFiltro("id", "like");
+        if(filtro.getId()> 0) adicionarFiltro("idMedicamento", "=");
         if(filtro.getNome()!=null)adicionarFiltro("nome", "like");
+        if(filtro.getDescricao()!=null)adicionarFiltro("descricao", "=");
+        if(filtro.getQuantidade()> 0)adicionarFiltro("quantidade", "=");
+        
        
     }
 

@@ -5,17 +5,30 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
+import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
+import br.edu.ifnmg.sgubs.Aplicacao.Medicamento;
+import br.edu.ifnmg.sgubs.Aplicacao.MedicamentoRepositorio;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dayvison
  */
 public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
+    
+    Medicamento entidade;
+    
+    MedicamentoRepositorio dao;
+    
+    TelaMedicamentoListagem listagem;
 
     /**
      * Creates new form TelaMedicamentoEditar
      */
     public TelaMedicamentoEditar() {
         initComponents();
+        
+        dao = GerenciadorReferencias.getMedicamentos();
     }
 
     /**
@@ -31,14 +44,19 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
         bntListar = new javax.swing.JButton();
         bntExcluir = new javax.swing.JButton();
         bntNovo = new javax.swing.JButton();
-        TextoRua = new javax.swing.JLabel();
-        txtRua = new javax.swing.JTextField();
+        TextoQuantidade = new javax.swing.JLabel();
+        txtQuantidade = new javax.swing.JTextField();
         lblCodigo = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         TextoCod = new javax.swing.JLabel();
         TextoNome = new javax.swing.JLabel();
         TextoDescricao = new javax.swing.JLabel();
+
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Cadastro de Medicamentos");
 
         bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +86,7 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
             }
         });
 
-        TextoRua.setText("Qtde:");
+        TextoQuantidade.setText("Qtde:");
 
         TextoCod.setText("CodMedicamento:");
 
@@ -98,14 +116,14 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextoNome)
                                     .addComponent(TextoDescricao)
-                                    .addComponent(TextoRua))
+                                    .addComponent(TextoQuantidade))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtDescricao)
                                         .addGap(236, 236, 236))
                                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TextoCod)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -135,8 +153,8 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextoRua)
-                    .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextoQuantidade)
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
 
@@ -175,11 +193,11 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntListarActionPerformed
 
     private void bntExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExcluirActionPerformed
-        if(JOptionPane.showConfirmDialog(rootPane, "Deseja Excluir Esse Paciente ?") == 0){
+        if(JOptionPane.showConfirmDialog(rootPane, "Deseja Excluir Esse Medicamento ?") == 0){
 
             if(dao.Apagar(entidade)){
                 JOptionPane.showMessageDialog(rootPane, "Dados Excluidos com sucesso !");
-                entidade = new Paciente(0, "", "", "", "", "", 0, 0, "", "");
+                entidade = new Medicamento(0, "", 0,"");
                 preencheCampos();
             }
             else
@@ -191,16 +209,44 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntExcluirActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-        entidade =new Paciente(0, "", "", "", "", "", 0, 0, "", "");
+        entidade =new Medicamento(0, "", 0,"");
         preencheCampos();
     }//GEN-LAST:event_bntNovoActionPerformed
 
+    public Medicamento getEntidade() {
+        return entidade;
+    }
+
+    public void setEntidade(Medicamento entidade) {
+        this.entidade = entidade;
+        preencheCampos();
+    }
+
+    
+     private void preencheCampos(){
+        lblCodigo.setText( Integer.toString( entidade.getId()));
+        txtNome.setText( entidade.getNome());
+        txtDescricao.setText( entidade.getDescricao());
+        txtQuantidade.setText( Integer.toString(entidade.getQuantidade()));    
+    }
+      
+    private void preencheObjeto() throws ErroValidacao{
+        entidade.setNome(txtNome.getText());
+        entidade.setDescricao(txtDescricao.getText());
+        entidade.setQuantidade( Integer.parseInt(txtQuantidade.getText()));
+                      
+    }
+    
+
+    public void setListagem(TelaMedicamentoListagem listagem) {
+        this.listagem = listagem;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TextoCod;
     private javax.swing.JLabel TextoDescricao;
     private javax.swing.JLabel TextoNome;
-    private javax.swing.JLabel TextoRua;
+    private javax.swing.JLabel TextoQuantidade;
     private javax.swing.JButton bntExcluir;
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
@@ -208,6 +254,6 @@ public class TelaMedicamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtRua;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }
