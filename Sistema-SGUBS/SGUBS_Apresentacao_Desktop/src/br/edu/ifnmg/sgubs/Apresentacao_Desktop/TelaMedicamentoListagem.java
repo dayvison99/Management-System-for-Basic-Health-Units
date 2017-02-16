@@ -207,4 +207,8 @@ public class TelaMedicamentoListagem extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblBusca;
     private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
+
+    void setModal(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

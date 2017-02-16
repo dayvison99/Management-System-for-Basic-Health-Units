@@ -28,7 +28,8 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         
         List<Paciente>busca = dao.Buscar(null);
         
-        preencheTabela(busca);
+                
+        
     }
     
     private void preencheTabela(List<Paciente>lista){
@@ -44,6 +45,7 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         }
         tblBusca.setModel(modelo);
     }
+    
     
     public void buscar(String nome){
         

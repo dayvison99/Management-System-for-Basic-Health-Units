@@ -30,7 +30,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     private String consultaApagar;
     private String consultaInserir;
     private String consultaAlterar;
-    private String consultaBuscar;
+    private String consultaBuscar;  
     private String consultaUltimoId;
     
     private String where = "";
@@ -178,6 +178,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
         return ret;
     }
     
+       
     protected void adicionarFiltro(String campo, String operador) {
         if (where.length() > 0) {
             where = where + " and ";
@@ -235,5 +236,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T>{
     public void setConsultaUltimoId(String consultaUltimoId) {
         this.consultaUltimoId = consultaUltimoId;
     }
+
+  
     
 }
