@@ -6,12 +6,14 @@
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
+import br.edu.ifnmg.sgubs.Aplicacao.FuncionarioRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.TecEnfermagemRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
 import br.edu.ifnmg.sgubs.Persistencia.DAOEspecialidade;
+import br.edu.ifnmg.sgubs.Persistencia.DAOFuncionario;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedicamento;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
 import br.edu.ifnmg.sgubs.Persistencia.DAOPaciente;
@@ -84,6 +86,16 @@ public class GerenciadorReferencias {
         if(MedicamentosDao == null)
             MedicamentosDao = new DAOMedicamento();
         return MedicamentosDao;
+    }
+    
+    //Funcionario
+    
+    private static FuncionarioRepositorio FuncionarioDao;
+    
+    public static FuncionarioRepositorio getFuncionario(){
+        if(FuncionarioDao == null)
+            FuncionarioDao = new DAOFuncionario();
+        return FuncionarioDao;
     }
     
     

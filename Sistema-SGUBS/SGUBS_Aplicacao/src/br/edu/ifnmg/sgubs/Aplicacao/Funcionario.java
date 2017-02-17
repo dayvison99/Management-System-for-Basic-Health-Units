@@ -14,7 +14,10 @@ import java.util.Objects;
 public class Funcionario implements Entidade{
     private int id;
     private String nome;
-    private String endereco;
+    private String rua;
+    private String bairro;
+    private String cidade;
+    private int celular;
     private int telefone;
     private String funcao;
     private String cpf;
@@ -22,14 +25,19 @@ public class Funcionario implements Entidade{
     public Funcionario() {
     }
 
-    public Funcionario(int id, String nome, String endereco, int telefone, String funcao, String cpf) {
+    public Funcionario(int id, String nome, String rua, String bairro, String cidade, int celular, int telefone, String funcao, String cpf) {
         this.id = id;
         this.nome = nome;
-        this.endereco = endereco;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.celular = celular;
         this.telefone = telefone;
         this.funcao = funcao;
         this.cpf = cpf;
     }
+
+    
 
     public int getId() {
         return id;
@@ -47,13 +55,39 @@ public class Funcionario implements Entidade{
         this.nome = nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public int getCelular() {
+        return celular;
+    }
+
+    public void setCelular(int celular) {
+        this.celular = celular;
+    }
+
+    
 
     public int getTelefone() {
         return telefone;
@@ -81,13 +115,16 @@ public class Funcionario implements Entidade{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.id;
-        hash = 41 * hash + Objects.hashCode(this.nome);
-        hash = 41 * hash + Objects.hashCode(this.endereco);
-        hash = 41 * hash + this.telefone;
-        hash = 41 * hash + Objects.hashCode(this.funcao);
-        hash = 41 * hash + Objects.hashCode(this.cpf);
+        int hash = 5;
+        hash = 17 * hash + this.id;
+        hash = 17 * hash + Objects.hashCode(this.nome);
+        hash = 17 * hash + Objects.hashCode(this.rua);
+        hash = 17 * hash + Objects.hashCode(this.bairro);
+        hash = 17 * hash + Objects.hashCode(this.cidade);
+        hash = 17 * hash + this.celular;
+        hash = 17 * hash + this.telefone;
+        hash = 17 * hash + Objects.hashCode(this.funcao);
+        hash = 17 * hash + Objects.hashCode(this.cpf);
         return hash;
     }
 
@@ -106,13 +143,22 @@ public class Funcionario implements Entidade{
         if (this.id != other.id) {
             return false;
         }
+        if (this.celular != other.celular) {
+            return false;
+        }
         if (this.telefone != other.telefone) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.endereco, other.endereco)) {
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidade, other.cidade)) {
             return false;
         }
         if (!Objects.equals(this.funcao, other.funcao)) {
@@ -126,9 +172,9 @@ public class Funcionario implements Entidade{
 
     @Override
     public String toString() {
-        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", funcao=" + funcao + ", cpf=" + cpf + '}';
+        return "Funcionario{" + "id=" + id + ", nome=" + nome + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", celular=" + celular + ", telefone=" + telefone + ", funcao=" + funcao + ", cpf=" + cpf + '}';
     }
-    
+
     
     
 }

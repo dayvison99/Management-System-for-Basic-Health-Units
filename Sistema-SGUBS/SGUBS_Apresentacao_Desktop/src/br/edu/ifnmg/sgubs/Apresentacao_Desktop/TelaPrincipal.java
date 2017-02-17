@@ -39,6 +39,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonTecEnfermagem1 = new javax.swing.JButton();
         jButtonTecEnfermagem2 = new javax.swing.JButton();
         jButtonTecEnfermagem3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JMenuBar();
         MenuCadastros = new javax.swing.JMenu();
         MenuEspecialidade = new javax.swing.JMenuItem();
@@ -85,13 +86,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelFundo.setBounds(580, -60, 770, 360);
 
         jButtonTecEnfermagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconConsultas.png"))); // NOI18N
+        jButtonTecEnfermagem.setToolTipText("Agendamento");
         jButtonTecEnfermagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTecEnfermagemActionPerformed(evt);
             }
         });
         jLayeredPane1.add(jButtonTecEnfermagem);
-        jButtonTecEnfermagem.setBounds(10, 170, 90, 90);
+        jButtonTecEnfermagem.setBounds(10, 180, 90, 90);
 
         jLabel2.setText("Cadastros :");
         jLayeredPane1.add(jLabel2);
@@ -156,6 +158,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jLayeredPane1.add(jButtonTecEnfermagem3);
         jButtonTecEnfermagem3.setBounds(410, 40, 90, 90);
+
+        jLabel3.setText("Agendamento :");
+        jLayeredPane1.add(jLabel3);
+        jLabel3.setBounds(10, 150, 106, 17);
 
         jInternalFrame1.getContentPane().add(jLayeredPane1);
         jLayeredPane1.setBounds(0, 80, 870, 624);
@@ -279,7 +285,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuMedicosActionPerformed
 
     private void MenuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFuncionariosActionPerformed
-        // TODO add your handling code here:
+       TelaFuncionarioListagem tela = new TelaFuncionarioListagem();
+       this.add(tela);
+       tela.setVisible(true);
     }//GEN-LAST:event_MenuFuncionariosActionPerformed
 
     private void MenuLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoffActionPerformed
@@ -426,6 +434,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables

@@ -20,10 +20,13 @@ import java.util.logging.Logger;
  */
 public class DAOFuncionario extends DAOGenerico<Funcionario> implements FuncionarioRepositorio{
     public DAOFuncionario(){
-        setConsultaAbrir("select idfuncionario,nome,cpf,endereco,telefone,funcao from funcionario where id=?");
-        setConsultaAlterar("update funcionario set nome = ?,cpf = ?,endereco= ?,telefone = ?,funcao = ? where id = ?");
+        setConsultaAbrir("select idfuncionario,nome,cpf,rua,bairro,cidade,telefone,celular,funcao from funcionario where id=?");
+        setConsultaAlterar("update funcionario set nome = ?,cpf = ?,rua= ?,bairro=?,cidade=?,telefone = ?,funcao = ? where id = ?");
         setConsultaApagar("delete from funcionario where id = ?");
-        setConsultaInserir("insert into funcionario(nome,cpf,endereco,telefone,funcao) values(?,?,?,?,?)");
+        setConsultaInserir("insert into funcionario(nome,cpf,rua,bairro,cidade,telefone,celular,funcao) values(?,?,?,?,?,?,?,?)");
+        setConsultaBuscar("select idfuncionario,nome,cpf,rua,bairro,cidade,telefone,celular,funcao from funcionario " );
+        setConsultaUltimoId("select max(idFuncionario) from funcionario where nome = ? and cpf= ? and rua = ? and bairro = ? and cidade = ? and telefone = ? and celular = ? and funcao = ? ");
+    
     }
 
     @Override
@@ -33,9 +36,12 @@ public class DAOFuncionario extends DAOGenerico<Funcionario> implements Funciona
             tmp.setId(resultado.getInt(1));
             tmp.setNome(resultado.getString(2));
             tmp.setCpf(resultado.getString(3));
-            tmp.setEndereco(resultado.getString(4));
-            tmp.setTelefone(resultado.getInt(5));
-            tmp.setFuncao(resultado.getString(6));
+            tmp.setRua(resultado.getString(4));
+            tmp.setBairro(resultado.getString(5));
+            tmp.setCidade(resultado.getString(6));
+            tmp.setTelefone(resultado.getInt(7));
+            tmp.setCelular(resultado.getInt(8));
+            tmp.setFuncao(resultado.getString(9));
             return tmp;
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -48,9 +54,14 @@ public class DAOFuncionario extends DAOGenerico<Funcionario> implements Funciona
         try {
         sql.setString(1, obj.getNome());
         sql.setString(2, obj.getCpf());
-        sql.setString(3, obj.getEndereco());
-        sql.setInt(4, obj.getTelefone());
-        sql.setString(5, obj.getFuncao());
+        sql.setString(3, obj.getRua());
+        sql.setString(4, obj.getBairro());
+        sql.setString(5, obj.getCidade());
+        sql.setInt(6, obj.getTelefone());
+        sql.setInt(7, obj.getCelular());
+        sql.setString(8, obj.getFuncao());
+        
+        if(obj.getId()>0) sql.setInt(9,obj.getId());
          } catch (SQLException ex) {
              System.out.println(ex);
          }
@@ -58,7 +69,7 @@ public class DAOFuncionario extends DAOGenerico<Funcionario> implements Funciona
 
     @Override
     protected void preencheFiltros(Funcionario filtro) {
-        if(filtro.getId() > 0) adicionarFiltro("id", "=");
+        if(filtro.getId() > 0) adicionarFiltro("idFuncionario", "=");
         if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
         if(filtro.getCpf() != null) adicionarFiltro("cpf", "=");
     }
@@ -76,15 +87,12 @@ public class DAOFuncionario extends DAOGenerico<Funcionario> implements Funciona
         }
     }
 
-    @Override
-    public List<Funcionario> Buscar(Funcionario filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public Funcionario Abrir(String cpf) {
           try {
-            PreparedStatement sql = conn.prepareStatement("select id,nome,cpf from funcionario where cpf = ?");
+            PreparedStatement sql = conn.prepareStatement("select idFuncionario,nome,cpf from funcionario where cpf = ?");
             sql.setString(1, cpf);
             ResultSet resultado = sql.executeQuery();
             if(resultado.next()){   
