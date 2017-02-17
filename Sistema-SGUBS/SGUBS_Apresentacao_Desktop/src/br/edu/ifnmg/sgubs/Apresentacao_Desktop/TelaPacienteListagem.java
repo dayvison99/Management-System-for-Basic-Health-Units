@@ -75,9 +75,11 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         tblBusca = new javax.swing.JTable();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMaximizable(true);
         setResizable(true);
         setTitle("Consulta de Paciêntes");
+        setVisible(true);
 
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
