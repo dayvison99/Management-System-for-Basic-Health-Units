@@ -15,20 +15,20 @@ import java.util.Objects;
  */
 public class Agendamento implements Entidade{
     private int id;
-    private int idUnidadeSaude;
-    private int idMedico;
-    private int idPaciente;
+    private UnidadesDeSaude UnidadeSaude;
+    private Medico Medico;
+    private Paciente Paciente;
     private Time horario;
     private Date data;
 
     public Agendamento() {
     }
 
-    public Agendamento(int id, int idUnidadeSaude, int idMedico, int idPaciente, Time horario, Date data) {
+    public Agendamento(int id, UnidadesDeSaude UnidadeSaude, Medico Medico, Paciente Paciente, Time horario, Date data) {
         this.id = id;
-        this.idUnidadeSaude = idUnidadeSaude;
-        this.idMedico = idMedico;
-        this.idPaciente = idPaciente;
+        this.UnidadeSaude = UnidadeSaude;
+        this.Medico = Medico;
+        this.Paciente = Paciente;
         this.horario = horario;
         this.data = data;
     }
@@ -41,28 +41,28 @@ public class Agendamento implements Entidade{
         this.id = id;
     }
 
-    public int getIdUnidadeSaude() {
-        return idUnidadeSaude;
+    public UnidadesDeSaude getUnidadeSaude() {
+        return UnidadeSaude;
     }
 
-    public void setIdUnidadeSaude(int idUnidadeSaude) {
-        this.idUnidadeSaude = idUnidadeSaude;
+    public void setUnidadeSaude(UnidadesDeSaude UnidadeSaude) {
+        this.UnidadeSaude = UnidadeSaude;
     }
 
-    public int getIdMedico() {
-        return idMedico;
+    public Medico getMedico() {
+        return Medico;
     }
 
-    public void setIdMedico(int idMedico) {
-        this.idMedico = idMedico;
+    public void setMedico(Medico Medico) {
+        this.Medico = Medico;
     }
 
-    public int getIdPaciente() {
-        return idPaciente;
+    public Paciente getPaciente() {
+        return Paciente;
     }
 
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
+    public void setPaciente(Paciente Paciente) {
+        this.Paciente = Paciente;
     }
 
     public Time getHorario() {
@@ -83,13 +83,13 @@ public class Agendamento implements Entidade{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + this.idUnidadeSaude;
-        hash = 29 * hash + this.idMedico;
-        hash = 29 * hash + this.idPaciente;
-        hash = 29 * hash + Objects.hashCode(this.horario);
-        hash = 29 * hash + Objects.hashCode(this.data);
+        int hash = 3;
+        hash = 41 * hash + this.id;
+        hash = 41 * hash + Objects.hashCode(this.UnidadeSaude);
+        hash = 41 * hash + Objects.hashCode(this.Medico);
+        hash = 41 * hash + Objects.hashCode(this.Paciente);
+        hash = 41 * hash + Objects.hashCode(this.horario);
+        hash = 41 * hash + Objects.hashCode(this.data);
         return hash;
     }
 
@@ -108,13 +108,13 @@ public class Agendamento implements Entidade{
         if (this.id != other.id) {
             return false;
         }
-        if (this.idUnidadeSaude != other.idUnidadeSaude) {
+        if (!Objects.equals(this.UnidadeSaude, other.UnidadeSaude)) {
             return false;
         }
-        if (this.idMedico != other.idMedico) {
+        if (!Objects.equals(this.Medico, other.Medico)) {
             return false;
         }
-        if (this.idPaciente != other.idPaciente) {
+        if (!Objects.equals(this.Paciente, other.Paciente)) {
             return false;
         }
         if (!Objects.equals(this.horario, other.horario)) {
@@ -128,8 +128,9 @@ public class Agendamento implements Entidade{
 
     @Override
     public String toString() {
-        return "Agendamento{" + "id=" + id + ", idUnidadeSaude=" + idUnidadeSaude + ", idMedico=" + idMedico + ", idPaciente=" + idPaciente + ", horario=" + horario + ", data=" + data + '}';
+        return "Agendamento{" + "id=" + id + ", UnidadeSaude=" + UnidadeSaude + ", Medico=" + Medico + ", Paciente=" + Paciente + ", horario=" + horario + ", data=" + data + '}';
     }
+
     
     
     

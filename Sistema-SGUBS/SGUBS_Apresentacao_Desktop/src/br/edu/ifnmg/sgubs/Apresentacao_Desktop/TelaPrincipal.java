@@ -49,7 +49,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuPacientes = new javax.swing.JMenuItem();
         MenuTecEnfermagem = new javax.swing.JMenuItem();
         MenuUnidadeDeSaude = new javax.swing.JMenuItem();
-        MenuConsultas = new javax.swing.JMenu();
+        MenuAgendamento = new javax.swing.JMenu();
+        MenuAgendaConsultas = new javax.swing.JMenuItem();
         MenuFarmacia = new javax.swing.JMenu();
         MenuSairLogoff = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -231,8 +232,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal.add(MenuCadastros);
 
-        MenuConsultas.setText("Consultas");
-        MenuPrincipal.add(MenuConsultas);
+        MenuAgendamento.setText("Agendamento");
+
+        MenuAgendaConsultas.setText("AgendarConsultas");
+        MenuAgendaConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAgendaConsultasActionPerformed(evt);
+            }
+        });
+        MenuAgendamento.add(MenuAgendaConsultas);
+
+        MenuPrincipal.add(MenuAgendamento);
 
         MenuFarmacia.setText("Farmacia");
         MenuPrincipal.add(MenuFarmacia);
@@ -371,6 +381,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTecEnfermagem3ActionPerformed
 
+    private void MenuAgendaConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgendaConsultasActionPerformed
+         TelaAgendamentoListagem tela = new TelaAgendamentoListagem();
+         this.add(tela);
+         tela.setVisible(true);
+    }//GEN-LAST:event_MenuAgendaConsultasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -409,8 +425,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuAgendaConsultas;
+    private javax.swing.JMenu MenuAgendamento;
     private javax.swing.JMenu MenuCadastros;
-    private javax.swing.JMenu MenuConsultas;
     private javax.swing.JMenuItem MenuEspecialidade;
     private javax.swing.JMenu MenuFarmacia;
     private javax.swing.JMenuItem MenuFuncionarios;
