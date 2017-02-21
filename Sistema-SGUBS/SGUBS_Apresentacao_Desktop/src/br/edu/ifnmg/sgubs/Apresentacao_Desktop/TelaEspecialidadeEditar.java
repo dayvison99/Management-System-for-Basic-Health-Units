@@ -86,6 +86,12 @@ public class TelaEspecialidadeEditar extends javax.swing.JInternalFrame {
 
         Especialidade.setText("Especialidade :");
 
+        txtEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEspecialidadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,6 +192,10 @@ public class TelaEspecialidadeEditar extends javax.swing.JInternalFrame {
         entidade =new Especialidade(0, "");
         preencheCampos();
     }//GEN-LAST:event_bntNovoActionPerformed
+
+    private void txtEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEspecialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEspecialidadeActionPerformed
 
     public Especialidade getEntidade() {
         return entidade;

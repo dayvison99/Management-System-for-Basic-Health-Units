@@ -41,7 +41,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     
     MedicoRepositorio daoMedico = GerenciadorReferencias.getMedico();
     
-    Calendar calendario = GregorianCalendar.getInstance();
+    //Calendar calendario = GregorianCalendar.getInstance();
     
     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     
@@ -224,14 +224,14 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 127, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(cbxUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bntNovo)
                 .addGap(30, 30, 30)
                 .addComponent(bntSalvar)
@@ -239,7 +239,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addComponent(bntListar)
                 .addGap(18, 18, 18)
                 .addComponent(bntExcluir)
-                .addGap(97, 97, 97))
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

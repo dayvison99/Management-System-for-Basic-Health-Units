@@ -5,6 +5,24 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
+import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
+import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
+import java.beans.PropertyVetoException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author dayvison
@@ -16,8 +34,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        
+        this.enable();
+        
+        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,6 +75,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuAgendamento = new javax.swing.JMenu();
         MenuAgendaConsultas = new javax.swing.JMenuItem();
         MenuFarmacia = new javax.swing.JMenu();
+        MenuRelatorio = new javax.swing.JMenu();
+        MenuRelatorioPaciente = new javax.swing.JMenuItem();
+        MenuRelatorioMedico = new javax.swing.JMenuItem();
         MenuSairLogoff = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuLogoff = new javax.swing.JMenuItem();
@@ -59,13 +85,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SGUBS-Sistema De Gerenciamento De Unidade Basíca De Saúde");
-        setAlwaysOnTop(true);
         setSize(new java.awt.Dimension(600, 800));
         getContentPane().setLayout(null);
 
         jInternalFrame1.setClosable(true);
         jInternalFrame1.setMaximizable(true);
         jInternalFrame1.setTitle("Acesso Rápido");
+        jInternalFrame1.setAutoscrolls(true);
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(null);
 
@@ -168,7 +194,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLayeredPane1.setBounds(0, 80, 870, 624);
 
         getContentPane().add(jInternalFrame1);
-        jInternalFrame1.setBounds(0, 140, 880, 490);
+        jInternalFrame1.setBounds(0, 220, 880, 490);
+        try {
+            jInternalFrame1.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e1) {
+            e1.printStackTrace();
+        }
 
         MenuPrincipal.setName(""); // NOI18N
 
@@ -247,6 +278,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuFarmacia.setText("Farmacia");
         MenuPrincipal.add(MenuFarmacia);
 
+        MenuRelatorio.setText("Relatórios");
+
+        MenuRelatorioPaciente.setText("Relatório de Cadastro de Paciêntes");
+        MenuRelatorioPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioPacienteActionPerformed(evt);
+            }
+        });
+        MenuRelatorio.add(MenuRelatorioPaciente);
+
+        MenuRelatorioMedico.setText("Relatório de Cadastro de Medicos");
+        MenuRelatorioMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioMedicoActionPerformed(evt);
+            }
+        });
+        MenuRelatorio.add(MenuRelatorioMedico);
+
+        MenuPrincipal.add(MenuRelatorio);
+
         MenuSairLogoff.setText("Sair/Logoff");
         MenuSairLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,14 +328,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(MenuPrincipal);
 
-        setSize(new java.awt.Dimension(887, 574));
+        setSize(new java.awt.Dimension(887, 756));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPacientesActionPerformed
         TelaPacienteListagem tela=new TelaPacienteListagem();
         this.add(tela);
-        tela.setVisible(true);
+        this.MenuPrincipal.disable();
+        
+                tela.setVisible(true); 
         
     }//GEN-LAST:event_MenuPacientesActionPerformed
 
@@ -292,6 +345,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaMedicoListagem tela=new TelaMedicoListagem();
         this.add(tela);
         tela.setVisible(true);
+        try {
+            this.jInternalFrame1.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_MenuMedicosActionPerformed
 
     private void MenuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFuncionariosActionPerformed
@@ -361,6 +419,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaPacienteListagem tela=new TelaPacienteListagem();
         this.add(tela);
         tela.setVisible(true);
+        
     }//GEN-LAST:event_jButtonPacienteActionPerformed
 
     private void jButtonMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMedicamentosActionPerformed
@@ -385,7 +444,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
          TelaAgendamentoListagem tela = new TelaAgendamentoListagem();
          this.add(tela);
          tela.setVisible(true);
+         
     }//GEN-LAST:event_MenuAgendaConsultasActionPerformed
+
+    private void MenuRelatorioPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioPacienteActionPerformed
+        PacienteRepositorio dao = GerenciadorReferencias.getPaciente();
+        
+        exibeRelatorioJasper("Pacientes.jasper", dao.Buscar(null) );
+    }//GEN-LAST:event_MenuRelatorioPacienteActionPerformed
+
+    private void MenuRelatorioMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioMedicoActionPerformed
+        MedicoRepositorio dao = GerenciadorReferencias.getMedico();
+        
+        exibeRelatorioJasper("Medicos.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_MenuRelatorioMedicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,6 +495,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     
+      private void exibeRelatorioJasper(String caminho_relatorio, List dados) {
+
+        try {
+            // Parâmetros
+            Map parametros = new HashMap();
+
+            // Pega o caminho do arquivo do relatório
+            URL arquivo = getClass().getResource(caminho_relatorio);
+            
+            // Carrega o relatório na memória
+            JasperReport relatorio = (JasperReport) JRLoader.loadObject(arquivo);
+            
+            JRDataSource fontededados = new JRBeanCollectionDataSource(dados, true);
+            
+            JasperPrint jasperPrint = JasperFillManager.fillReport(relatorio, parametros, fontededados);
+            
+            // Visualiza o relatório
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+            
+            jrviewer.setVisible(true);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(JasperReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuAgendaConsultas;
@@ -436,6 +533,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuMedicos;
     private javax.swing.JMenuItem MenuPacientes;
     private javax.swing.JMenuBar MenuPrincipal;
+    private javax.swing.JMenu MenuRelatorio;
+    private javax.swing.JMenuItem MenuRelatorioMedico;
+    private javax.swing.JMenuItem MenuRelatorioPaciente;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenu MenuSairLogoff;
     private javax.swing.JMenuItem MenuTecEnfermagem;

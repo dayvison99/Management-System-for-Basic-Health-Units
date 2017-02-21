@@ -90,6 +90,29 @@
             <Property name="text" type="java.lang.String" value="Farmacia"/>
           </Properties>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="MenuRelatorio">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuRelatorioPaciente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Cadastro de Paci&#xea;ntes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuRelatorioPacienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuRelatorioMedico">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Cadastro de Medicos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuRelatorioMedicoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="MenuSairLogoff">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair/Logoff"/>
@@ -127,14 +150,13 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="SGUBS-Sistema De Gerenciamento De Unidade Bas&#xed;ca De Sa&#xfa;de"/>
-    <Property name="alwaysOnTop" type="boolean" value="true"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[600, 800]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="MenuPrincipal"/>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,62,0,0,3,119"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-12,0,0,3,119"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -160,11 +182,13 @@
         <Property name="closable" type="boolean" value="true"/>
         <Property name="maximizable" type="boolean" value="true"/>
         <Property name="title" type="java.lang.String" value="Acesso R&#xe1;pido"/>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+        <Property name="maximum" type="boolean" value="true"/>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="140" width="880" height="490"/>
+          <AbsoluteConstraints x="0" y="220" width="880" height="490"/>
         </Constraint>
       </Constraints>
 

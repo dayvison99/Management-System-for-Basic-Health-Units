@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73b7fa5c-c35b-4b09-b9e5-fe256c24f857">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="crm" class="java.lang.String"/>
+	<field name="celular" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="143" y="3" width="356" height="32" uuid="25d34363-3cc5-4b69-8601-b4565d57c6dd"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18"/>
+				</textElement>
+				<text><![CDATA[Relatório de Médicos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="41" height="20" uuid="c5a59538-e9ae-408b-a6e0-cd2b852c72ef"/>
+				<text><![CDATA[COD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="0" width="236" height="20" uuid="65415e63-28ab-4165-bb6c-bc19118a9f27"/>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="0" width="163" height="20" uuid="72ddde10-db48-4e7d-bfdf-1f60a32f0ce5"/>
+				<text><![CDATA[CRM:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="115" height="20" uuid="c99e33bd-d746-4fa0-91d3-0d59147a1aa0"/>
+				<text><![CDATA[CELULAR:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="41" height="20" uuid="14ae923b-9208-4f37-b2cf-c692f63b2dc5"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="0" width="236" height="20" uuid="2d1870eb-6ef9-4e46-b288-1f5589bf98af"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###.###.###-##">
+				<reportElement x="277" y="0" width="163" height="20" uuid="60bbe237-1048-4603-a3cb-c781128e8783"/>
+				<textFieldExpression><![CDATA[$F{crm}]]></textFieldExpression>
+			</textField>
+			<textField pattern="(##)#####-####">
+				<reportElement x="440" y="0" width="115" height="20" uuid="12376b57-6593-4054-ab2a-961d64540a83"/>
+				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
