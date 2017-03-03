@@ -177,7 +177,7 @@
     <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JInternalFrame" name="jInternalFrame1">
+    <Container class="javax.swing.JInternalFrame" name="AcessoRapido">
       <Properties>
         <Property name="closable" type="boolean" value="true"/>
         <Property name="maximizable" type="boolean" value="true"/>

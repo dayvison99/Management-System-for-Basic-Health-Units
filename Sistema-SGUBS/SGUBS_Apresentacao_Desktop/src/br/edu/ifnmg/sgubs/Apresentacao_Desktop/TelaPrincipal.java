@@ -35,7 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         
-        this.enable();
+        AcessoRapido.enable();
         
         
     }
@@ -50,7 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        AcessoRapido = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         PainelFundo = new javax.swing.JLabel();
@@ -88,15 +88,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 800));
         getContentPane().setLayout(null);
 
-        jInternalFrame1.setClosable(true);
-        jInternalFrame1.setMaximizable(true);
-        jInternalFrame1.setTitle("Acesso Rápido");
-        jInternalFrame1.setAutoscrolls(true);
-        jInternalFrame1.setVisible(true);
-        jInternalFrame1.getContentPane().setLayout(null);
+        AcessoRapido.setClosable(true);
+        AcessoRapido.setMaximizable(true);
+        AcessoRapido.setTitle("Acesso Rápido");
+        AcessoRapido.setAutoscrolls(true);
+        AcessoRapido.setVisible(true);
+        AcessoRapido.getContentPane().setLayout(null);
 
         jLabel1.setText("Sistema de Gerenciamento de Unidades Basica de Saúde");
-        jInternalFrame1.getContentPane().add(jLabel1);
+        AcessoRapido.getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 7, 400, 30);
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -190,13 +190,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel3);
         jLabel3.setBounds(10, 150, 106, 17);
 
-        jInternalFrame1.getContentPane().add(jLayeredPane1);
+        AcessoRapido.getContentPane().add(jLayeredPane1);
         jLayeredPane1.setBounds(0, 80, 870, 624);
 
-        getContentPane().add(jInternalFrame1);
-        jInternalFrame1.setBounds(0, 220, 880, 490);
+        getContentPane().add(AcessoRapido);
+        AcessoRapido.setBounds(0, 220, 880, 490);
         try {
-            jInternalFrame1.setMaximum(true);
+            AcessoRapido.setMaximum(true);
         } catch (java.beans.PropertyVetoException e1) {
             e1.printStackTrace();
         }
@@ -334,10 +334,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void MenuPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPacientesActionPerformed
         TelaPacienteListagem tela=new TelaPacienteListagem();
-        this.add(tela);
-        this.MenuPrincipal.disable();
-        
-                tela.setVisible(true); 
+        this.add(tela);    
+        tela.setVisible(true); 
+        AcessoRapido.dispose();
         
     }//GEN-LAST:event_MenuPacientesActionPerformed
 
@@ -346,7 +345,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.add(tela);
         tela.setVisible(true);
         try {
-            this.jInternalFrame1.setSelected(true);
+            this.AcessoRapido.setSelected(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -522,6 +521,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame AcessoRapido;
     private javax.swing.JMenuItem MenuAgendaConsultas;
     private javax.swing.JMenu MenuAgendamento;
     private javax.swing.JMenu MenuCadastros;
@@ -548,7 +548,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTecEnfermagem1;
     private javax.swing.JButton jButtonTecEnfermagem2;
     private javax.swing.JButton jButtonTecEnfermagem3;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
