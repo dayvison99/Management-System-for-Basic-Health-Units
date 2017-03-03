@@ -75,6 +75,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuAgendamento = new javax.swing.JMenu();
         MenuAgendaConsultas = new javax.swing.JMenuItem();
         MenuFarmacia = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
         MenuRelatorioPaciente = new javax.swing.JMenuItem();
         MenuRelatorioMedico = new javax.swing.JMenuItem();
@@ -276,6 +278,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuPrincipal.add(MenuAgendamento);
 
         MenuFarmacia.setText("Farmacia");
+
+        jMenuItem2.setText("EntradaMedicamento");
+        MenuFarmacia.add(jMenuItem2);
+
+        jMenuItem3.setText("SaídaMedicamento");
+        MenuFarmacia.add(jMenuItem3);
+
         MenuPrincipal.add(MenuFarmacia);
 
         MenuRelatorio.setText("Relatórios");
@@ -553,5 +562,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }

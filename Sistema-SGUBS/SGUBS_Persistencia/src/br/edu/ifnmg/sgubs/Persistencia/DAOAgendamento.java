@@ -29,7 +29,9 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         setConsultaAbrir("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 from agendamento where idAgendamento");
         setConsultaApagar("delete from agendamento where id = ?");
         setConsultaInserir("insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 values(?,?,?,?,?)");
-        setConsultaAlterar("update agendamento set unidadeDeSaude = ?,medico_idMedico = ?,paciente_idpaciente = ?,horario= ?,data_2= ? where idAgendamento=?");
+        setConsultaAlterar("update agendamento set unidadeDeSaude = ?,medic\n" +
+"        setConsultaInserir(\"insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 values(?,?,?,?,?)\");\n" +
+"        setConsultaAlterar(\"o_idMedico = ?,paciente_idpaciente = ?,horario= ?,data_2= ? where idAgendamento=?");
         setConsultaBuscar("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 from agendamento " );
         setConsultaUltimoId("select max(idAgendamento) from agendamento where  unidadeDeSaude_idUnidadeDeSaude = ? and medico_idMedico = ? and paciente_idpaciente = ? and horario = ? and data_2 = ?");
    
