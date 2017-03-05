@@ -27,9 +27,8 @@ CREATE TABLE `agendamento` (
   `unidadeDeSaude_idUnidadeDeSaude` int(10) unsigned NOT NULL,
   `medico_idMedico` int(10) unsigned NOT NULL,
   `paciente_idpaciente` int(10) unsigned NOT NULL,
-  `turno` varchar(10) DEFAULT NULL,
+  `turno` varchar(20) DEFAULT NULL,
   `data_2` date DEFAULT NULL,
-  `motivo` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idAgendamento`),
   KEY `Agendamento_FKIndex1` (`paciente_idpaciente`),
   KEY `Agendamento_FKIndex2` (`medico_idMedico`),
@@ -43,7 +42,7 @@ CREATE TABLE `agendamento` (
 
 LOCK TABLES `agendamento` WRITE;
 /*!40000 ALTER TABLE `agendamento` DISABLE KEYS */;
-INSERT INTO `agendamento` VALUES (1,1,1,1,'','2016-05-12','seinao'),(3,5,2,2,'Tarde','2015-05-12','sei mais nao nao');
+INSERT INTO `agendamento` VALUES (1,1,1,1,'12:30:00','2016-05-12'),(5,5,5,5,'16:30:00','2016-12-12'),(6,2,3,15,'12:10:00','2016-05-12');
 /*!40000 ALTER TABLE `agendamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +294,7 @@ CREATE TABLE `saidaMedicamento` (
   `idsaidaMedicamento` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `paciente_idpaciente` int(10) unsigned NOT NULL,
   `medicamento_idMedicamento` int(10) unsigned NOT NULL,
-  `itens` varchar(255) DEFAULT NULL,
+  `qtde` int(10) unsigned DEFAULT NULL,
   `data_2` date DEFAULT NULL,
   PRIMARY KEY (`idsaidaMedicamento`),
   KEY `saidaMedicamento_FKIndex1` (`medicamento_idMedicamento`),
@@ -310,32 +309,6 @@ CREATE TABLE `saidaMedicamento` (
 LOCK TABLES `saidaMedicamento` WRITE;
 /*!40000 ALTER TABLE `saidaMedicamento` DISABLE KEYS */;
 /*!40000 ALTER TABLE `saidaMedicamento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `saidaMedicamentosIntens`
---
-
-DROP TABLE IF EXISTS `saidaMedicamentosIntens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `saidaMedicamentosIntens` (
-  `idsaidaMedicamentosIntens` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `medicamento_idMedicamento` int(10) unsigned NOT NULL,
-  `paciente_idpaciente` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`idsaidaMedicamentosIntens`),
-  KEY `saidaMedicamentosIntens_FKIndex3` (`paciente_idpaciente`),
-  KEY `saidaMedicamentosIntens_FKIndex2` (`medicamento_idMedicamento`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `saidaMedicamentosIntens`
---
-
-LOCK TABLES `saidaMedicamentosIntens` WRITE;
-/*!40000 ALTER TABLE `saidaMedicamentosIntens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `saidaMedicamentosIntens` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -403,4 +376,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-05 18:18:59
+-- Dump completed on 2017-03-05  1:34:48
