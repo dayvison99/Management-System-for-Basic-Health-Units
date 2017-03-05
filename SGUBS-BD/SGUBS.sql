@@ -27,7 +27,7 @@ CREATE TABLE `agendamento` (
   `unidadeDeSaude_idUnidadeDeSaude` int(10) unsigned NOT NULL,
   `medico_idMedico` int(10) unsigned NOT NULL,
   `paciente_idpaciente` int(10) unsigned NOT NULL,
-  `horario` time DEFAULT NULL,
+  `turno` varchar(20) DEFAULT NULL,
   `data_2` date DEFAULT NULL,
   PRIMARY KEY (`idAgendamento`),
   KEY `Agendamento_FKIndex1` (`paciente_idpaciente`),

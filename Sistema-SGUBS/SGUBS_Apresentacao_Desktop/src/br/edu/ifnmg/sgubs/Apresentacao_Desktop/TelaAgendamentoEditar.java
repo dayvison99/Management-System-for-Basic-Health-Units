@@ -19,6 +19,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -41,9 +45,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     
     Calendar calendario = GregorianCalendar.getInstance();
     
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-    
-   // SimpleDateFormat dh = new SimpleDateFormat("HH:mm:ss");
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
     
     TelaAgendamentoListagem listagem;
     
@@ -59,7 +61,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         
         ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
         
-        cbxPaciente.setModel(Paciente);
+       // cbxPaciente.setModel(Paciente);
         
         ComboBoxModel Unidade = new DefaultComboBoxModel( daoUnidadesDeSaude.Buscar(null).toArray());
         
@@ -68,6 +70,10 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         ComboBoxModel Medico = new DefaultComboBoxModel( daoMedico.Buscar(null).toArray());
         
         cbxMedico.setModel(Medico);
+        
+        List<Paciente>busca = daoPaciente.Buscar(null);
+        
+        preencheTabela(busca);
         
     }
 
@@ -101,20 +107,25 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lblMedico = new javax.swing.JLabel();
         cbxMedico = new javax.swing.JComboBox<>();
-        cbxPaciente = new javax.swing.JComboBox<>();
         lblPaciente = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cbxUnidade = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         lblCodAgendamento = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtData = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtHora = new javax.swing.JTextField();
         bntSalvar = new javax.swing.JButton();
         bntListar = new javax.swing.JButton();
         bntExcluir = new javax.swing.JButton();
         bntNovo = new javax.swing.JButton();
+        cbxTurno = new javax.swing.JComboBox<>();
+        txtPaciente = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPacientes = new javax.swing.JTable();
+        dcData = new com.toedter.calendar.JDateChooser();
+        Motivo = new javax.swing.JLabel();
+        txtMotivo = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -136,32 +147,22 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
         cbxMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbxPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbxPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxPacienteActionPerformed(evt);
-            }
-        });
-
-        lblPaciente.setText("Paciente");
+        lblPaciente.setText("Paciente:");
 
         jLabel1.setText("Unidade:");
 
         cbxUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("CodAgendamento:");
-
-        lblCodAgendamento.setText("jLabel3");
-
-        jLabel3.setText("Data :");
-
-        txtData.addActionListener(new java.awt.event.ActionListener() {
+        cbxUnidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
+                cbxUnidadeActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Hora da Consulta:");
+        jLabel2.setText("CodAgendamento:");
+
+        jLabel3.setText("Data :");
+
+        jLabel4.setText("Turno da Consulta:");
 
         bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,54 +192,87 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        cbxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblPacientes);
+
+        Motivo.setText("Motivo :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblMedico)
-                                .addGap(24, 24, 24))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblPaciente)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCodAgendamento))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCodAgendamento)
+                                .addGap(110, 110, 110)
                                 .addComponent(jLabel3)
-                                .addGap(45, 45, 45)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblPaciente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 292, Short.MAX_VALUE))
+                                .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGap(174, 174, 174)
+                        .addComponent(bntNovo)
+                        .addGap(30, 30, 30)
+                        .addComponent(bntSalvar)
                         .addGap(18, 18, 18)
-                        .addComponent(cbxUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(bntNovo)
-                .addGap(30, 30, 30)
-                .addComponent(bntSalvar)
-                .addGap(18, 18, 18)
-                .addComponent(bntListar)
-                .addGap(18, 18, 18)
-                .addComponent(bntExcluir)
+                        .addComponent(bntListar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bntExcluir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Motivo)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMotivo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lblMedico)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,16 +283,22 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                     .addComponent(bntListar)
                     .addComponent(bntExcluir)
                     .addComponent(bntNovo))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblCodAgendamento))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(lblCodAgendamento)
+                        .addComponent(jLabel3))
+                    .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPaciente))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPaciente)
+                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -268,24 +308,20 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(cbxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Motivo)
+                        .addGap(60, 60, 60))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(13, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPacienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxPacienteActionPerformed
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
 
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         try {
@@ -307,7 +343,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
         }
         }catch (ParseException ex){
-           // Logger.getLogger(TelaAgendamentoEditar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaAgendamentoEditar.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_bntSalvarActionPerformed
@@ -322,7 +358,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
             if(dao.Apagar(entidade)){
                 JOptionPane.showMessageDialog(rootPane, "Dados Excluidos com sucesso !");
-                entidade = new Agendamento(0,null,null,null,null,new Date());
+                entidade = new Agendamento(0,null,null,null,null,new Date(),null);
                 preencheCampos();
             }
             else
@@ -334,46 +370,95 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntExcluirActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-        entidade =new Agendamento(0,null,null,null,null,new Date());
+        entidade =new Agendamento(0,null,null,null,null,new Date(),null);
         preencheCampos();
     }//GEN-LAST:event_bntNovoActionPerformed
 
+    private void cbxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUnidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxUnidadeActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+         buscar( txtPaciente.getText() ); 
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
-        cbxPaciente.setSelectedItem( entidade.getPaciente() );
+        //cbxPaciente.setSelectedItem( entidade.getPaciente() );
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
-    //    txtHora.setText( dh.format(entidade.getHorario()));
-        txtData.setText( df.format(entidade.getData()));
-        
+        cbxTurno.setSelectedItem(entidade.getTurno());
+        dcData.setDate((entidade.getData()));
+        txtMotivo.setText( entidade.getMotivo());
         
     }
     
     private void preencheObjeto() throws ParseException{
-        entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
-        entidade.setUnidadeSaude((UnidadesDeSaude)cbxPaciente.getSelectedItem());
-        entidade.setMedico((Medico)cbxPaciente.getSelectedItem());
-        //entidade.setHorario((Time) dh.parse(txtHora.getText()));
-        entidade.setData( df.parse(txtData.getText())  );
+    //    entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
+        entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
+        entidade.setMedico((Medico)cbxMedico.getSelectedItem());
+        entidade.setTurno(cbxTurno.getItemAt(WIDTH));
+        entidade.setData( df.parse(dcData.getDateFormatString()));
+        entidade.setMotivo( txtMotivo.getText());
               
     }
+    
+    private void preencheTabela(List<Paciente>lista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        
+        for(Paciente p : lista){
+            Vector linha = new Vector();
+            linha.add(p.getId());
+            linha.add(p.getNome());
+            modelo.addRow(linha);
+        }
+        tblPacientes.setModel(modelo);
+    }
+    
+     public void buscar(String nome){
+        
+       
+        Paciente filtro = new Paciente (0, nome, null, null,null, null, 0, 0, null, null);
+        
+        List<Paciente> busca = daoPaciente.Buscar(filtro);
+        
+        preencheTabela(busca);
+        
+
+        }
+     
+     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        int selecionada =tblPacientes.getSelectedRow();
+
+        int id =Integer.parseInt( tblPacientes.getModel().getValueAt(selecionada,0).toString() );
+
+        
+            } 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Motivo;
     private javax.swing.JButton bntExcluir;
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntSalvar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> cbxMedico;
-    private javax.swing.JComboBox<String> cbxPaciente;
+    private javax.swing.JComboBox<String> cbxTurno;
     private javax.swing.JComboBox<String> cbxUnidade;
+    private com.toedter.calendar.JDateChooser dcData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodAgendamento;
     private javax.swing.JLabel lblMedico;
     private javax.swing.JLabel lblPaciente;
-    private javax.swing.JTextField txtData;
-    private javax.swing.JTextField txtHora;
+    private javax.swing.JTable tblPacientes;
+    private javax.swing.JTextField txtMotivo;
+    private javax.swing.JTextField txtPaciente;
     // End of variables declaration//GEN-END:variables
 }

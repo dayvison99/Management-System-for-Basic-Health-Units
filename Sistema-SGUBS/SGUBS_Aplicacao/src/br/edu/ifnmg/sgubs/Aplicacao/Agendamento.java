@@ -18,19 +18,21 @@ public class Agendamento implements Entidade{
     private UnidadesDeSaude UnidadeSaude;
     private Medico Medico;
     private Paciente Paciente;
-    private Time horario;
+    private String turno;
     private Date data;
+    private String motivo;
 
     public Agendamento() {
     }
 
-    public Agendamento(int id, UnidadesDeSaude UnidadeSaude, Medico Medico, Paciente Paciente, Time horario, Date data) {
+    public Agendamento(int id, UnidadesDeSaude UnidadeSaude, Medico Medico, Paciente Paciente, String turno, Date data, String motivo) {
         this.id = id;
         this.UnidadeSaude = UnidadeSaude;
         this.Medico = Medico;
         this.Paciente = Paciente;
-        this.horario = horario;
+        this.turno = turno;
         this.data = data;
+        this.motivo = motivo;
     }
 
     public int getId() {
@@ -65,12 +67,12 @@ public class Agendamento implements Entidade{
         this.Paciente = Paciente;
     }
 
-    public Time getHorario() {
-        return horario;
+    public String getTurno() {
+        return turno;
     }
 
-    public void setHorario(Time horario) {
-        this.horario = horario;
+    public void setTurno(String turno) {
+        this.turno = turno;
     }
 
     public Date getData() {
@@ -81,15 +83,24 @@ public class Agendamento implements Entidade{
         this.data = data;
     }
 
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.id;
-        hash = 41 * hash + Objects.hashCode(this.UnidadeSaude);
-        hash = 41 * hash + Objects.hashCode(this.Medico);
-        hash = 41 * hash + Objects.hashCode(this.Paciente);
-        hash = 41 * hash + Objects.hashCode(this.horario);
-        hash = 41 * hash + Objects.hashCode(this.data);
+        int hash = 5;
+        hash = 79 * hash + this.id;
+        hash = 79 * hash + Objects.hashCode(this.UnidadeSaude);
+        hash = 79 * hash + Objects.hashCode(this.Medico);
+        hash = 79 * hash + Objects.hashCode(this.Paciente);
+        hash = 79 * hash + Objects.hashCode(this.turno);
+        hash = 79 * hash + Objects.hashCode(this.data);
+        hash = 79 * hash + Objects.hashCode(this.motivo);
         return hash;
     }
 
@@ -108,6 +119,12 @@ public class Agendamento implements Entidade{
         if (this.id != other.id) {
             return false;
         }
+        if (!Objects.equals(this.turno, other.turno)) {
+            return false;
+        }
+        if (!Objects.equals(this.motivo, other.motivo)) {
+            return false;
+        }
         if (!Objects.equals(this.UnidadeSaude, other.UnidadeSaude)) {
             return false;
         }
@@ -115,9 +132,6 @@ public class Agendamento implements Entidade{
             return false;
         }
         if (!Objects.equals(this.Paciente, other.Paciente)) {
-            return false;
-        }
-        if (!Objects.equals(this.horario, other.horario)) {
             return false;
         }
         if (!Objects.equals(this.data, other.data)) {
@@ -128,13 +142,8 @@ public class Agendamento implements Entidade{
 
     @Override
     public String toString() {
-        return "Agendamento{" + "id=" + id + ", UnidadeSaude=" + UnidadeSaude + ", Medico=" + Medico + ", Paciente=" + Paciente + ", horario=" + horario + ", data=" + data + '}';
+        return "Agendamento{" + "id=" + id + ", UnidadeSaude=" + UnidadeSaude + ", Medico=" + Medico + ", Paciente=" + Paciente + ", turno=" + turno + ", data=" + data + ", motivo=" + motivo + '}';
     }
 
-    
-    
-    
-    
-
-    
+   
 }

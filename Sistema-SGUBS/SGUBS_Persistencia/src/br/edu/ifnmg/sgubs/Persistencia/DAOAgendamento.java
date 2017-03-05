@@ -26,14 +26,14 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
     
     
     public DAOAgendamento(){
-        setConsultaAbrir("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 from agendamento where idAgendamento");
+        setConsultaAbrir("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo from agendamento where idAgendamento");
         setConsultaApagar("delete from agendamento where id = ?");
-        setConsultaInserir("insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 values(?,?,?,?,?)");
+        setConsultaInserir("insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo values(?,?,?,?,?,?)");
         setConsultaAlterar("update agendamento set unidadeDeSaude = ?,medico\n" +
-"        setConsultaInserir(\"insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 values(?,?,?,?,?)\");\n" +
-"        setConsultaAlterar(\"o_idMedico = ?,paciente_idpaciente = ?,horario= ?,data_2= ? where idAgendamento=?");
-        setConsultaBuscar("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 from agendamento " );
-        setConsultaUltimoId("select max(idAgendamento) from agendamento where  unidadeDeSaude_idUnidadeDeSaude = ? and medico_idMedico = ? and paciente_idpaciente = ? and horario = ? and data_2 = ?");
+"        setConsultaInserir(\"insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo values(?,?,?,?,?,?)\");\n" +
+"        setConsultaAlterar(\"o_idMedico = ?,paciente_idpaciente = ?,turno= ?,data_2= ?,motivo=? where idAgendamento=?");
+        setConsultaBuscar("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo from agendamento " );
+        setConsultaUltimoId("select max(idAgendamento) from agendamento where  unidadeDeSaude_idUnidadeDeSaude = ? and medico_idMedico = ? and paciente_idpaciente = ? and turno = ? and data_2 = ? and motivo = ?");
    
         paciente = new DAOPaciente();
         unidadeDeSaude = new DAOUnidadesDeSaude();
@@ -49,8 +49,9 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
             tmp.setUnidadeSaude( unidadeDeSaude.Abrir( resultado.getInt(2)));
             tmp.setMedico(medico.Abrir(resultado.getInt(3)));
             tmp.setPaciente(paciente.Abrir(resultado.getInt(4)));
-            tmp.setHorario(resultado.getTime(5));
+            tmp.setTurno(resultado.getString(5));
             tmp.setData(resultado.getDate(6));
+            tmp.setMotivo(resultado.getString(7));
             
             return tmp;
             
@@ -66,10 +67,11 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         sql.setInt(1, obj.getUnidadeSaude().getId());
         sql.setInt(2, obj.getMedico().getId());
         sql.setInt(3, obj.getPaciente().getId());
-        sql.setTime(4, obj.getHorario());
+        sql.setString(4, obj.getTurno());
         sql.setDate(5, (Date) obj.getData());
+        sql.setString(6, obj.getMotivo());
         
-        if(obj.getId() > 0) sql.setInt(6, obj.getId());
+        if(obj.getId() > 0) sql.setInt(7, obj.getId());
         }catch(SQLException ex){
             System.out.println();
         }

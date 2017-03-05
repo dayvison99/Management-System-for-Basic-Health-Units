@@ -58,6 +58,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Agendamentos Marcados");
 
         btnNovo.setText("Novo Agendamento");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +121,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -161,7 +162,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(666, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblListagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemMouseClicked
@@ -208,8 +209,9 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
             linha.add(a.getUnidadeSaude());
             linha.add(a.getMedico());
             linha.add(a.getPaciente());
-            linha.add(a.getHorario().toString());
+            linha.add(a.getTurno().toString());
             linha.add(a.getData().toString());
+           
             
             modelo.addRow(linha);
         }
@@ -219,7 +221,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
      public void editarAgendamento(int id){
         Agendamento entidade;
         if(id == 0)
-            entidade = new Agendamento(id,null,null,null,null,new Date());
+            entidade = new Agendamento(id,null,null,null,null,new Date(),null);
         else
             entidade = dao.Abrir(id);
         
@@ -238,7 +240,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         
         Object a = nome; 
         
-        Agendamento filtro = new Agendamento (0, null, null, (Paciente) a,null, null);
+        Agendamento filtro = new Agendamento (0, null, null, (Paciente) a,null, null,null);
         
         List<Agendamento> busca = dao.Buscar(filtro);
         
