@@ -22,6 +22,7 @@ import java.util.GregorianCalendar;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.exolab.castor.types.Time;
 
 /**
@@ -42,7 +43,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     
     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     
-    SimpleDateFormat dh = new SimpleDateFormat("HH:mm:ss");
+   // SimpleDateFormat dh = new SimpleDateFormat("HH:mm:ss");
     
     TelaAgendamentoListagem listagem;
     
@@ -342,16 +343,18 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         cbxPaciente.setSelectedItem( entidade.getPaciente() );
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
-        txtHora.setText( dh.format(entidade.getHorario()));
+    //    txtHora.setText( dh.format(entidade.getHorario()));
         txtData.setText( df.format(entidade.getData()));
+        
+        
     }
     
     private void preencheObjeto() throws ParseException{
-        //entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
-        //entidade.setUnidadeSaude((UnidadesDeSaude)cbxPaciente.getSelectedItem());
-        //entidade.setMedico((Medico)cbxPaciente.getSelectedItem());
+        entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
+        entidade.setUnidadeSaude((UnidadesDeSaude)cbxPaciente.getSelectedItem());
+        entidade.setMedico((Medico)cbxPaciente.getSelectedItem());
         //entidade.setHorario((Time) dh.parse(txtHora.getText()));
-      //  entidade.setData( df.parse(txtData.getText())  );
+        entidade.setData( df.parse(txtData.getText())  );
               
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

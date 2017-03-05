@@ -8,7 +8,9 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 import br.edu.ifnmg.sgubs.Aplicacao.Agendamento;
 import br.edu.ifnmg.sgubs.Aplicacao.AgendamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
+import groovy.transform.ToString;
 import java.sql.Time;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -179,7 +181,8 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
-       // buscar( txtBusca.getText() );
+        buscarPaciente(txtBusca.getText());
+        
     }//GEN-LAST:event_btnBuscarPacienteActionPerformed
 
     private void btnBuscarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDataActionPerformed
@@ -213,7 +216,6 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         
         tblListagem.setModel(modelo);
     }
-//gendamento(int id, int idUnidadeSaude, int idMedico, int idPaciente, Time horario, Date data
      public void editarAgendamento(int id){
         Agendamento entidade;
         if(id == 0)
@@ -231,17 +233,16 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         editar.setVisible(true);
         this.setVisible(false);
     }
-//(int id, UnidadesDeSaude UnidadeSaude, Medico Medico, Paciente Paciente, Time horario, Date data     
-    public void buscarPaciente(Paciente nome){
+     
+    public void buscarPaciente(String nome){
         
-       
-        Agendamento filtro = new Agendamento (0, null, null, nome,null, null);
+        Object a = nome; 
+        
+        Agendamento filtro = new Agendamento (0, null, null, (Paciente) a,null, null);
         
         List<Agendamento> busca = dao.Buscar(filtro);
         
         preencheTabela(busca);
-        
-
         }
      
      

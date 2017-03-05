@@ -72,12 +72,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuUnidadeDeSaude = new javax.swing.JMenuItem();
         MenuAgendamento = new javax.swing.JMenu();
         MenuAgendaConsultas = new javax.swing.JMenuItem();
+        MenuConsultasAgendadas = new javax.swing.JMenuItem();
         MenuFarmacia = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
-        MenuRelatorioPaciente = new javax.swing.JMenuItem();
         MenuRelatorioMedico = new javax.swing.JMenuItem();
+        MenuRelatorioPaciente = new javax.swing.JMenuItem();
         MenuSairLogoff = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuLogoff = new javax.swing.JMenuItem();
@@ -269,6 +270,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         MenuAgendamento.add(MenuAgendaConsultas);
 
+        MenuConsultasAgendadas.setText("Consultas Agendadas");
+        MenuConsultasAgendadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuConsultasAgendadasActionPerformed(evt);
+            }
+        });
+        MenuAgendamento.add(MenuConsultasAgendadas);
+
         MenuPrincipal.add(MenuAgendamento);
 
         MenuFarmacia.setText("Farmacia");
@@ -283,6 +292,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuRelatorio.setText("Relatórios");
 
+        MenuRelatorioMedico.setText("Relatório de Cadastro de Médicos");
+        MenuRelatorioMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRelatorioMedicoActionPerformed(evt);
+            }
+        });
+        MenuRelatorio.add(MenuRelatorioMedico);
+
         MenuRelatorioPaciente.setText("Relatório de Cadastro de Paciêntes");
         MenuRelatorioPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,14 +307,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenuRelatorio.add(MenuRelatorioPaciente);
-
-        MenuRelatorioMedico.setText("Relatório de Cadastro de Medicos");
-        MenuRelatorioMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuRelatorioMedicoActionPerformed(evt);
-            }
-        });
-        MenuRelatorio.add(MenuRelatorioMedico);
 
         MenuPrincipal.add(MenuRelatorio);
 
@@ -476,6 +485,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         exibeRelatorioJasper("Medicos.jasper", dao.Buscar(null));
     }//GEN-LAST:event_MenuRelatorioMedicoActionPerformed
 
+    private void MenuConsultasAgendadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultasAgendadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuConsultasAgendadasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -543,6 +556,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuAgendaConsultas;
     private javax.swing.JMenu MenuAgendamento;
     private javax.swing.JMenu MenuCadastros;
+    private javax.swing.JMenuItem MenuConsultasAgendadas;
     private javax.swing.JMenuItem MenuEspecialidade;
     private javax.swing.JMenu MenuFarmacia;
     private javax.swing.JMenuItem MenuFuncionarios;

@@ -11,6 +11,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -78,13 +80,30 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
     @Override
     protected void preencheFiltros(Agendamento filtro) {
         if(filtro.getId() > 0) adicionarFiltro("idAgendamneto", "=");
-        if(filtro.getIdUnidadeSaude() >0)adicionarFiltro(campo, operador)
+        if(filtro.getUnidadeSaude()!=null)adicionarFiltro("unidadeDeSaude_idUnidadeDeSaude", "like");
+        if(filtro.getMedico()!=null) adicionarFiltro("medico_idMedico", "like");
+        if(filtro.getPaciente()!=null) adicionarFiltro("paciente_idpaciente", "like");
+        
     }
+    
+ //  idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 
 
     @Override
     protected void preencheParametros(PreparedStatement sql, Agendamento filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+        int contador=1;
+        if(filtro.getId()>0){sql.setInt(contador, filtro.getId());
+        contador++;}
+        if(filtro.getUnidadeSaude()!=null){sql.setString(contador,filtro.getUnidadeSaude() +"%");
+        contador++;}
+        if(filtro.getPaciente() != null) {sql.setString(contador, filtro.getPaciente() + "%");
+        contador++;}
+        }
+        
+    catch (SQLException ex) {
+        Logger.getLogger(DAOPaciente.class.getName()).log(Level.SEVERE,null,ex);
     }
 
+}
 }
         
