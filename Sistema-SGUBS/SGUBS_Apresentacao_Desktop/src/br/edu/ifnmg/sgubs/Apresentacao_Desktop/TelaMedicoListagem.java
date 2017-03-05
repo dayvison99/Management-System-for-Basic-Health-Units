@@ -35,11 +35,13 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
+        modelo.addColumn("Especialidade");
         
         for(Medico m : lista){
             Vector linha =new Vector();
             linha.add(m.getId());
             linha.add(m.getNome());
+            linha.add(m.getIdEspecialidade());
             modelo.addRow(linha);
         }
         tblBusca.setModel(modelo);
@@ -92,14 +94,14 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "Nome"
+                "ID", "Nome", "Especialidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -120,6 +122,7 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         if (tblBusca.getColumnModel().getColumnCount() > 0) {
             tblBusca.getColumnModel().getColumn(0).setResizable(false);
             tblBusca.getColumnModel().getColumn(1).setResizable(false);
+            tblBusca.getColumnModel().getColumn(2).setResizable(false);
         }
 
         bntBuscar.setText("Buscar");

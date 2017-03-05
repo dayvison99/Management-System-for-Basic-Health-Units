@@ -7,12 +7,19 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.sgubs.Aplicacao.Especialidade;
+import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
+import br.edu.ifnmg.sgubs.Persistencia.ConectarBD;
+import br.edu.ifnmg.sgubs.Persistencia.DAOGenerico;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import org.jfree.data.general.CombinationDataset;
 
 /**
  *
@@ -25,16 +32,26 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     MedicoRepositorio dao;
     
     TelaMedicoListagem listagem;
+    
+    EspecialidadeRepositorio daoEspecialidade = GerenciadorReferencias.getEspecialidade();
    
     /**
      * Creates new form TelaCadastroMedico2
      */
     public TelaMedicoEditar() {
         initComponents();
-        
+            
+               
         dao = GerenciadorReferencias.getMedico();
+        
+        ComboBoxModel Especialidade = new DefaultComboBoxModel( daoEspecialidade.Buscar(null).toArray());
+        
+        cbxEspecialidades.setModel(Especialidade);
+        
+      
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,7 +85,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtCidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
-        cbxMedico = new javax.swing.JComboBox<>();
+        cbxEspecialidades = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setMaximizable(true);
@@ -128,9 +145,9 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtObs.setRows(5);
         jScrollPane1.setViewportView(txtObs);
 
-        cbxMedico.addActionListener(new java.awt.event.ActionListener() {
+        cbxEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxMedicoActionPerformed(evt);
+                cbxEspecialidadesActionPerformed(evt);
             }
         });
 
@@ -193,7 +210,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TextoEspecialista)
                                 .addGap(2, 2, 2)
-                                .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cbxEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -241,7 +258,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TextoEspecialista)
-                    .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextoObservacao)
@@ -303,9 +320,9 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_bntSalvarActionPerformed
 
-    private void cbxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMedicoActionPerformed
+    private void cbxEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEspecialidadesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxMedicoActionPerformed
+    }//GEN-LAST:event_cbxEspecialidadesActionPerformed
 
     public Medico getEntidade() {
         return entidade;
@@ -325,7 +342,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtCidade.setText( entidade.getCidade());
         txtCelular.setText( Integer.toString(entidade.getCelular()));
         txtTelefone.setText( Integer.toString(entidade.getTelefone()));
-        cbxMedico.setSelectedItem(Integer.toString(entidade.getIdEspecialidade()));
+        cbxEspecialidades.setSelectedItem(Integer.toString(entidade.getIdEspecialidade()));
         txtObs.setText( entidade.getObservacoes());
                 
         
@@ -367,7 +384,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntSalvar;
-    private javax.swing.JComboBox<String> cbxMedico;
+    private javax.swing.JComboBox<String> cbxEspecialidades;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JTextField txtBairro;

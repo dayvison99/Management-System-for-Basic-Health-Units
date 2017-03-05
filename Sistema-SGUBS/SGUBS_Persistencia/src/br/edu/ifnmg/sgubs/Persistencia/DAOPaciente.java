@@ -27,7 +27,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         setConsultaInserir("insert into paciente(nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho) values(?,?,?,?,?,?,?,?,?)");
         setConsultaBuscar("select idpaciente,nome,cpf,rua,bairro,cidade,telefone,celular,tipoSanguineo,localTrabalho from paciente " );
         setConsultaUltimoId("select max(idpaciente) from paciente where nome = ? and cpf= ? and rua = ? and bairro = ? and cidade = ? and telefone = ? and celular = ? and tipoSanguineo = ? and localTrabalho =?");
-    }
+          }
 
     @Override
     protected Paciente preencheObjeto(ResultSet resultado) {
@@ -132,6 +132,8 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
         Logger.getLogger(DAOPaciente.class.getName()).log(Level.SEVERE,null,ex);
     }
     }
+
+   
 
    
 

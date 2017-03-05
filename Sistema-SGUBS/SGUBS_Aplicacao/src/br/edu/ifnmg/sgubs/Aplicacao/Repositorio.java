@@ -17,5 +17,5 @@ public interface Repositorio<T extends Entidade> {
     public boolean Apagar(T obj);
     public T Abrir(int id);
     public List<T> Buscar(T filtro);
-  
+   
 }

@@ -35,9 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         
-        AcessoRapido.enable();
-        
-        
+        AcessoRapido.enable();        
     }
 
     
@@ -54,14 +52,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         PainelFundo = new javax.swing.JLabel();
-        jButtonTecEnfermagem = new javax.swing.JButton();
+        btnAgendamento = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButtonMedicos = new javax.swing.JButton();
-        jButtonPaciente = new javax.swing.JButton();
-        jButtonMedicamentos = new javax.swing.JButton();
-        jButtonTecEnfermagem1 = new javax.swing.JButton();
-        jButtonTecEnfermagem2 = new javax.swing.JButton();
-        jButtonTecEnfermagem3 = new javax.swing.JButton();
+        btnMedicos = new javax.swing.JButton();
+        bntPaciente = new javax.swing.JButton();
+        btnMedicamentos = new javax.swing.JButton();
+        btnFuncionarios = new javax.swing.JButton();
+        btnTecEnfermagem = new javax.swing.JButton();
+        btnUnidadesDeSaude = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JMenuBar();
         MenuCadastros = new javax.swing.JMenu();
@@ -92,6 +90,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         AcessoRapido.setClosable(true);
         AcessoRapido.setMaximizable(true);
+        AcessoRapido.setResizable(true);
         AcessoRapido.setTitle("Acesso Rápido");
         AcessoRapido.setAutoscrolls(true);
         AcessoRapido.setVisible(true);
@@ -114,79 +113,79 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLayeredPane1.add(PainelFundo);
         PainelFundo.setBounds(580, -60, 770, 360);
 
-        jButtonTecEnfermagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconConsultas.png"))); // NOI18N
-        jButtonTecEnfermagem.setToolTipText("Agendamento");
-        jButtonTecEnfermagem.addActionListener(new java.awt.event.ActionListener() {
+        btnAgendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconConsultas.png"))); // NOI18N
+        btnAgendamento.setToolTipText("Agendamento");
+        btnAgendamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTecEnfermagemActionPerformed(evt);
+                btnAgendamentoActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonTecEnfermagem);
-        jButtonTecEnfermagem.setBounds(10, 180, 90, 90);
+        jLayeredPane1.add(btnAgendamento);
+        btnAgendamento.setBounds(10, 180, 90, 90);
 
         jLabel2.setText("Cadastros :");
         jLayeredPane1.add(jLabel2);
         jLabel2.setBounds(10, 10, 77, 17);
 
-        jButtonMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconMedico.jpg"))); // NOI18N
-        jButtonMedicos.setToolTipText("Médicos");
-        jButtonMedicos.addActionListener(new java.awt.event.ActionListener() {
+        btnMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconMedico.jpg"))); // NOI18N
+        btnMedicos.setToolTipText("Médicos");
+        btnMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMedicosActionPerformed(evt);
+                btnMedicosActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonMedicos);
-        jButtonMedicos.setBounds(10, 40, 90, 90);
+        jLayeredPane1.add(btnMedicos);
+        btnMedicos.setBounds(10, 40, 90, 90);
 
-        jButtonPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconPaciente.png"))); // NOI18N
-        jButtonPaciente.setToolTipText("Paciêntes");
-        jButtonPaciente.addActionListener(new java.awt.event.ActionListener() {
+        bntPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconPaciente.png"))); // NOI18N
+        bntPaciente.setToolTipText("Paciêntes");
+        bntPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPacienteActionPerformed(evt);
+                bntPacienteActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonPaciente);
-        jButtonPaciente.setBounds(110, 40, 90, 90);
+        jLayeredPane1.add(bntPaciente);
+        bntPaciente.setBounds(110, 40, 90, 90);
 
-        jButtonMedicamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconMedicamento.png"))); // NOI18N
-        jButtonMedicamentos.setToolTipText("Medicamentos");
-        jButtonMedicamentos.addActionListener(new java.awt.event.ActionListener() {
+        btnMedicamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconMedicamento.png"))); // NOI18N
+        btnMedicamentos.setToolTipText("Medicamentos");
+        btnMedicamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMedicamentosActionPerformed(evt);
+                btnMedicamentosActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonMedicamentos);
-        jButtonMedicamentos.setBounds(210, 40, 90, 90);
+        jLayeredPane1.add(btnMedicamentos);
+        btnMedicamentos.setBounds(210, 40, 90, 90);
 
-        jButtonTecEnfermagem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconFuncionarios.png"))); // NOI18N
-        jButtonTecEnfermagem1.setToolTipText("Funcionarios");
-        jButtonTecEnfermagem1.addActionListener(new java.awt.event.ActionListener() {
+        btnFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconFuncionarios.png"))); // NOI18N
+        btnFuncionarios.setToolTipText("Funcionários");
+        btnFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTecEnfermagem1ActionPerformed(evt);
+                btnFuncionariosActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonTecEnfermagem1);
-        jButtonTecEnfermagem1.setBounds(510, 40, 90, 90);
+        jLayeredPane1.add(btnFuncionarios);
+        btnFuncionarios.setBounds(510, 40, 90, 90);
 
-        jButtonTecEnfermagem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconTecEnfermagem.png"))); // NOI18N
-        jButtonTecEnfermagem2.setToolTipText("TecEnfermagem");
-        jButtonTecEnfermagem2.addActionListener(new java.awt.event.ActionListener() {
+        btnTecEnfermagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconTecEnfermagem.png"))); // NOI18N
+        btnTecEnfermagem.setToolTipText("TecEnfermagem");
+        btnTecEnfermagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTecEnfermagem2ActionPerformed(evt);
+                btnTecEnfermagemActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonTecEnfermagem2);
-        jButtonTecEnfermagem2.setBounds(310, 40, 90, 90);
+        jLayeredPane1.add(btnTecEnfermagem);
+        btnTecEnfermagem.setBounds(310, 40, 90, 90);
 
-        jButtonTecEnfermagem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconUnidadeDeSaude.png"))); // NOI18N
-        jButtonTecEnfermagem3.setToolTipText("Unidades de Saúde");
-        jButtonTecEnfermagem3.addActionListener(new java.awt.event.ActionListener() {
+        btnUnidadesDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconUnidadeDeSaude.png"))); // NOI18N
+        btnUnidadesDeSaude.setToolTipText("Unidades de Saúde");
+        btnUnidadesDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTecEnfermagem3ActionPerformed(evt);
+                btnUnidadesDeSaudeActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jButtonTecEnfermagem3);
-        jButtonTecEnfermagem3.setBounds(410, 40, 90, 90);
+        jLayeredPane1.add(btnUnidadesDeSaude);
+        btnUnidadesDeSaude.setBounds(410, 40, 90, 90);
 
         jLabel3.setText("Agendamento :");
         jLayeredPane1.add(jLabel3);
@@ -197,11 +196,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(AcessoRapido);
         AcessoRapido.setBounds(0, 220, 880, 490);
-        try {
-            AcessoRapido.setMaximum(true);
-        } catch (java.beans.PropertyVetoException e1) {
-            e1.printStackTrace();
-        }
 
         MenuPrincipal.setName(""); // NOI18N
 
@@ -353,17 +347,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaMedicoListagem tela=new TelaMedicoListagem();
         this.add(tela);
         tela.setVisible(true);
-        try {
-            this.AcessoRapido.setSelected(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        AcessoRapido.dispose();
     }//GEN-LAST:event_MenuMedicosActionPerformed
 
     private void MenuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFuncionariosActionPerformed
        TelaFuncionarioListagem tela = new TelaFuncionarioListagem();
        this.add(tela);
        tela.setVisible(true);
+        AcessoRapido.dispose();
     }//GEN-LAST:event_MenuFuncionariosActionPerformed
 
     private void MenuLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoffActionPerformed
@@ -385,12 +376,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
        TelaEspecialidadeListagem tela = new TelaEspecialidadeListagem();
        this.add(tela);
        tela.setVisible(true);
+       AcessoRapido.dispose();
     }//GEN-LAST:event_MenuEspecialidadeActionPerformed
 
     private void MenuUnidadeDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUnidadeDeSaudeActionPerformed
        TelaUnidadeDeSaudeListagem tela = new TelaUnidadeDeSaudeListagem();
        this.add(tela);
        tela.setVisible(true);
+       AcessoRapido.dispose();
         
     }//GEN-LAST:event_MenuUnidadeDeSaudeActionPerformed
 
@@ -398,6 +391,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        TelaTecEnfermagemListagem tela = new TelaTecEnfermagemListagem();
        this.add(tela);
        tela.setVisible(true);
+       AcessoRapido.dispose();
        
     }//GEN-LAST:event_MenuTecEnfermagemActionPerformed
 
@@ -405,53 +399,68 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaMedicamentoListagem tela = new TelaMedicamentoListagem();
         this.add(tela);
         tela.setVisible(true);
+        AcessoRapido.dispose();
     }//GEN-LAST:event_MenuMedicamentoActionPerformed
 
     private void jLayeredPane1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jLayeredPane1CaretPositionChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jLayeredPane1CaretPositionChanged
 
-    private void jButtonTecEnfermagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTecEnfermagemActionPerformed
-       TelaTecEnfermagemListagem tela = new TelaTecEnfermagemListagem();
-       this.add(tela);
-       tela.setVisible(true);
-    }//GEN-LAST:event_jButtonTecEnfermagemActionPerformed
+    private void btnAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendamentoActionPerformed
+       TelaAgendamentoListagem tela = new TelaAgendamentoListagem();
+         this.add(tela);
+         tela.setVisible(true);
+         AcessoRapido.dispose();
+    }//GEN-LAST:event_btnAgendamentoActionPerformed
 
-    private void jButtonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMedicosActionPerformed
+    private void btnMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicosActionPerformed
         TelaMedicoListagem tela=new TelaMedicoListagem();
         this.add(tela);
         tela.setVisible(true);
-    }//GEN-LAST:event_jButtonMedicosActionPerformed
+         AcessoRapido.dispose();
+    }//GEN-LAST:event_btnMedicosActionPerformed
 
-    private void jButtonPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPacienteActionPerformed
+    private void bntPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPacienteActionPerformed
         TelaPacienteListagem tela=new TelaPacienteListagem();
         this.add(tela);
         tela.setVisible(true);
-        
-    }//GEN-LAST:event_jButtonPacienteActionPerformed
+        AcessoRapido.dispose();
+    }//GEN-LAST:event_bntPacienteActionPerformed
 
-    private void jButtonMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMedicamentosActionPerformed
+    private void btnMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentosActionPerformed
         TelaMedicamentoListagem tela = new TelaMedicamentoListagem();
         this.add(tela);
         tela.setVisible(true);
-    }//GEN-LAST:event_jButtonMedicamentosActionPerformed
+        AcessoRapido.dispose(); 
+    }//GEN-LAST:event_btnMedicamentosActionPerformed
 
-    private void jButtonTecEnfermagem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTecEnfermagem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTecEnfermagem1ActionPerformed
+    private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
+       TelaFuncionarioListagem tela = new TelaFuncionarioListagem();
+       this.add(tela);
+       tela.setVisible(true);
+       AcessoRapido.dispose();
+    }//GEN-LAST:event_btnFuncionariosActionPerformed
 
-    private void jButtonTecEnfermagem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTecEnfermagem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTecEnfermagem2ActionPerformed
+    private void btnTecEnfermagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecEnfermagemActionPerformed
+        TelaTecEnfermagemListagem tela = new TelaTecEnfermagemListagem();
+        this.add(tela);
+        tela.setVisible(true);
+        AcessoRapido.dispose();
+    }//GEN-LAST:event_btnTecEnfermagemActionPerformed
 
-    private void jButtonTecEnfermagem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTecEnfermagem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTecEnfermagem3ActionPerformed
+    private void btnUnidadesDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnidadesDeSaudeActionPerformed
+        TelaUnidadeDeSaudeListagem tela = new TelaUnidadeDeSaudeListagem();
+        this.add(tela);
+        tela.setVisible(true);
+        AcessoRapido.dispose();
+    }//GEN-LAST:event_btnUnidadesDeSaudeActionPerformed
 
     private void MenuAgendaConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgendaConsultasActionPerformed
          TelaAgendamentoListagem tela = new TelaAgendamentoListagem();
          this.add(tela);
          tela.setVisible(true);
+         AcessoRapido.dispose();
+         
          
     }//GEN-LAST:event_MenuAgendaConsultasActionPerformed
 
@@ -550,13 +559,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuTecEnfermagem;
     private javax.swing.JMenuItem MenuUnidadeDeSaude;
     private javax.swing.JLabel PainelFundo;
-    private javax.swing.JButton jButtonMedicamentos;
-    private javax.swing.JButton jButtonMedicos;
-    private javax.swing.JButton jButtonPaciente;
-    private javax.swing.JButton jButtonTecEnfermagem;
-    private javax.swing.JButton jButtonTecEnfermagem1;
-    private javax.swing.JButton jButtonTecEnfermagem2;
-    private javax.swing.JButton jButtonTecEnfermagem3;
+    private javax.swing.JButton bntPaciente;
+    private javax.swing.JButton btnAgendamento;
+    private javax.swing.JButton btnFuncionarios;
+    private javax.swing.JButton btnMedicamentos;
+    private javax.swing.JButton btnMedicos;
+    private javax.swing.JButton btnTecEnfermagem;
+    private javax.swing.JButton btnUnidadesDeSaude;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

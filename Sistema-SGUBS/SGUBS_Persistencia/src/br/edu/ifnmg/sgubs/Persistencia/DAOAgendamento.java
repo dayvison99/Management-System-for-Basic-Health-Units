@@ -7,12 +7,10 @@ package br.edu.ifnmg.sgubs.Persistencia;
 
 import br.edu.ifnmg.sgubs.Aplicacao.Agendamento;
 import br.edu.ifnmg.sgubs.Aplicacao.AgendamentoRepositorio;
-import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  *
@@ -29,7 +27,7 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         setConsultaAbrir("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 from agendamento where idAgendamento");
         setConsultaApagar("delete from agendamento where id = ?");
         setConsultaInserir("insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 values(?,?,?,?,?)");
-        setConsultaAlterar("update agendamento set unidadeDeSaude = ?,medic\n" +
+        setConsultaAlterar("update agendamento set unidadeDeSaude = ?,medico\n" +
 "        setConsultaInserir(\"insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 values(?,?,?,?,?)\");\n" +
 "        setConsultaAlterar(\"o_idMedico = ?,paciente_idpaciente = ?,horario= ?,data_2= ? where idAgendamento=?");
         setConsultaBuscar("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,horario,data_2 from agendamento " );
@@ -68,6 +66,8 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         sql.setInt(3, obj.getPaciente().getId());
         sql.setTime(4, obj.getHorario());
         sql.setDate(5, (Date) obj.getData());
+        
+        if(obj.getId() > 0) sql.setInt(6, obj.getId());
         }catch(SQLException ex){
             System.out.println();
         }
@@ -77,13 +77,14 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
 
     @Override
     protected void preencheFiltros(Agendamento filtro) {
-       // if(filtro.getId() > 0) adicionarFiltro("id", "=");
-       // if(filtro.getIdUnidadeSaude() >0)adicionarFiltro(campo, operador)
+        if(filtro.getId() > 0) adicionarFiltro("idAgendamneto", "=");
+        if(filtro.getIdUnidadeSaude() >0)adicionarFiltro(campo, operador)
     }
 
     @Override
     protected void preencheParametros(PreparedStatement sql, Agendamento filtro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
+        

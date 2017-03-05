@@ -7,25 +7,22 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.Agendamento;
 import br.edu.ifnmg.sgubs.Aplicacao.AgendamentoRepositorio;
-import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaude;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
-import com.sun.istack.internal.logging.Logger;
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import org.exolab.castor.types.Time;
 
 /**
  *
@@ -41,11 +38,11 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     
     MedicoRepositorio daoMedico = GerenciadorReferencias.getMedico();
     
-    //Calendar calendario = GregorianCalendar.getInstance();
+    Calendar calendario = GregorianCalendar.getInstance();
     
     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     
-    DateFormat dh = new SimpleDateFormat("00:00:00");
+    SimpleDateFormat dh = new SimpleDateFormat("HH:mm:ss");
     
     TelaAgendamentoListagem listagem;
     
@@ -70,6 +67,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         ComboBoxModel Medico = new DefaultComboBoxModel( daoMedico.Buscar(null).toArray());
         
         cbxMedico.setModel(Medico);
+        
     }
 
     public Agendamento getEntidade() {
@@ -224,14 +222,14 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 127, Short.MAX_VALUE))
+                        .addGap(0, 292, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(cbxUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(174, 174, 174)
                 .addComponent(bntNovo)
                 .addGap(30, 30, 30)
                 .addComponent(bntSalvar)
@@ -239,18 +237,18 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addComponent(bntListar)
                 .addGap(18, 18, 18)
                 .addComponent(bntExcluir)
-                .addGap(106, 106, 106))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bntSalvar)
                     .addComponent(bntListar)
                     .addComponent(bntExcluir)
                     .addComponent(bntNovo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblCodAgendamento))
@@ -274,7 +272,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -341,7 +339,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
-        cbxPaciente.setSelectedItem( entidade.getPaciente());
+        cbxPaciente.setSelectedItem( entidade.getPaciente() );
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
         txtHora.setText( dh.format(entidade.getHorario()));
@@ -349,11 +347,11 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     }
     
     private void preencheObjeto() throws ParseException{
-        entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
-        entidade.setUnidadeSaude((UnidadesDeSaude)cbxPaciente.getSelectedItem());
-        entidade.setMedico((Medico)cbxPaciente.getSelectedItem());
-        entidade.setHorario((Time) dh.parse(txtHora.getText()));
-        entidade.setData( df.parse(txtData.getText())  );
+        //entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
+        //entidade.setUnidadeSaude((UnidadesDeSaude)cbxPaciente.getSelectedItem());
+        //entidade.setMedico((Medico)cbxPaciente.getSelectedItem());
+        //entidade.setHorario((Time) dh.parse(txtHora.getText()));
+      //  entidade.setData( df.parse(txtData.getText())  );
               
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
