@@ -40,7 +40,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
      */
     public TelaMedicoEditar() {
         initComponents();
-            
+         
                
         dao = GerenciadorReferencias.getMedico();
         

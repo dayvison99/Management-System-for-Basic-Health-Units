@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 /**
@@ -35,9 +36,10 @@ public class TelaLogin extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         campoSenha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(java.awt.Color.cyan);
+        setBackground(java.awt.Color.white);
         setBounds(new java.awt.Rectangle(5, 5, 5, 5));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -71,6 +73,8 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,11 +95,17 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(btnFechar)
                 .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Usuario))
@@ -103,7 +113,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Senha)
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar)
                     .addComponent(btnFechar))
@@ -123,9 +133,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         TelaPrincipal entrar = new TelaPrincipal();
-          entrar.setVisible(true);
-          dispose();
+         if(textoLogin.getText().equalsIgnoreCase("admin") && campoSenha.getText().equalsIgnoreCase("1234")){
+                 TelaPrincipal entrar = new TelaPrincipal();
+                 entrar.setVisible(true);
+                 dispose();}
+        else
+             JOptionPane.showMessageDialog(rootPane, "Senha ou Usuário Invalidos !");
 // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -172,6 +185,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnFechar;
     private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField textoLogin;
     // End of variables declaration//GEN-END:variables
 

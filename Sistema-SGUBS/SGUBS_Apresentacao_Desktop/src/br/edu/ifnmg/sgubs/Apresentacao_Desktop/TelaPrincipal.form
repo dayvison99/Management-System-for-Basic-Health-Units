@@ -103,10 +103,13 @@
                 <Property name="text" type="java.lang.String" value="EntradaMedicamento"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="MenuSaidaMedicamento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sa&#xed;daMedicamento"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuSaidaMedicamentoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

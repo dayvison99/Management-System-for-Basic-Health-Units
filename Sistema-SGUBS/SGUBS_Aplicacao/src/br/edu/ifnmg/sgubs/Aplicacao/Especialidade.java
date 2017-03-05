@@ -23,6 +23,12 @@ public class Especialidade implements Entidade{
         this.especialidade = especialidade;
     }
 
+    public Especialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

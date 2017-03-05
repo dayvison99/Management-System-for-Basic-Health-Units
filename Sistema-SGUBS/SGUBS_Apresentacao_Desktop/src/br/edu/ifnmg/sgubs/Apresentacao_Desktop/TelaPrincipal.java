@@ -75,7 +75,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuConsultasAgendadas = new javax.swing.JMenuItem();
         MenuFarmacia = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        MenuSaidaMedicamento = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
         MenuRelatorioMedico = new javax.swing.JMenuItem();
         MenuRelatorioPaciente = new javax.swing.JMenuItem();
@@ -285,8 +285,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2.setText("EntradaMedicamento");
         MenuFarmacia.add(jMenuItem2);
 
-        jMenuItem3.setText("SaídaMedicamento");
-        MenuFarmacia.add(jMenuItem3);
+        MenuSaidaMedicamento.setText("SaídaMedicamento");
+        MenuSaidaMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuSaidaMedicamentoActionPerformed(evt);
+            }
+        });
+        MenuFarmacia.add(MenuSaidaMedicamento);
 
         MenuPrincipal.add(MenuFarmacia);
 
@@ -489,6 +494,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuConsultasAgendadasActionPerformed
 
+    private void MenuSaidaMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSaidaMedicamentoActionPerformed
+        TelaSaidaMedicamentoListagem tela = new TelaSaidaMedicamentoListagem();
+        add(tela);
+        tela.setVisible(true);
+        AcessoRapido.dispose();
+    }//GEN-LAST:event_MenuSaidaMedicamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -568,6 +580,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuRelatorio;
     private javax.swing.JMenuItem MenuRelatorioMedico;
     private javax.swing.JMenuItem MenuRelatorioPaciente;
+    private javax.swing.JMenuItem MenuSaidaMedicamento;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenu MenuSairLogoff;
     private javax.swing.JMenuItem MenuTecEnfermagem;
@@ -586,6 +599,5 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }

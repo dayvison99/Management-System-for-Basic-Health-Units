@@ -12,6 +12,7 @@ import br.edu.ifnmg.sgubs.Aplicacao.FuncionarioRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
+import br.edu.ifnmg.sgubs.Aplicacao.SaidaMedicamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.TecEnfermagemRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
 import br.edu.ifnmg.sgubs.Persistencia.DAOAgendamento;
@@ -20,6 +21,7 @@ import br.edu.ifnmg.sgubs.Persistencia.DAOFuncionario;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedicamento;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
 import br.edu.ifnmg.sgubs.Persistencia.DAOPaciente;
+import br.edu.ifnmg.sgubs.Persistencia.DAOSaidaMedicamento;
 import br.edu.ifnmg.sgubs.Persistencia.DAOTecEnfermagem;
 import br.edu.ifnmg.sgubs.Persistencia.DAOUnidadesDeSaude;
 
@@ -101,12 +103,24 @@ public class GerenciadorReferencias {
         return FuncionarioDao;
     }
     
+    //Agendamento
+    
     private static AgendamentoRepositorio AgendamentoDao;
     
     public static AgendamentoRepositorio getAgendamento(){
         if(AgendamentoDao == null)
             AgendamentoDao = new DAOAgendamento();
         return AgendamentoDao;
+    }
+    
+    //Saida Medicamento
+    
+    private static SaidaMedicamentoRepositorio SaidaMedicamentoDao;
+    
+    public static  SaidaMedicamentoRepositorio getSaidaMedicamanto(){
+        if(SaidaMedicamentoDao == null)
+            SaidaMedicamentoDao = new DAOSaidaMedicamento();
+        return SaidaMedicamentoDao;
     }
     
     

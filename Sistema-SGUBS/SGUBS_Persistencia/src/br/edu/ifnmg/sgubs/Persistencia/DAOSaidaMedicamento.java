@@ -34,6 +34,7 @@ public class DAOSaidaMedicamento extends DAOGenerico<SaidaMedicamento> implement
             tmp.setPaciente(resultado.getString(2));
         } catch (Exception e) {
         }
+        return null;
     }
 
     @Override

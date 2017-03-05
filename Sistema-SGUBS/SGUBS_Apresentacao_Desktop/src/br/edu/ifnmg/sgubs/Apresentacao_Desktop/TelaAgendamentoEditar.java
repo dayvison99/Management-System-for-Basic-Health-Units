@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Action;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -59,9 +60,9 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     public TelaAgendamentoEditar() {
         initComponents();
         
-        ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
+        //ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
         
-       // cbxPaciente.setModel(Paciente);
+      // cbxPaciente.setModel(Paciente);
         
         ComboBoxModel Unidade = new DefaultComboBoxModel( daoUnidadesDeSaude.Buscar(null).toArray());
         
@@ -73,7 +74,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         
         List<Paciente>busca = daoPaciente.Buscar(null);
         
-        preencheTabela(busca);
+       
         
     }
 
@@ -384,7 +385,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
-        //cbxPaciente.setSelectedItem( entidade.getPaciente() );
+        txtPaciente.setAction((Action) entidade.getPaciente());
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
         cbxTurno.setSelectedItem(entidade.getTurno());
@@ -394,7 +395,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     }
     
     private void preencheObjeto() throws ParseException{
-    //    entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
+        //entidade.setPaciente((Paciente)txtPaciente.getName());
         entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
         entidade.setMedico((Medico)cbxMedico.getSelectedItem());
         entidade.setTurno(cbxTurno.getItemAt(WIDTH));
@@ -407,11 +408,17 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
+        modelo.addColumn("Cpf");
+        modelo.addColumn("Bairro");
+        modelo.addColumn("Celular");
         
         for(Paciente p : lista){
             Vector linha = new Vector();
             linha.add(p.getId());
             linha.add(p.getNome());
+            linha.add(p.getCpf());
+            linha.add(p.getBairro());
+            linha.add(p.getCelular());
             modelo.addRow(linha);
         }
         tblPacientes.setModel(modelo);
