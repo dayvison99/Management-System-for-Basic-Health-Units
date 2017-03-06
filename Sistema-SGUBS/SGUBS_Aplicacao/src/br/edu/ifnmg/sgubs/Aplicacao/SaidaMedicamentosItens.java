@@ -12,36 +12,27 @@ import java.util.Objects;
  * @author dayvison
  */
 public class SaidaMedicamentosItens implements Entidade{
+    
     private int id;
     private Medicamento medicamento;
-    private Paciente paciente;
+    private SaidaMedicamento saida;
     private int quantidade;
 
     public SaidaMedicamentosItens() {
     }
 
-    public SaidaMedicamentosItens(Medicamento medicamento, Paciente paciente, int quantidade) {
-        this.medicamento = medicamento;
-        this.paciente = paciente;
-        this.quantidade = quantidade;
-    }
-    
-    
-
-    
-    public SaidaMedicamentosItens(int id, Medicamento medicamento, Paciente paciente, int quantidade) {
+    public SaidaMedicamentosItens(int id, Medicamento medicamento, SaidaMedicamento saida, int quantidade) {
         this.id = id;
         this.medicamento = medicamento;
-        this.paciente = paciente;
+        this.saida = saida;
         this.quantidade = quantidade;
     }
 
     public SaidaMedicamentosItens(SaidaMedicamento entidade, Medicamento medicamento, int parseInt) {
         this.medicamento = medicamento;
-        this.paciente = paciente;
+        this.saida = saida;
         this.quantidade = quantidade;
     }
-
 
     public int getId() {
         return id;
@@ -59,12 +50,12 @@ public class SaidaMedicamentosItens implements Entidade{
         this.medicamento = medicamento;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public SaidaMedicamento getSaida() {
+        return saida;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setSaida(SaidaMedicamento saida) {
+        this.saida = saida;
     }
 
     public int getQuantidade() {
@@ -78,10 +69,10 @@ public class SaidaMedicamentosItens implements Entidade{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + Objects.hashCode(this.medicamento);
-        hash = 89 * hash + Objects.hashCode(this.paciente);
-        hash = 89 * hash + this.quantidade;
+        hash = 11 * hash + this.id;
+        hash = 11 * hash + Objects.hashCode(this.medicamento);
+        hash = 11 * hash + Objects.hashCode(this.saida);
+        hash = 11 * hash + this.quantidade;
         return hash;
     }
 
@@ -106,7 +97,7 @@ public class SaidaMedicamentosItens implements Entidade{
         if (!Objects.equals(this.medicamento, other.medicamento)) {
             return false;
         }
-        if (!Objects.equals(this.paciente, other.paciente)) {
+        if (!Objects.equals(this.saida, other.saida)) {
             return false;
         }
         return true;
@@ -114,10 +105,15 @@ public class SaidaMedicamentosItens implements Entidade{
 
     @Override
     public String toString() {
-        return "MedicamentosItens{" + "id=" + id + ", medicamento=" + medicamento + ", paciente=" + paciente + ", quantidade=" + quantidade + '}';
+        return "SaidaMedicamentosItens{" + "id=" + id + ", medicamento=" + medicamento + ", saida=" + saida + ", quantidade=" + quantidade + '}';
     }
-    
     
     
 }
 
+    
+    
+    
+
+    
+   

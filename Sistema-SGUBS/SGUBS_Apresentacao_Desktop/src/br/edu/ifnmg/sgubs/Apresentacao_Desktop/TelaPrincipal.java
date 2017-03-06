@@ -470,7 +470,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUnidadesDeSaudeActionPerformed
 
     private void MenuAgendaConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgendaConsultasActionPerformed
-         TelaAgendamentoListagem tela = new TelaAgendamentoListagem();
+         TelaTesteAgendamento tela = new TelaTesteAgendamento();
          this.add(tela);
          tela.setVisible(true);
          AcessoRapido.dispose();

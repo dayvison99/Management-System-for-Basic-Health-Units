@@ -118,7 +118,7 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
         modelo.addColumn("ID");
         modelo.addColumn("Cliente");
         modelo.addColumn("Data");
-        modelo.addColumn("Total");
+      
         
         for(SaidaMedicamento s : lista){
             Vector linha = new Vector();
@@ -133,8 +133,9 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
     
     public void editarSaida(int id){
         SaidaMedicamento entidade;
+        
         if(id == 0)
-            entidade = new SaidaMedicamento(id, null,null, new Date(), null);
+            entidade = new SaidaMedicamento(0,null,null,null,null);
         else
             entidade = dao.Abrir(id);
         

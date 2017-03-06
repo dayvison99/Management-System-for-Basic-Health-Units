@@ -39,6 +39,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
     MedicamentoRepositorio daoMedicamento = GerenciadorReferencias.getMedicamentos();
     
     Calendar calendario = GregorianCalendar.getInstance();
+    
     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     
     TelaSaidaMedicamentoListagem listagem;
@@ -102,7 +103,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         lblCodSaida = new javax.swing.JLabel();
         cbxPaciente = new javax.swing.JComboBox<>();
-        txtData = new javax.swing.JFormattedTextField();
+        dtData = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblItens = new javax.swing.JTable();
@@ -152,8 +153,6 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
             }
         });
 
-        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -166,37 +165,38 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
                     .addComponent(lblData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbxPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCodSaida)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCodSaida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(dtData, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5)
+                    .addComponent(lblCodSaida))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPaciente)
+                    .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addComponent(lblCodSaida))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPaciente)
-                            .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addComponent(lblData))
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblData)
+                    .addComponent(dtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
 
@@ -414,27 +414,27 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
     private void preencheObjeto() throws ParseException{
         entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
         
-        entidade.setData( df.parse(txtData.getText())  );
+        entidade.setData( df.parse(dtData.getDateFormatString()));
               
     }
     
     private void preencheCampos(){
         lblCodSaida.setText( Integer.toString(entidade.getId()));
         cbxPaciente.setSelectedItem( entidade.getPaciente());
-        txtData.setText( df.format(entidade.getData())  );
+        dtData.setDate((entidade.getData()));
         
         
         DefaultTableModel itens = new DefaultTableModel();
         
-        itens.addColumn("Produto");
+        itens.addColumn("Medicamentos");
         itens.addColumn("Qtd");
         
         for(SaidaMedicamentosItens i : entidade.getItens()){
-            Vector valor = new Vector();
-            valor.add(i.getMedicamento().getNome());
-            valor.add(i.getQuantidade());
-            valor.add(i);
-            itens.addRow(valor);
+            Vector v = new Vector();
+            v.add(i.getMedicamento().getNome());
+            v.add(i.getQuantidade());
+            v.add(i);
+            itens.addRow(v);
         }
         
         tblItens.setModel(itens);
@@ -455,6 +455,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnVolta;
     private javax.swing.JComboBox<String> cbxMedicamento;
     private javax.swing.JComboBox<String> cbxPaciente;
+    private com.toedter.calendar.JDateChooser dtData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -467,7 +468,6 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblPaciente;
     private javax.swing.JTable tblItens;
-    private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }
