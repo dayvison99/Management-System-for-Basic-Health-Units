@@ -24,10 +24,6 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="41" height="20" uuid="c5a59538-e9ae-408b-a6e0-cd2b852c72ef"/>
-				<text><![CDATA[COD:]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="41" y="0" width="236" height="20" uuid="65415e63-28ab-4165-bb6c-bc19118a9f27"/>
 				<text><![CDATA[NOME:]]></text>
 			</staticText>
@@ -38,6 +34,10 @@
 			<staticText>
 				<reportElement x="440" y="0" width="115" height="20" uuid="c99e33bd-d746-4fa0-91d3-0d59147a1aa0"/>
 				<text><![CDATA[CELULAR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="41" height="20" uuid="c5a59538-e9ae-408b-a6e0-cd2b852c72ef"/>
+				<text><![CDATA[COD:]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

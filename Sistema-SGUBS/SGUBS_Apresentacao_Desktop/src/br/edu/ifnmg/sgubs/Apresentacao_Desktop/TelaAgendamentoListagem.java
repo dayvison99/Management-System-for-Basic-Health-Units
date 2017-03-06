@@ -182,7 +182,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
-        buscarPaciente(txtBusca.getText());
+        //buscarPaciente(txtBusca.getText());
         
     }//GEN-LAST:event_btnBuscarPacienteActionPerformed
 

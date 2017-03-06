@@ -4,6 +4,14 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="MenuPrincipal">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Abyssinica SIL" size="18" style="3"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
       <SubComponents>
@@ -120,7 +128,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuRelatorioMedico">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Cadastro de M&#xe9;dicos"/>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de M&#xe9;dicos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuRelatorioMedicoActionPerformed"/>
@@ -128,10 +136,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuRelatorioPaciente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Cadastro de Paci&#xea;ntes"/>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Paci&#xea;ntes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuRelatorioPacienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuRelatorioMedicamentos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Medicamentos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuRelatorioMedicamentosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -265,7 +281,7 @@
             <Component class="javax.swing.JButton" name="btnAgendamento">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/iconConsultas.png"/>
+                  <Image iconType="3" name="/imagens/iconRelatorio.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Agendamento"/>
               </Properties>
