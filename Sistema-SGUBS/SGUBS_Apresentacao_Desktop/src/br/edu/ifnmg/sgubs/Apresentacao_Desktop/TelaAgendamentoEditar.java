@@ -195,7 +195,12 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Turno da Consulta:");
 
-        cbxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
+        cbxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matutino", "Vespertino", "Noturno" }));
+        cbxTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTurnoActionPerformed(evt);
+            }
+        });
 
         Motivo.setText("Motivo :");
 
@@ -368,6 +373,10 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxUnidadeActionPerformed
 
+    private void cbxTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTurnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTurnoActionPerformed
+
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
         cbxPaciente.setSelectedItem(entidade.getPaciente());
@@ -383,7 +392,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
         entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
         entidade.setMedico((Medico)cbxMedico.getSelectedItem());
-        entidade.setTurno(cbxTurno.getItemAt(WIDTH));
+        entidade.setTurno((String) cbxTurno.getSelectedItem());
         entidade.setData( dcData.getDate());
         entidade.setMotivo( txtMotivo.getText());
               

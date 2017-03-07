@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
+import br.edu.ifnmg.sgubs.Aplicacao.AgendamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
@@ -492,7 +493,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void MenuRelatorioPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioPacienteActionPerformed
         PacienteRepositorio dao = GerenciadorReferencias.getPaciente();
         
-        exibeRelatorioJasper("Pacientes.jasper", dao.Buscar(null) );
+        exibeRelatorioJasper("RelatorioPacientes.jasper", dao.Buscar(null) );
     }//GEN-LAST:event_MenuRelatorioPacienteActionPerformed
 
     private void MenuRelatorioMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioMedicoActionPerformed
@@ -502,7 +503,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuRelatorioMedicoActionPerformed
 
     private void MenuConsultasAgendadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultasAgendadasActionPerformed
-        // TODO add your handling code here:
+        AgendamentoRepositorio dao = GerenciadorReferencias.getAgendamento();
+        
+        exibeRelatorioJasper("AgendamentoGeral.jasper", dao.Buscar(null));
     }//GEN-LAST:event_MenuConsultasAgendadasActionPerformed
 
     private void MenuSaidaMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSaidaMedicamentoActionPerformed

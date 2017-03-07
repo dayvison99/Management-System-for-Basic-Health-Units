@@ -196,19 +196,18 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
 
      private void preencheTabela(List<Agendamento> lista){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Nº Agendamento");
-        modelo.addColumn("Unidade");
-        modelo.addColumn("Medico");
+       
         modelo.addColumn("Paciente");
-        modelo.addColumn("Hora");
+        modelo.addColumn("Medico");
+        modelo.addColumn("Unidade");
+        modelo.addColumn("Periodo");
         modelo.addColumn("Data");
         
         for(Agendamento a : lista){
             Vector linha = new Vector();
-            linha.add(a.getId());
-            linha.add(a.getUnidadeSaude());
-            linha.add(a.getMedico());
             linha.add(a.getPaciente());
+            linha.add(a.getMedico());
+            linha.add(a.getUnidadeSaude());
             linha.add(a.getTurno().toString());
             linha.add(a.getData().toString());
            
