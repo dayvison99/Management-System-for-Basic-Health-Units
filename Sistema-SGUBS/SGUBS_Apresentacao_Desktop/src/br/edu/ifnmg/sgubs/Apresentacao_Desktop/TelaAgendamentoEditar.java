@@ -44,9 +44,9 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     
     MedicoRepositorio daoMedico = GerenciadorReferencias.getMedico();
     
-    Calendar calendario = GregorianCalendar.getInstance();
+    //Calendar calendario = GregorianCalendar.getInstance();
     
-    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+    //SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
     
     TelaAgendamentoListagem listagem;
     
@@ -60,10 +60,10 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     public TelaAgendamentoEditar() {
         initComponents();
         
-        //ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
+       ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
         
-      // cbxPaciente.setModel(Paciente);
-        
+       cbxPaciente.setModel(Paciente);
+       
         ComboBoxModel Unidade = new DefaultComboBoxModel( daoUnidadesDeSaude.Buscar(null).toArray());
         
         cbxUnidade.setModel(Unidade);
@@ -106,25 +106,23 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        lblMedico = new javax.swing.JLabel();
-        cbxMedico = new javax.swing.JComboBox<>();
-        lblPaciente = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        cbxUnidade = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         lblCodAgendamento = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        bntNovo = new javax.swing.JButton();
         bntSalvar = new javax.swing.JButton();
         bntListar = new javax.swing.JButton();
         bntExcluir = new javax.swing.JButton();
-        bntNovo = new javax.swing.JButton();
-        cbxTurno = new javax.swing.JComboBox<>();
-        txtPaciente = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPacientes = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         dcData = new com.toedter.calendar.JDateChooser();
+        cbxPaciente = new javax.swing.JComboBox<>();
+        lblPaciente = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        cbxUnidade = new javax.swing.JComboBox<>();
+        lblMedico = new javax.swing.JLabel();
+        cbxMedico = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cbxTurno = new javax.swing.JComboBox<>();
         Motivo = new javax.swing.JLabel();
         txtMotivo = new javax.swing.JTextField();
 
@@ -144,26 +142,14 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Agendamento de Consultas");
 
-        lblMedico.setText("Medico:");
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        cbxMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblPaciente.setText("Paciente:");
-
-        jLabel1.setText("Unidade:");
-
-        cbxUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbxUnidade.addActionListener(new java.awt.event.ActionListener() {
+        bntNovo.setText("Novo");
+        bntNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxUnidadeActionPerformed(evt);
+                bntNovoActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("CodAgendamento:");
-
-        jLabel3.setText("Data :");
-
-        jLabel4.setText("Turno da Consulta:");
 
         bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,139 +172,142 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
             }
         });
 
-        bntNovo.setText("Novo");
-        bntNovo.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("CodAgendamento:");
+
+        jLabel3.setText("Data :");
+
+        cbxPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblPaciente.setText("Paciente:");
+
+        jLabel1.setText("Unidade:");
+
+        cbxUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxUnidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntNovoActionPerformed(evt);
+                cbxUnidadeActionPerformed(evt);
             }
         });
+
+        lblMedico.setText("Medico:");
+
+        cbxMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setText("Turno da Consulta:");
 
         cbxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
-        tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tblPacientes);
-
         Motivo.setText("Motivo :");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(162, 162, 162)
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblPaciente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblMedico)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbxUnidade, 0, 472, Short.MAX_VALUE)
+                                    .addComponent(cbxMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Motivo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtMotivo))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(bntNovo)
+                        .addGap(30, 30, 30)
+                        .addComponent(bntSalvar)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bntListar)
+                                .addGap(18, 18, 18)
+                                .addComponent(bntExcluir)))))
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bntSalvar)
+                    .addComponent(bntListar)
+                    .addComponent(bntExcluir)
+                    .addComponent(bntNovo))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3))
+                    .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPaciente)
+                    .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cbxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMedico)
+                    .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cbxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Motivo)
+                    .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCodAgendamento)
-                                .addGap(110, 110, 110)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPaciente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(btnBuscar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(bntNovo)
-                        .addGap(30, 30, 30)
-                        .addComponent(bntSalvar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bntListar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bntExcluir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(149, 149, 149)
+                .addComponent(lblCodAgendamento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Motivo)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblMedico)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bntSalvar)
-                    .addComponent(bntListar)
-                    .addComponent(bntExcluir)
-                    .addComponent(bntNovo))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(lblCodAgendamento)
-                        .addComponent(jLabel3))
-                    .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPaciente)
-                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cbxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMedico)
-                    .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Motivo)
-                        .addGap(60, 60, 60))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMotivo, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                        .addGap(27, 27, 27))))
+                .addGap(26, 26, 26)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(lblCodAgendamento)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -379,13 +368,9 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxUnidadeActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-         buscar( txtPaciente.getText() ); 
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
-        txtPaciente.setAction((Action) entidade.getPaciente());
+        cbxPaciente.setSelectedItem(entidade.getPaciente());
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
         cbxTurno.setSelectedItem(entidade.getTurno());
@@ -395,16 +380,16 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     }
     
     private void preencheObjeto() throws ParseException{
-        //entidade.setPaciente((Paciente)txtPaciente.getName());
+        entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
         entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
         entidade.setMedico((Medico)cbxMedico.getSelectedItem());
         entidade.setTurno(cbxTurno.getItemAt(WIDTH));
-        entidade.setData( df.parse(dcData.getDateFormatString()));
+        entidade.setData( dcData.getDate());
         entidade.setMotivo( txtMotivo.getText());
               
     }
     
-    private void preencheTabela(List<Paciente>lista){
+  /*  private void preencheTabela(List<Paciente>lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
@@ -424,17 +409,17 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         tblPacientes.setModel(modelo);
     }
     
-     public void buscar(String nome){
+    public void buscar(String nome){
         
        
         Paciente filtro = new Paciente (0, nome, null, null,null, null, 0, 0, null, null);
         
         List<Paciente> busca = daoPaciente.Buscar(filtro);
         
-        preencheTabela(busca);
+      //  preencheTabela(busca);
         
 
-        }
+        }/*
      
      private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {                                      
         int selecionada =tblPacientes.getSelectedRow();
@@ -442,7 +427,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         int id =Integer.parseInt( tblPacientes.getModel().getValueAt(selecionada,0).toString() );
 
         
-            } 
+            } */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Motivo;
@@ -450,8 +435,8 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntSalvar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> cbxMedico;
+    private javax.swing.JComboBox<String> cbxPaciente;
     private javax.swing.JComboBox<String> cbxTurno;
     private javax.swing.JComboBox<String> cbxUnidade;
     private com.toedter.calendar.JDateChooser dcData;
@@ -460,12 +445,10 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCodAgendamento;
     private javax.swing.JLabel lblMedico;
     private javax.swing.JLabel lblPaciente;
-    private javax.swing.JTable tblPacientes;
     private javax.swing.JTextField txtMotivo;
-    private javax.swing.JTextField txtPaciente;
     // End of variables declaration//GEN-END:variables
 }

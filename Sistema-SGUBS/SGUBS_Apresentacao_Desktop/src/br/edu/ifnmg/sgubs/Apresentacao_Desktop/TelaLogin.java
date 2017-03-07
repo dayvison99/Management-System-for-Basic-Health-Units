@@ -133,12 +133,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         if(textoLogin.getText().equalsIgnoreCase("admin") && campoSenha.getText().equalsIgnoreCase("1234")){
+         //if(textoLogin.getText().equalsIgnoreCase("admin") && campoSenha.getText().equalsIgnoreCase("1234")){
                  TelaPrincipal entrar = new TelaPrincipal();
                  entrar.setVisible(true);
-                 dispose();}
-        else
-             JOptionPane.showMessageDialog(rootPane, "Senha ou Usuário Invalidos !");
+                 dispose();//}
+      //  else
+            // JOptionPane.showMessageDialog(rootPane, "Senha ou Usuário Invalidos !");
 // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarActionPerformed
 

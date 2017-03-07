@@ -14,7 +14,7 @@ import javafx.scene.input.KeyCode;
  */
 public class Medico implements Entidade{
     private int id;
-    private int idEspecialidade;
+    private Especialidade Especialidade;
     private String nome;
     private String crm;
     private String rua;
@@ -27,9 +27,9 @@ public class Medico implements Entidade{
     public Medico() {
     }
 
-    public Medico(int id, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, int idEspecialidade, String observacoes) {
+    public Medico(int id, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, Especialidade Especialidade, String observacoes) {
         this.id = id;
-        this.idEspecialidade = idEspecialidade;
+        this.Especialidade = Especialidade;
         this.nome = nome;
         this.crm = crm;
         this.rua = rua;
@@ -40,25 +40,20 @@ public class Medico implements Entidade{
         this.observacoes = observacoes;
     }
 
-
-
-     
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getIdEspecialidade() {
-        return idEspecialidade;
+    public Especialidade getEspecialidade() {
+        return Especialidade;
     }
 
-    public void setIdEspecialidade(int idEspecialidade) {
-        this.idEspecialidade = idEspecialidade;
+    public void setEspecialidade(Especialidade Especialidade) {
+        this.Especialidade = Especialidade;
     }
 
     public String getNome() {
@@ -127,17 +122,17 @@ public class Medico implements Entidade{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + this.id;
-        hash = 23 * hash + this.idEspecialidade;
-        hash = 23 * hash + Objects.hashCode(this.nome);
-        hash = 23 * hash + Objects.hashCode(this.crm);
-        hash = 23 * hash + Objects.hashCode(this.rua);
-        hash = 23 * hash + Objects.hashCode(this.bairro);
-        hash = 23 * hash + Objects.hashCode(this.cidade);
-        hash = 23 * hash + this.telefone;
-        hash = 23 * hash + this.celular;
-        hash = 23 * hash + Objects.hashCode(this.observacoes);
+        int hash = 7;
+        hash = 73 * hash + this.id;
+        hash = 73 * hash + Objects.hashCode(this.Especialidade);
+        hash = 73 * hash + Objects.hashCode(this.nome);
+        hash = 73 * hash + Objects.hashCode(this.crm);
+        hash = 73 * hash + Objects.hashCode(this.rua);
+        hash = 73 * hash + Objects.hashCode(this.bairro);
+        hash = 73 * hash + Objects.hashCode(this.cidade);
+        hash = 73 * hash + this.telefone;
+        hash = 73 * hash + this.celular;
+        hash = 73 * hash + Objects.hashCode(this.observacoes);
         return hash;
     }
 
@@ -154,9 +149,6 @@ public class Medico implements Entidade{
         }
         final Medico other = (Medico) obj;
         if (this.id != other.id) {
-            return false;
-        }
-        if (this.idEspecialidade != other.idEspecialidade) {
             return false;
         }
         if (this.telefone != other.telefone) {
@@ -183,12 +175,21 @@ public class Medico implements Entidade{
         if (!Objects.equals(this.observacoes, other.observacoes)) {
             return false;
         }
+        if (!Objects.equals(this.Especialidade, other.Especialidade)) {
+            return false;
+        }
         return true;
     }
 
+    
+
+
+     
+  
+
     @Override
     public String toString() {
-        return "Medico{" + "id=" + id + ", idEspecialidade=" + idEspecialidade + ", nome=" + nome + ", crm=" + crm + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", telefone=" + telefone + ", celular=" + celular + ", observacoes=" + observacoes + '}';
+        return  nome ;
     }
     
     

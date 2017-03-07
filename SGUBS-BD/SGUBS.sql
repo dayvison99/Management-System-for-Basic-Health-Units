@@ -294,12 +294,10 @@ DROP TABLE IF EXISTS `saidaMedicamento`;
 CREATE TABLE `saidaMedicamento` (
   `idsaidaMedicamento` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `paciente_idpaciente` int(10) unsigned NOT NULL,
-  `medicamento_idMedicamento` int(10) unsigned NOT NULL,
   `itens` varchar(255) DEFAULT NULL,
   `data_2` date DEFAULT NULL,
   PRIMARY KEY (`idsaidaMedicamento`),
-  KEY `saidaMedicamento_FKIndex1` (`medicamento_idMedicamento`),
-  KEY `saidaMedicamento_FKIndex2` (`paciente_idpaciente`)
+  KEY `saidaMedicamento_FKIndex1` (`paciente_idpaciente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -319,13 +317,14 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `saidaMedicamentosIntens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `saidaMedicamentosIntens` (
-  `idsaidaMedicamentosIntens` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `saidaMedicamentosItens` (
+  `idsaidaMedicamentosItens` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `medicamento_idMedicamento` int(10) unsigned NOT NULL,
-  `paciente_idpaciente` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`idsaidaMedicamentosIntens`),
-  KEY `saidaMedicamentosIntens_FKIndex3` (`paciente_idpaciente`),
-  KEY `saidaMedicamentosIntens_FKIndex2` (`medicamento_idMedicamento`)
+  `saidaMedicamento_idsaidaMedicamento` int(10) unsigned NOT NULL,
+  `quantidade` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`idsaidaMedicamentosItens`),
+  KEY `saidaMedicamentosItens_FKIndex3` (`saidaMedicamento_idsaidaMedicamento`),
+  KEY `saidaMedicamentosItens_FKIndex2` (`medicamento_idMedicamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

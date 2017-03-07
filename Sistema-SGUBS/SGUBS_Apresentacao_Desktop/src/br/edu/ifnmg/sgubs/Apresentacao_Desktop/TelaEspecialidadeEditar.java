@@ -8,6 +8,10 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.sgubs.Aplicacao.Especialidade;
 import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +25,8 @@ public class TelaEspecialidadeEditar extends javax.swing.JInternalFrame {
     EspecialidadeRepositorio dao;
     
     TelaEspecialidadeListagem listagem;
+    
+    Especialidade especialida =new Especialidade();
 
     /**
      * Creates new form TelaEspecialidadeEditar
@@ -142,11 +148,28 @@ public class TelaEspecialidadeEditar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Validacao() throws ParseException, ErroValidacao {
+         
+
+        String nome = txtEspecialidade.getText().trim();
+        if(!nome.equals("")){
+            especialida.setEspecialidade(nome);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite a Especialidade");
+        }
+        
+    }
+    
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
 
+        
         try {
+            
+            this.Validacao();
+            
 
-            if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar mesmo assim ?") == 0)
+            {
 
                 preencheObjeto();
 
@@ -159,11 +182,16 @@ public class TelaEspecialidadeEditar extends javax.swing.JInternalFrame {
             else{
                 JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
             }
+            
+            
 
         } catch (ErroValidacao ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
 
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaEspecialidadeEditar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_bntSalvarActionPerformed
 
     private void bntListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntListarActionPerformed

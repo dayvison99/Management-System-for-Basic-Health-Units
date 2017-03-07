@@ -28,10 +28,8 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
     public DAOAgendamento(){
         setConsultaAbrir("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo from agendamento where idAgendamento");
         setConsultaApagar("delete from agendamento where id = ?");
-        setConsultaInserir("insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo values(?,?,?,?,?,?)");
-        setConsultaAlterar("update agendamento set unidadeDeSaude = ?,medico\n" +
-"        setConsultaInserir(\"insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo values(?,?,?,?,?,?)\");\n" +
-"        setConsultaAlterar(\"o_idMedico = ?,paciente_idpaciente = ?,turno= ?,data_2= ?,motivo=? where idAgendamento=?");
+        setConsultaInserir("insert into agendamento(unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo) values(?,?,?,?,?,?)");
+        setConsultaAlterar("update agendamento set unidadeDeSaude_idUnidadeDeSaude = ?,medico_idMedico =?,paciente_idpaciente =?,turno =?,data_2=?,motivo =? where idAgendamento");
         setConsultaBuscar("select idAgendamento,unidadeDeSaude_idUnidadeDeSaude,medico_idMedico,paciente_idpaciente,turno,data_2,motivo from agendamento " );
         setConsultaUltimoId("select max(idAgendamento) from agendamento where  unidadeDeSaude_idUnidadeDeSaude = ? and medico_idMedico = ? and paciente_idpaciente = ? and turno = ? and data_2 = ? and motivo = ?");
    
@@ -60,6 +58,8 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         }  
       return null;
     }
+    
+    
 
     @Override
     protected void preencheConsulta(PreparedStatement sql, Agendamento obj) {
@@ -68,7 +68,7 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         sql.setInt(2, obj.getMedico().getId());
         sql.setInt(3, obj.getPaciente().getId());
         sql.setString(4, obj.getTurno());
-        sql.setDate(5, (Date) obj.getData());
+        sql.setDate(5,new java.sql.Date(obj.getData().getTime()));
         sql.setString(6, obj.getMotivo());
         
         if(obj.getId() > 0) sql.setInt(7, obj.getId());
@@ -107,5 +107,7 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
     }
 
 }
+
+  
 }
         

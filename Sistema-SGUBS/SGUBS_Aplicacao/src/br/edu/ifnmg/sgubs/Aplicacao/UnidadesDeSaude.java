@@ -98,7 +98,7 @@ public class UnidadesDeSaude implements Entidade{
 
     @Override
     public String toString() {
-        return "UnidadesDeSaude{" + "id=" + id + ", nome=" + nome + ", rua=" + rua + ", bairro=" + bairro + '}';
+        return nome;
     }
 
     

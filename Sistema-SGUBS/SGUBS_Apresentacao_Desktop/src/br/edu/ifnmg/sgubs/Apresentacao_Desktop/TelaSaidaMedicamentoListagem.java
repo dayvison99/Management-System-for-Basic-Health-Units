@@ -7,7 +7,6 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.SaidaMedicamento;
 import br.edu.ifnmg.sgubs.Aplicacao.SaidaMedicamentoRepositorio;
-import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -41,8 +40,8 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnNovo = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblListagem = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMedicamentos = new javax.swing.JTable();
 
         setClosable(true);
         setMaximizable(true);
@@ -56,7 +55,7 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
             }
         });
 
-        tblListagem.setModel(new javax.swing.table.DefaultTableModel(
+        tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -67,12 +66,7 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblListagem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblListagemMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblListagem);
+        jScrollPane2.setViewportView(tblMedicamentos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,32 +75,24 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNovo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNovo))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(btnNovo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblListagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemMouseClicked
-        int selecionada = tblListagem.getSelectedRow();
-
-        int id = Integer.parseInt( tblListagem.getModel().getValueAt(selecionada, 0).toString() );
-
-        editarSaida(id);
-    }//GEN-LAST:event_tblListagemMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         editarSaida(0);
@@ -123,12 +109,12 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
         for(SaidaMedicamento s : lista){
             Vector linha = new Vector();
             linha.add(s.getId());
-            linha.add(s.getPaciente().getNome());
+            linha.add(s.getPaciente().getId());
             linha.add(s.getData().toString());
             modelo.addRow(linha);
         }
         
-        tblListagem.setModel(modelo);
+        tblMedicamentos.setModel(modelo);
     }
     
     public void editarSaida(int id){
@@ -154,7 +140,7 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNovo;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblListagem;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblMedicamentos;
     // End of variables declaration//GEN-END:variables
 }

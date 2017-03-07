@@ -182,7 +182,7 @@ public class Paciente implements Entidade{
 
     @Override
     public String toString() {
-        return "Paciente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", telefone=" + telefone + ", celular=" + celular + ", tipoSanguineo=" + tipoSanguineo + ", localTrabalho=" + localTrabalho + '}';
+        return nome;
     }
     
     

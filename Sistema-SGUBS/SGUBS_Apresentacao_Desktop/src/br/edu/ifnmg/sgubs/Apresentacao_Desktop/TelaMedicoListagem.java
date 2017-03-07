@@ -41,13 +41,13 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
             Vector linha =new Vector();
             linha.add(m.getId());
             linha.add(m.getNome());
-            linha.add(m.getIdEspecialidade());
+            linha.add(m.getEspecialidade());
             modelo.addRow(linha);
         }
         tblBusca.setModel(modelo);
     }    
      public void buscar(String nome){
-        Medico filtro = new Medico(0, nome, null, null, null , null, 0, 0,0, null);
+        Medico filtro = new Medico(0, nome, null, null, null , null, 0, 0,null, null);
         
         List<Medico> busca = dao.Buscar(filtro);
         
@@ -189,7 +189,7 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         Medico entidade;
     //nt id, String nome, String crm, String rua, String bairro, String cidade, int telefone, int celular, int idEspecialidade, String observacoes    
         if(id == 0)
-            entidade =new Medico(0,"", "", "", "" , "", 0, 0,0, "");
+            entidade =new Medico(0,"", "", "", "" , "", 0, 0, null, "");
         else
             entidade = dao.Abrir(id);
         

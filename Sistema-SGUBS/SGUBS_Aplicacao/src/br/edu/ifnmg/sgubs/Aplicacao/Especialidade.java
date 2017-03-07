@@ -76,7 +76,7 @@ public class Especialidade implements Entidade{
 
     @Override
     public String toString() {
-        return "Especialidade{" + "id=" + id + ", especialidade=" + especialidade + '}';
+        return especialidade;
     }
     
     

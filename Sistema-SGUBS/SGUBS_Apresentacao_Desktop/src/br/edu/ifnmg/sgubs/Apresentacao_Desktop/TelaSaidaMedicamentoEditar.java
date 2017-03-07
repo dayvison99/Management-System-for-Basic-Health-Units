@@ -40,7 +40,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
     
     Calendar calendario = GregorianCalendar.getInstance();
     
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
     
     TelaSaidaMedicamentoListagem listagem;
     

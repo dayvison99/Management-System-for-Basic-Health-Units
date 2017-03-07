@@ -196,7 +196,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
 
      private void preencheTabela(List<Agendamento> lista){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
+        modelo.addColumn("Nº Agendamento");
         modelo.addColumn("Unidade");
         modelo.addColumn("Medico");
         modelo.addColumn("Paciente");
@@ -220,7 +220,9 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
     }
      public void editarAgendamento(int id){
         Agendamento entidade;
+        
         if(id == 0)
+            
             entidade = new Agendamento(id,null,null,null,null,new Date(),null);
         else
             entidade = dao.Abrir(id);
@@ -232,11 +234,13 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         editar.setListagem(this);
         
         this.getParent().add(editar);
+        
         editar.setVisible(true);
+        
         this.setVisible(false);
     }
      
-    public void buscarPaciente(String nome){
+    /*public void buscarPaciente(String nome){
         
         Object a = nome; 
         
@@ -245,7 +249,7 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         List<Agendamento> busca = dao.Buscar(filtro);
         
         preencheTabela(busca);
-        }
+        }*/
      
      
     // Variables declaration - do not modify//GEN-BEGIN:variables

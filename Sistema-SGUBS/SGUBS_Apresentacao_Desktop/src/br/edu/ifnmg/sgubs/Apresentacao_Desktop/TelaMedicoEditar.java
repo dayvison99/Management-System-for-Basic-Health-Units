@@ -10,16 +10,9 @@ import br.edu.ifnmg.sgubs.Aplicacao.Especialidade;
 import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
-import br.edu.ifnmg.sgubs.Persistencia.ConectarBD;
-import br.edu.ifnmg.sgubs.Persistencia.DAOGenerico;
-import br.edu.ifnmg.sgubs.Persistencia.DAOMedico;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import org.jfree.data.general.CombinationDataset;
 
 /**
  *
@@ -275,7 +268,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntListarActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-       entidade =new Medico(0, " ", "", "", "" , "",0, 0,0, "");
+       entidade =new Medico(0, " ", "", "", "" , "",0, 0,null, "");
        preencheCampos();
     }//GEN-LAST:event_bntNovoActionPerformed
 
@@ -284,7 +277,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
            
            if(dao.Apagar(entidade)){
                JOptionPane.showMessageDialog(rootPane, "Dados Excluidos com sucesso !");
-               entidade = new Medico(0, " ", "", "", "" , "", 0, 0,0, "");
+               entidade = new Medico(0, " ", "", "", "" , "", 0, 0,null, "");
                preencheCampos();
            }
            else
@@ -342,7 +335,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         txtCidade.setText( entidade.getCidade());
         txtCelular.setText( Integer.toString(entidade.getCelular()));
         txtTelefone.setText( Integer.toString(entidade.getTelefone()));
-        cbxEspecialidades.setSelectedItem(Integer.toString(entidade.getIdEspecialidade()));
+        cbxEspecialidades.setSelectedItem((entidade.getEspecialidade()));
         txtObs.setText( entidade.getObservacoes());
                 
         
@@ -356,7 +349,7 @@ public class TelaMedicoEditar extends javax.swing.JInternalFrame {
         entidade.setCidade( txtCidade.getText());
         entidade.setCelular(Integer.parseInt(txtCelular.getText()));
         entidade.setTelefone( Integer.parseInt(txtTelefone.getText()));
-       // entidade.setIdEspecialidade((Especialidade)cbxMedico.getSelectedItem());
+        entidade.setEspecialidade((Especialidade)cbxEspecialidades.getSelectedItem());
         entidade.setObservacoes( txtObs.getText());
     }
     

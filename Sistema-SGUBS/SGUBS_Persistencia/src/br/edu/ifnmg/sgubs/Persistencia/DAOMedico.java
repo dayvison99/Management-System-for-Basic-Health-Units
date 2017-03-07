@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.sgubs.Persistencia;
 
+import br.edu.ifnmg.sgubs.Aplicacao.Especialidade;
 import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import java.sql.PreparedStatement;
@@ -21,13 +22,16 @@ import java.util.logging.Logger;
  */
 public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
     
+    private DAOEspecialidade especialidades;
+    
      public DAOMedico() {
         setConsultaAbrir("select idMedico , nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes from medico where idMedico = ?");
         setConsultaApagar("delete from medico where idMedico = ?");
         setConsultaInserir("insert into medico( nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes) values(?,?,?,?,?,?,?,?,?)");
         setConsultaAlterar("update medico set  nome=?, crm=?,rua=?,bairro=?,cidade=?,telefone=?,celular=?,especialidade_idEspecialidade =?,observacoes=? where idMedico = ?");
         setConsultaBuscar("select idMedico, nome, crm,rua,bairro,cidade,telefone,celular,especialidade_idEspecialidade,observacoes from medico " );
-    }
+        especialidades = new DAOEspecialidade();
+     }
 
     @Override
     protected Medico preencheObjeto(ResultSet resultado) {
@@ -41,11 +45,11 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
           tmp.setCidade(resultado.getString(6));
           tmp.setTelefone(resultado.getInt(7));
           tmp.setCelular(resultado.getInt(8));
-          tmp.setIdEspecialidade(resultado.getInt(9));
+          tmp.setEspecialidade(especialidades.Abrir(resultado.getInt(9)));
           tmp.setObservacoes(resultado.getString(10));
           return tmp;
         } catch (SQLException ex) {
-           System.out.println(ex);
+             Logger.getLogger(DAOMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
        return null;
     }
@@ -60,13 +64,13 @@ public class DAOMedico extends DAOGenerico<Medico> implements MedicoRepositorio{
        sql.setString(5, obj.getCidade());
        sql.setInt(6, obj.getTelefone());
        sql.setInt(7, obj.getCelular());
-       sql.setInt(8, obj.getIdEspecialidade());
+       sql.setInt(8, obj.getEspecialidade().getId());
        sql.setString(9, obj.getObservacoes());
        
        if(obj.getId()>0) sql.setInt(10,obj.getId());
        
        } catch(SQLException ex){
-         System.out.println(ex);
+          Logger.getLogger(DAOMedico.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
 
