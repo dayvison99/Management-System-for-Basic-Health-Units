@@ -90,7 +90,7 @@ public class DAOPaciente extends DAOGenerico<Paciente> implements PacienteReposi
     protected void preencheFiltros(Paciente filtro) {
         if(filtro.getId()>0) adicionarFiltro("idpaciente","=");
         if(filtro.getNome()!=null)adicionarFiltro("nome","like");
-        if(filtro.getCpf()!=null)adicionarFiltro("cpf", "=");
+        if(filtro.getCpf()!=null)adicionarFiltro("cpf", "like");
         if(filtro.getRua()!=null)adicionarFiltro("rua", "=");
         if(filtro.getBairro()!=null)adicionarFiltro("bairro", "=");
         if(filtro.getCidade()!=null)adicionarFiltro("cidade", "=");

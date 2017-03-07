@@ -9,6 +9,7 @@ import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,11 +39,13 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
+        modelo.addColumn("CPF");
         
         for(Paciente p : lista){
             Vector linha = new Vector();
             linha.add(p.getId());
             linha.add(p.getNome());
+            linha.add(p.getCpf());
             modelo.addRow(linha);
         }
         tblBusca.setModel(modelo);
@@ -58,8 +61,23 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         
         preencheTabela(busca);
         
+        filtro = null;
 
         }
+    
+    public void buscarCpf(String nome){
+        
+       
+        Paciente filtro = new Paciente (0, null, nome, null,null, null, 0, 0, null, null);
+        
+        List<Paciente> busca = dao.Buscar(filtro);
+        
+        preencheTabela(busca);
+        
+        filtro = null;
+
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +92,9 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         tblBusca = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         txtBusca = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
+        btnNome = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnCpf = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -87,24 +107,9 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "Nome"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tblBusca.getTableHeader().setReorderingAllowed(false);
         tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,10 +131,19 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
             }
         });
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnNome.setText("Nome ");
+        btnNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+                btnNomeActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Buscar por:");
+
+        btnCpf.setText("Cpf ");
+        btnCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCpfActionPerformed(evt);
             }
         });
 
@@ -138,26 +152,43 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap(83, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBusca)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                        .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCpf))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel1)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo)
-                    .addComponent(btnBuscar)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNovo)
+                            .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNome)
+                            .addComponent(btnCpf))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -174,9 +205,9 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        buscar( txtBusca.getText() );
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
+        buscar(txtBusca.getText() );
+    }//GEN-LAST:event_btnNomeActionPerformed
 
     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
         int selecionada =tblBusca.getSelectedRow();
@@ -185,6 +216,13 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
 
         editarPaciente(id);
     }//GEN-LAST:event_tblBuscaMouseClicked
+
+    private void btnCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCpfActionPerformed
+      if(!txtBusca.getText().equals(""))
+          buscarCpf(txtBusca.getText() );
+      else    
+         JOptionPane.showMessageDialog(this, "Digite o Cpf");
+    }//GEN-LAST:event_btnCpfActionPerformed
 
     public void editarPaciente(int id){
         Paciente entidade;
@@ -209,8 +247,10 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCpf;
+    private javax.swing.JButton btnNome;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBusca;
     private javax.swing.JTextField txtBusca;
