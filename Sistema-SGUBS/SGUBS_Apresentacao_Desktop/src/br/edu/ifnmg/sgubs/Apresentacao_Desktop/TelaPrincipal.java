@@ -93,7 +93,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         AcessoRapido.setClosable(true);
         AcessoRapido.setMaximizable(true);
-        AcessoRapido.setResizable(true);
         AcessoRapido.setTitle("Acesso Rápido");
         AcessoRapido.setAutoscrolls(true);
         AcessoRapido.setVisible(true);

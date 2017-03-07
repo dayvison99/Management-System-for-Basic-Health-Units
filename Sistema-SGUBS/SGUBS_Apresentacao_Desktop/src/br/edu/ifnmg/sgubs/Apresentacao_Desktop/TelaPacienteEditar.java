@@ -8,6 +8,11 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +26,8 @@ public class TelaPacienteEditar extends javax.swing.JInternalFrame {
     PacienteRepositorio dao;
     
     TelaPacienteListagem listagem;
+    
+    Paciente paciente = new Paciente();
 
     /**
      * Creates new form TelaPacienteEditar
@@ -239,10 +246,64 @@ public class TelaPacienteEditar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Validacao() throws ParseException, ErroValidacao {
+    
+
+        String nome = txtNome.getText().trim();
+        if(!nome.equals("")){
+            paciente.setNome(nome);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite o Nome do Paciente");
+        }
+        
+        String cpf = txtCpf.getText().trim();
+        if(!cpf.equals("")){
+            paciente.setCpf(cpf);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite o Cpf do Paciente");
+        }
+        
+        String rua = txtRua.getText().trim();
+        if(!rua.equals("")){
+            paciente.setRua(rua);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite a Rua do Paciente");
+        }
+        
+        String bairro = txtBairro.getText().trim();
+        if(!bairro.equals("")){
+            paciente.setBairro(bairro);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite o Bairro do Paciente");
+        }
+        
+        String cidade = txtCidade.getText().trim();
+        if(!cidade.equals("")){
+            paciente.setCidade(cidade);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite a cidade do Paciente");
+        }
+        
+        String tipo = txtTipoSanguineo.getText().trim();
+        if(!tipo.equals("")){
+            paciente.setTipoSanguineo(tipo);
+            JOptionPane.showMessageDialog(this, "Digite o Celular do Paciente");
+        }
+        
+        String trabalho = txtLocalTrabalho.getText().trim();
+        if(!trabalho.equals("")){
+            paciente.setLocalTrabalho(trabalho);
+        }else {
+            JOptionPane.showMessageDialog(this, "Digite o Telefone do Paciente");
+        }
+        
+    }
+    
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
 
         try {
             
+            this.Validacao();
 
             if(JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
                 
@@ -263,6 +324,8 @@ public class TelaPacienteEditar extends javax.swing.JInternalFrame {
         } catch (ErroValidacao ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
 
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaPacienteEditar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_bntSalvarActionPerformed
 

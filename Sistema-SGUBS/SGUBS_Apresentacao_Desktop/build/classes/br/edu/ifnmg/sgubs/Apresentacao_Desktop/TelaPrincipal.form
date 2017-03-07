@@ -220,11 +220,13 @@
       <Properties>
         <Property name="closable" type="boolean" value="true"/>
         <Property name="maximizable" type="boolean" value="true"/>
-        <Property name="resizable" type="boolean" value="true"/>
         <Property name="title" type="java.lang.String" value="Acesso R&#xe1;pido"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="TelaPrincipal_AcessoRapido"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="220" width="880" height="490"/>
