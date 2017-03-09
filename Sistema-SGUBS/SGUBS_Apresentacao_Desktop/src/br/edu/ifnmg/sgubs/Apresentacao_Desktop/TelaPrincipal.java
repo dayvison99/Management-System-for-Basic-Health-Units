@@ -200,8 +200,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(AcessoRapido);
         AcessoRapido.setBounds(0, 220, 880, 490);
 
-        MenuPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        MenuPrincipal.setFont(new java.awt.Font("Abyssinica SIL", 3, 18)); // NOI18N
+        MenuPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        MenuPrincipal.setFont(new java.awt.Font("Abyssinica SIL", 2, 24)); // NOI18N
         MenuPrincipal.setName(""); // NOI18N
 
         MenuCadastros.setText("Cadastros");
@@ -327,6 +327,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal.add(MenuRelatorio);
 
+        MenuSairLogoff.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         MenuSairLogoff.setText("Sair/Logoff");
         MenuSairLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

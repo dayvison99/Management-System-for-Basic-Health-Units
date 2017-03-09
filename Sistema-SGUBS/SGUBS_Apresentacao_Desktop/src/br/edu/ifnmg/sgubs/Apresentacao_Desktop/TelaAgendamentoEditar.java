@@ -40,6 +40,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     
     PacienteRepositorio daoPaciente = GerenciadorReferencias.getPaciente();
     
+    
     UnidadesDeSaudeRepositorio daoUnidadesDeSaude = GerenciadorReferencias.getUnidadeDeSaude();
     
     MedicoRepositorio daoMedico = GerenciadorReferencias.getMedico();
@@ -60,9 +61,9 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     public TelaAgendamentoEditar() {
         initComponents();
         
-       ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
+      // ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
         
-       cbxPaciente.setModel(Paciente);
+    //   cbxPaciente.setModel(Paciente);
        
         ComboBoxModel Unidade = new DefaultComboBoxModel( daoUnidadesDeSaude.Buscar(null).toArray());
         
@@ -115,7 +116,6 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         dcData = new com.toedter.calendar.JDateChooser();
-        cbxPaciente = new javax.swing.JComboBox<>();
         lblPaciente = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cbxUnidade = new javax.swing.JComboBox<>();
@@ -125,6 +125,12 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         cbxTurno = new javax.swing.JComboBox<>();
         Motivo = new javax.swing.JLabel();
         txtMotivo = new javax.swing.JTextField();
+        txtPaciente = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPacientes = new javax.swing.JTable();
+        btnCpf = new javax.swing.JButton();
+        btnNome = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -176,8 +182,6 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Data :");
 
-        cbxPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lblPaciente.setText("Paciente:");
 
         jLabel1.setText("Unidade:");
@@ -204,6 +208,35 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
         Motivo.setText("Motivo :");
 
+        tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblPacientes);
+
+        btnCpf.setText("Cpf ");
+        btnCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCpfActionPerformed(evt);
+            }
+        });
+
+        btnNome.setText("Nome ");
+        btnNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNomeActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Buscar por :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,23 +245,11 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(162, 162, 162)
                                 .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblPaciente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblMedico)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbxUnidade, 0, 472, Short.MAX_VALUE)
-                                    .addComponent(cbxMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +260,32 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(Motivo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtMotivo))))))
+                                        .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblMedico)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbxUnidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblPaciente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(btnNome)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnCpf)
+                                                .addGap(9, 9, 9))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(29, 29, 29))))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(217, 217, 217)
                         .addComponent(bntNovo)
@@ -252,7 +298,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                                 .addComponent(bntListar)
                                 .addGap(18, 18, 18)
                                 .addComponent(bntExcluir)))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,11 +315,22 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(dcData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPaciente)
-                    .addComponent(cbxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNome)
+                            .addComponent(btnCpf)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPaciente))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,7 +346,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Motivo)
                     .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,16 +358,16 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
                 .addComponent(lblCodAgendamento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
+                .addGap(18, 18, 18)
                 .addComponent(lblCodAgendamento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -377,9 +434,20 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxTurnoActionPerformed
 
+    private void btnCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCpfActionPerformed
+        if(!txtPaciente.getText().equals(""))
+        buscarCpf(txtPaciente.getText() );
+        else
+        JOptionPane.showMessageDialog(this, "Digite o Cpf");
+    }//GEN-LAST:event_btnCpfActionPerformed
+
+    private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
+        buscar(txtPaciente.getText() );
+    }//GEN-LAST:event_btnNomeActionPerformed
+
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
-        cbxPaciente.setSelectedItem(entidade.getPaciente());
+      //  txtPaciente.;
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
         cbxTurno.setSelectedItem(entidade.getTurno());
@@ -389,7 +457,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     }
     
     private void preencheObjeto() throws ParseException{
-        entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
+      //  entidade.setPaciente(txtPaciente.getText());
         entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
         entidade.setMedico((Medico)cbxMedico.getSelectedItem());
         entidade.setTurno((String) cbxTurno.getSelectedItem());
@@ -398,25 +466,22 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
               
     }
     
-  /*  private void preencheTabela(List<Paciente>lista){
+  private void preencheTabela(List<Paciente>lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
-        modelo.addColumn("Cpf");
-        modelo.addColumn("Bairro");
-        modelo.addColumn("Celular");
+        modelo.addColumn("CPF");
         
         for(Paciente p : lista){
             Vector linha = new Vector();
             linha.add(p.getId());
             linha.add(p.getNome());
             linha.add(p.getCpf());
-            linha.add(p.getBairro());
-            linha.add(p.getCelular());
             modelo.addRow(linha);
         }
-        tblPacientes.setModel(modelo);
+         tblPacientes.setModel(modelo);
     }
+    
     
     public void buscar(String nome){
         
@@ -425,12 +490,26 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
         
         List<Paciente> busca = daoPaciente.Buscar(filtro);
         
-      //  preencheTabela(busca);
+        preencheTabela(busca);
         
+        filtro = null;
 
-        }/*
+        }
+    
+    public void buscarCpf(String nome){
+        
+       
+        Paciente filtro = new Paciente (0, null, nome, null,null, null, 0, 0, null, null);
+        
+        List<Paciente> busca = daoPaciente.Buscar(filtro);
+        
+        preencheTabela(busca);
+        
+        filtro = null;
+
+        }
      
-     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {                                      
+    /* private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {                                      
         int selecionada =tblPacientes.getSelectedRow();
 
         int id =Integer.parseInt( tblPacientes.getModel().getValueAt(selecionada,0).toString() );
@@ -444,8 +523,9 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JButton bntListar;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntSalvar;
+    private javax.swing.JButton btnCpf;
+    private javax.swing.JButton btnNome;
     private javax.swing.JComboBox<String> cbxMedico;
-    private javax.swing.JComboBox<String> cbxPaciente;
     private javax.swing.JComboBox<String> cbxTurno;
     private javax.swing.JComboBox<String> cbxUnidade;
     private com.toedter.calendar.JDateChooser dcData;
@@ -453,11 +533,15 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodAgendamento;
     private javax.swing.JLabel lblMedico;
     private javax.swing.JLabel lblPaciente;
+    private javax.swing.JTable tblPacientes;
     private javax.swing.JTextField txtMotivo;
+    private javax.swing.JTextField txtPaciente;
     // End of variables declaration//GEN-END:variables
 }
