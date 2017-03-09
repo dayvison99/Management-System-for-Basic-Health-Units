@@ -13,22 +13,16 @@ import br.edu.ifnmg.sgubs.Aplicacao.Paciente;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaude;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Action;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.exolab.castor.types.Time;
 
 /**
  *
@@ -61,7 +55,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     public TelaAgendamentoEditar() {
         initComponents();
         
-      // ComboBoxModel Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
+         // Paciente = new DefaultComboBoxModel( daoPaciente.Buscar(null).toArray());
         
     //   cbxPaciente.setModel(Paciente);
        
@@ -219,6 +213,11 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPacientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblPacientes);
 
         btnCpf.setText("Cpf ");
@@ -443,21 +442,32 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
 
     private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
         buscar(txtPaciente.getText() );
+        
     }//GEN-LAST:event_btnNomeActionPerformed
+
+    private void tblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMouseClicked
+        int selecionada =tblPacientes.getSelectedRow();
+
+        String id = tblPacientes.getModel().getValueAt(selecionada,1).toString() ;
+
+       txtPaciente.setText(id);
+        
+    }//GEN-LAST:event_tblPacientesMouseClicked
 
     private void preencheCampos(){
         lblCodAgendamento.setText( Integer.toString(entidade.getId()));
-      //  txtPaciente.;
+        txtPaciente.setText(Paciente( entidade.getPaciente()));
         cbxUnidade.setSelectedItem( entidade.getUnidadeSaude());
         cbxMedico.setSelectedItem( entidade.getMedico());
         cbxTurno.setSelectedItem(entidade.getTurno());
         dcData.setDate((entidade.getData()));
         txtMotivo.setText( entidade.getMotivo());
         
+        
     }
     
     private void preencheObjeto() throws ParseException{
-      //  entidade.setPaciente(txtPaciente.getText());
+        entidade.setPaciente((Paciente)txtPaciente.getText());
         entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
         entidade.setMedico((Medico)cbxMedico.getSelectedItem());
         entidade.setTurno((String) cbxTurno.getSelectedItem());
