@@ -10,5 +10,8 @@ package br.edu.ifnmg.sgubs.Aplicacao;
  * @author dayvison
  */
 public interface AgendamentoRepositorio extends Repositorio<Agendamento>{
+     
+     
+     
     
 }

@@ -80,7 +80,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="MenuAgendamento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Agendamento"/>
+            <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuAgendaConsultas">
@@ -93,10 +93,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuConsultasAgendadas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultas Agendadas"/>
+                <Property name="text" type="java.lang.String" value="Realizar Consultas "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuConsultasAgendadasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuRalAgendamntos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relatorio de Agendamentos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuRalAgendamntosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

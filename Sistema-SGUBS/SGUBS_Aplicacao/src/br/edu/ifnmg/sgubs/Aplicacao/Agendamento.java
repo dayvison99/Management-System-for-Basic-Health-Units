@@ -21,8 +21,20 @@ public class Agendamento implements Entidade{
     private String turno;
     private Date data;
     private String motivo;
+    private String status = "Aberto";
 
     public Agendamento() {
+    }
+
+    public Agendamento(int id, UnidadesDeSaude UnidadeSaude, Medico Medico, Paciente Paciente, String turno, Date data, String motivo, String status) {
+        this.id = id;
+        this.UnidadeSaude = UnidadeSaude;
+        this.Medico = Medico;
+        this.Paciente = Paciente;
+        this.turno = turno;
+        this.data = data;
+        this.motivo = motivo;
+        this.status = status;
     }
 
     public Agendamento(int id, UnidadesDeSaude UnidadeSaude, Medico Medico, Paciente Paciente, String turno, Date data, String motivo) {
@@ -89,6 +101,14 @@ public class Agendamento implements Entidade{
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

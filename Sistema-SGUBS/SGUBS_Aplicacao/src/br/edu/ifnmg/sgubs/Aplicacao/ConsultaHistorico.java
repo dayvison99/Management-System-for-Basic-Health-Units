@@ -15,11 +15,10 @@ import java.util.Objects;
  */
 public class ConsultaHistorico implements Entidade {
     private int id;
-    private int idMedicamento;
-    private int idMedico;
-    private int idPaciente;
+    private Medico Medico;
+    private Paciente Paciente;
     private Date date;
-    private Time horario;
+    private String periodo;
     private String prescricaoMedica;
     private double pressaoArterial;
     private double peso;
@@ -28,13 +27,12 @@ public class ConsultaHistorico implements Entidade {
     public ConsultaHistorico() {
     }
 
-    public ConsultaHistorico(int id, int idMedicamento, int idMedico, int idPaciente, Date date, Time horario, String prescricaoMedica, double pressaoArterial, double peso, double altura) {
+    public ConsultaHistorico(int id, Medico Medico, Paciente Paciente, Date date, String periodo, String prescricaoMedica, double pressaoArterial, double peso, double altura) {
         this.id = id;
-        this.idMedicamento = idMedicamento;
-        this.idMedico = idMedico;
-        this.idPaciente = idPaciente;
+        this.Medico = Medico;
+        this.Paciente = Paciente;
         this.date = date;
-        this.horario = horario;
+        this.periodo = periodo;
         this.prescricaoMedica = prescricaoMedica;
         this.pressaoArterial = pressaoArterial;
         this.peso = peso;
@@ -49,28 +47,20 @@ public class ConsultaHistorico implements Entidade {
         this.id = id;
     }
 
-    public int getIdMedicamento() {
-        return idMedicamento;
+    public Medico getMedico() {
+        return Medico;
     }
 
-    public void setIdMedicamento(int idMedicamento) {
-        this.idMedicamento = idMedicamento;
+    public void setMedico(Medico Medico) {
+        this.Medico = Medico;
     }
 
-    public int getIdMedico() {
-        return idMedico;
+    public Paciente getPaciente() {
+        return Paciente;
     }
 
-    public void setIdMedico(int idMedico) {
-        this.idMedico = idMedico;
-    }
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
+    public void setPaciente(Paciente Paciente) {
+        this.Paciente = Paciente;
     }
 
     public Date getDate() {
@@ -81,12 +71,12 @@ public class ConsultaHistorico implements Entidade {
         this.date = date;
     }
 
-    public Time getHorario() {
-        return horario;
+    public String getPeriodo() {
+        return periodo;
     }
 
-    public void setHorario(Time horario) {
-        this.horario = horario;
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     public String getPrescricaoMedica() {
@@ -123,17 +113,16 @@ public class ConsultaHistorico implements Entidade {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + this.idMedicamento;
-        hash = 97 * hash + this.idMedico;
-        hash = 97 * hash + this.idPaciente;
-        hash = 97 * hash + Objects.hashCode(this.date);
-        hash = 97 * hash + Objects.hashCode(this.horario);
-        hash = 97 * hash + Objects.hashCode(this.prescricaoMedica);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.pressaoArterial) ^ (Double.doubleToLongBits(this.pressaoArterial) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
+        int hash = 3;
+        hash = 67 * hash + this.id;
+        hash = 67 * hash + Objects.hashCode(this.Medico);
+        hash = 67 * hash + Objects.hashCode(this.Paciente);
+        hash = 67 * hash + Objects.hashCode(this.date);
+        hash = 67 * hash + Objects.hashCode(this.periodo);
+        hash = 67 * hash + Objects.hashCode(this.prescricaoMedica);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.pressaoArterial) ^ (Double.doubleToLongBits(this.pressaoArterial) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
         return hash;
     }
 
@@ -152,15 +141,6 @@ public class ConsultaHistorico implements Entidade {
         if (this.id != other.id) {
             return false;
         }
-        if (this.idMedicamento != other.idMedicamento) {
-            return false;
-        }
-        if (this.idMedico != other.idMedico) {
-            return false;
-        }
-        if (this.idPaciente != other.idPaciente) {
-            return false;
-        }
         if (Double.doubleToLongBits(this.pressaoArterial) != Double.doubleToLongBits(other.pressaoArterial)) {
             return false;
         }
@@ -170,20 +150,29 @@ public class ConsultaHistorico implements Entidade {
         if (Double.doubleToLongBits(this.altura) != Double.doubleToLongBits(other.altura)) {
             return false;
         }
+        if (!Objects.equals(this.periodo, other.periodo)) {
+            return false;
+        }
         if (!Objects.equals(this.prescricaoMedica, other.prescricaoMedica)) {
+            return false;
+        }
+        if (!Objects.equals(this.Medico, other.Medico)) {
+            return false;
+        }
+        if (!Objects.equals(this.Paciente, other.Paciente)) {
             return false;
         }
         if (!Objects.equals(this.date, other.date)) {
             return false;
         }
-        return Objects.equals(this.horario, other.horario);
+        return true;
     }
 
     @Override
     public String toString() {
-        return "ConsultaHistorico{" + "id=" + id + ", idMedicamento=" + idMedicamento + ", idMedico=" + idMedico + ", idPaciente=" + idPaciente + ", date=" + date + ", horario=" + horario + ", prescricaoMedica=" + prescricaoMedica + ", pressaoArterial=" + pressaoArterial + ", peso=" + peso + ", altura=" + altura + '}';
+        return "ConsultaHistorico{" + "id=" + id + ", Medico=" + Medico + ", Paciente=" + Paciente + ", date=" + date + ", periodo=" + periodo + ", prescricaoMedica=" + prescricaoMedica + ", pressaoArterial=" + pressaoArterial + ", peso=" + peso + ", altura=" + altura + '}';
     }
-    
+
   
    
     

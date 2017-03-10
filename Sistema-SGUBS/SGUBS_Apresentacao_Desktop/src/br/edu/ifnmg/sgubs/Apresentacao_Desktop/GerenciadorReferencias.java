@@ -7,6 +7,8 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.Agendamento;
 import br.edu.ifnmg.sgubs.Aplicacao.AgendamentoRepositorio;
+import br.edu.ifnmg.sgubs.Aplicacao.ConsultaHistorico;
+import br.edu.ifnmg.sgubs.Aplicacao.ConsultaHistoricoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.EspecialidadeRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.FuncionarioRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicamentoRepositorio;
@@ -16,6 +18,7 @@ import br.edu.ifnmg.sgubs.Aplicacao.SaidaMedicamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.TecEnfermagemRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
 import br.edu.ifnmg.sgubs.Persistencia.DAOAgendamento;
+import br.edu.ifnmg.sgubs.Persistencia.DAOConsultaHistorico;
 import br.edu.ifnmg.sgubs.Persistencia.DAOEspecialidade;
 import br.edu.ifnmg.sgubs.Persistencia.DAOFuncionario;
 import br.edu.ifnmg.sgubs.Persistencia.DAOMedicamento;
@@ -121,6 +124,14 @@ public class GerenciadorReferencias {
         if(SaidaMedicamentoDao == null)
             SaidaMedicamentoDao = new DAOSaidaMedicamento();
         return SaidaMedicamentoDao;
+    }
+    
+    private static ConsultaHistoricoRepositorio ConsultaHDao;
+    
+    public static  ConsultaHistoricoRepositorio getConsultaHistorico(){
+        if(ConsultaHDao == null)
+            ConsultaHDao = new DAOConsultaHistorico();
+        return ConsultaHDao;
     }
     
     
