@@ -31,6 +31,8 @@ public class TelaPacienteListagem extends javax.swing.JInternalFrame {
         
         preencheTabela(busca);
         
+        
+        
                 
         
     }

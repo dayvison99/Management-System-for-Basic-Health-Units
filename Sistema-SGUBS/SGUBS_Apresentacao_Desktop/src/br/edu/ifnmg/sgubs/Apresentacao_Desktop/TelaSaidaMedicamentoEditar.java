@@ -107,11 +107,15 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
         cbxMedicamento = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtQuantidade1 = new javax.swing.JFormattedTextField();
+        txtQuantidade = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPrescricao = new javax.swing.JTextArea();
         btnNovo = new javax.swing.JButton();
+
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         btnVolta.setText("Volta");
         btnVolta.addActionListener(new java.awt.event.ActionListener() {
@@ -155,10 +159,10 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Quantidade:");
 
-        txtQuantidade1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        txtQuantidade1.addActionListener(new java.awt.event.ActionListener() {
+        txtQuantidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantidade1ActionPerformed(evt);
+                txtQuantidadeActionPerformed(evt);
             }
         });
 
@@ -202,7 +206,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(4, 4, 4)
-                                .addComponent(txtQuantidade1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,7 +235,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtQuantidade1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -242,7 +246,7 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Saida Medicamento", jPanel1);
+        jTabbedPane1.addTab("Saída Medicamentos", jPanel1);
 
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -343,16 +347,21 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxPacienteActionPerformed
 
-    private void txtQuantidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidade1ActionPerformed
+    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantidade1ActionPerformed
+    }//GEN-LAST:event_txtQuantidadeActionPerformed
 
     private void preencheObjeto() throws ParseException{
         entidade.setPaciente((Paciente)cbxPaciente.getSelectedItem());
-        
-        entidade.setData( df.parse(dtData.getDateFormatString()));
-              
+        entidade.setMedicamento((Medicamento)cbxMedicamento.getSelectedItem());
+        entidade.setQuantidade( Integer.parseInt(txtQuantidade.getText()));
+        entidade.setPrescricao(txtPrescricao.getText());
+        entidade.setData( dtData.getDate());
     }
+      
+  
+              
+    
     
     private void preencheCampos(){
         lblCodSaida.setText( Integer.toString(entidade.getId()));
@@ -385,6 +394,6 @@ public class TelaSaidaMedicamentoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblPaciente;
     private javax.swing.JTextArea txtPrescricao;
-    private javax.swing.JFormattedTextField txtQuantidade1;
+    private javax.swing.JFormattedTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

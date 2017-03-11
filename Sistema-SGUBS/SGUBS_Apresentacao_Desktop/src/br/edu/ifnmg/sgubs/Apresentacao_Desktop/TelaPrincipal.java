@@ -30,13 +30,14 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author dayvison
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+     
     /**
      * Creates new form TelaPrincipal1
      */
     public TelaPrincipal() {
         initComponents();
-        
+        TelaPrincipal menu = new TelaPrincipal();
+        MenuCadastros.setEnabled(true);
         AcessoRapido.enable();        
     }
 
@@ -395,6 +396,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.add(tela);    
         tela.setVisible(true); 
         AcessoRapido.dispose();
+        MenuCadastros.setEnabled(false);
+       
         
     }//GEN-LAST:event_MenuPacientesActionPerformed
 
@@ -438,7 +441,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        TelaUnidadeDeSaudeListagem tela = new TelaUnidadeDeSaudeListagem();
        this.add(tela);
        tela.setVisible(true);
-      AcessoRapido.dispose();
+       AcessoRapido.dispose();
         
     }//GEN-LAST:event_MenuUnidadeDeSaudeActionPerformed
 
@@ -466,6 +469,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
          this.add(tela);
          tela.setVisible(true);
          AcessoRapido.dispose();
+         
     }//GEN-LAST:event_btnAgendamentoActionPerformed
 
     private void btnMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicosActionPerformed

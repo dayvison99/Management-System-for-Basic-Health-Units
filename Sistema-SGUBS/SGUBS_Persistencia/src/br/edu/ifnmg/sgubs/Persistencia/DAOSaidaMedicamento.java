@@ -30,7 +30,7 @@ public class DAOSaidaMedicamento extends DAOGenerico<SaidaMedicamento> implement
         setConsultaAbrir("select idsaidaMedicamento,paciente_idpaciente,medicamento_idMedicamento,quantidade,prescricao,data_2 from saidaMedicamento where idsaidaMedicamento=?");
         setConsultaAlterar("update saidaMedicamento set paciente_idpaciente = ?,medicamento_idMedicamento = ?,quantidade = ?,prescricao = ?,data_2 = ? where idsaidaMedicamento = ?");
         setConsultaApagar("delete from saidaMedicamento where idsaidaMedicamento = ?");
-        setConsultaInserir("insert into saidaMedicamento(idsaidaMedicamento,paciente_idpaciente,medicamento_idMedicamento,quantidade,prescricao,data_2) values(?,?,?,?,?)");
+        setConsultaInserir("insert into saidaMedicamento(paciente_idpaciente,medicamento_idMedicamento,quantidade,prescricao,data_2) values(?,?,?,?,?)");
         setConsultaBuscar("select idsaidaMedicamento,paciente_idpaciente,medicamento_idMedicamento,quantidade,prescricao,data_2 from saidaMedicamento " );
         setConsultaUltimoId("select max(idsaidaMedicamento) from saidaMedicamento where  paciente_idpaciente = ? and medicamento_idMedicamento = ? and quantidade = ? and prescricao =? and data_2 = ?");
      pacientes = new DAOPaciente();
@@ -50,7 +50,7 @@ public class DAOSaidaMedicamento extends DAOGenerico<SaidaMedicamento> implement
             tmp.setMedicamento(medicamentos.Abrir( resultado.getInt(3)));
             tmp.setQuantidade(resultado.getInt(4));
             tmp.setPrescricao(resultado.getString(5));
-            tmp.setData( resultado.getDate(6)  );
+            tmp.setData(resultado.getDate(6));
           
             
             return tmp;
@@ -67,7 +67,7 @@ public class DAOSaidaMedicamento extends DAOGenerico<SaidaMedicamento> implement
             sql.setInt(2, obj.getMedicamento().getId());
             sql.setInt(3, obj.getQuantidade());
             sql.setString(4, obj.getPrescricao());
-            sql.setDate(5, new java.sql.Date( obj.getData().getTime() ) );
+            sql.setDate(5, new java.sql.Date( obj.getData().getTime()));
            
             if(obj.getId() > 0) sql.setInt(6, obj.getId());
         } catch (SQLException ex) {
