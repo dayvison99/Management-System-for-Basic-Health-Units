@@ -53,7 +53,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AcessoRapido = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        PainelFundo = new javax.swing.JLabel();
         btnAgendamento = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnMedicos = new javax.swing.JButton();
@@ -90,21 +89,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SGUBS-Sistema De Gerenciamento De Unidade Basíca De Saúde");
+        setBackground(java.awt.Color.white);
+        setFont(new java.awt.Font("Khmer OS", 1, 14)); // NOI18N
         setSize(new java.awt.Dimension(600, 800));
         getContentPane().setLayout(null);
 
+        AcessoRapido.setBackground(java.awt.Color.white);
         AcessoRapido.setClosable(true);
         AcessoRapido.setMaximizable(true);
         AcessoRapido.setTitle("Acesso Rápido");
         AcessoRapido.setAutoscrolls(true);
         AcessoRapido.setVisible(true);
-        AcessoRapido.getContentPane().setLayout(null);
 
         jLabel1.setText("Sistema de Gerenciamento de Unidades Basica de Saúde");
-        AcessoRapido.getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 7, 400, 30);
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLayeredPane1.setBackground(java.awt.Color.white);
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLayeredPane1.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
@@ -112,10 +112,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jLayeredPane1CaretPositionChanged(evt);
             }
         });
-
-        PainelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconengrenagem.png"))); // NOI18N
-        jLayeredPane1.add(PainelFundo);
-        PainelFundo.setBounds(580, -60, 770, 360);
 
         btnAgendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconRelatorio.png"))); // NOI18N
         btnAgendamento.setToolTipText("Agendamento");
@@ -131,7 +127,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel2);
         jLabel2.setBounds(10, 10, 77, 17);
 
-        btnMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconMedico.jpg"))); // NOI18N
+        btnMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconMedico.png"))); // NOI18N
         btnMedicos.setToolTipText("Médicos");
         btnMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,16 +191,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel3);
         jLabel3.setBounds(10, 150, 106, 17);
 
-        AcessoRapido.getContentPane().add(jLayeredPane1);
-        jLayeredPane1.setBounds(0, 80, 870, 624);
+        javax.swing.GroupLayout AcessoRapidoLayout = new javax.swing.GroupLayout(AcessoRapido.getContentPane());
+        AcessoRapido.getContentPane().setLayout(AcessoRapidoLayout);
+        AcessoRapidoLayout.setHorizontalGroup(
+            AcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AcessoRapidoLayout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        AcessoRapidoLayout.setVerticalGroup(
+            AcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AcessoRapidoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
+        );
 
         getContentPane().add(AcessoRapido);
-        AcessoRapido.setBounds(0, 220, 880, 490);
+        AcessoRapido.setBounds(20, 210, 830, 380);
 
         MenuPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        MenuPrincipal.setForeground(java.awt.Color.white);
         MenuPrincipal.setFont(new java.awt.Font("Abyssinica SIL", 2, 24)); // NOI18N
         MenuPrincipal.setName(""); // NOI18N
 
+        MenuCadastros.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        MenuCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cadastros.png"))); // NOI18N
         MenuCadastros.setText("Cadastros");
 
         MenuEspecialidade.setText("Especialidades");
@@ -265,6 +280,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal.add(MenuCadastros);
 
+        MenuAgendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/consultas.png"))); // NOI18N
         MenuAgendamento.setText("Consultas");
 
         MenuAgendaConsultas.setText("AgendarConsultas");
@@ -293,6 +309,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal.add(MenuAgendamento);
 
+        MenuFarmacia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/farmacia.png"))); // NOI18N
         MenuFarmacia.setText("Farmacia");
 
         jMenuItem2.setText("EntradaMedicamento");
@@ -308,6 +325,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal.add(MenuFarmacia);
 
+        MenuRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/bloco-de-notas.png"))); // NOI18N
         MenuRelatorio.setText("Relatórios");
 
         MenuRelatorioMedico.setText("Relatório de Médicos");
@@ -337,6 +355,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuPrincipal.add(MenuRelatorio);
 
         MenuSairLogoff.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        MenuSairLogoff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout_rounded_up1600.png"))); // NOI18N
         MenuSairLogoff.setText("Sair/Logoff");
         MenuSairLogoff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,7 +386,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(MenuPrincipal);
 
-        setSize(new java.awt.Dimension(887, 756));
+        setSize(new java.awt.Dimension(887, 677));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -390,7 +409,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        TelaFuncionarioListagem tela = new TelaFuncionarioListagem();
        this.add(tela);
        tela.setVisible(true);
-        AcessoRapido.dispose();
+       AcessoRapido.dispose();
     }//GEN-LAST:event_MenuFuncionariosActionPerformed
 
     private void MenuLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoffActionPerformed
@@ -419,7 +438,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        TelaUnidadeDeSaudeListagem tela = new TelaUnidadeDeSaudeListagem();
        this.add(tela);
        tela.setVisible(true);
-       AcessoRapido.dispose();
+      AcessoRapido.dispose();
         
     }//GEN-LAST:event_MenuUnidadeDeSaudeActionPerformed
 
@@ -427,7 +446,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        TelaTecEnfermagemListagem tela = new TelaTecEnfermagemListagem();
        this.add(tela);
        tela.setVisible(true);
-       AcessoRapido.dispose();
+      AcessoRapido.dispose();
        
     }//GEN-LAST:event_MenuTecEnfermagemActionPerformed
 
@@ -623,7 +642,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuSairLogoff;
     private javax.swing.JMenuItem MenuTecEnfermagem;
     private javax.swing.JMenuItem MenuUnidadeDeSaude;
-    private javax.swing.JLabel PainelFundo;
     private javax.swing.JButton bntPaciente;
     private javax.swing.JButton btnAgendamento;
     private javax.swing.JButton btnFuncionarios;

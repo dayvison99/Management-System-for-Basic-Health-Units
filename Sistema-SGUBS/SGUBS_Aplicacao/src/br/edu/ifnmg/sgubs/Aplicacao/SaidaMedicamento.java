@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.sgubs.Aplicacao;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -18,17 +19,19 @@ public class SaidaMedicamento implements Entidade{
     private Paciente paciente;
     private Medicamento medicamento;
     private Date data;
-    private List<SaidaMedicamentosItens> itens;
+    private String prescricao;
+    private int quantidade;
 
     public SaidaMedicamento() {
     }
 
-    public SaidaMedicamento(int id, Paciente paciente, Medicamento medicamento, Date data, List<SaidaMedicamentosItens> itens) {
+    public SaidaMedicamento(int id, Paciente paciente, Medicamento medicamento, Date data, String prescricao, int quantidade) {
         this.id = id;
         this.paciente = paciente;
         this.medicamento = medicamento;
         this.data = data;
-        this.itens = itens;
+        this.prescricao = prescricao;
+        this.quantidade = quantidade;
     }
 
     public int getId() {
@@ -63,36 +66,31 @@ public class SaidaMedicamento implements Entidade{
         this.data = data;
     }
 
-    public List<SaidaMedicamentosItens> getItens() {
-        return itens;
+    public String getPrescricao() {
+        return prescricao;
     }
 
-    public void setItens(List<SaidaMedicamentosItens> itens) {
-        this.itens = itens;
+    public void setPrescricao(String prescricao) {
+        this.prescricao = prescricao;
     }
-    
-    public void addItem(SaidaMedicamentosItens item){
-        if(!itens.contains(item)) {
-            itens.add(item);
-              
-        }
+
+    public int getQuantidade() {
+        return quantidade;
     }
-    
-    public void removeItem(SaidaMedicamentosItens item){
-        if(itens.contains(item)){
-            itens.remove(item);
-        
-        }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.id;
-        hash = 83 * hash + Objects.hashCode(this.paciente);
-        hash = 83 * hash + Objects.hashCode(this.medicamento);
-        hash = 83 * hash + Objects.hashCode(this.data);
-        hash = 83 * hash + Objects.hashCode(this.itens);
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + Objects.hashCode(this.paciente);
+        hash = 97 * hash + Objects.hashCode(this.medicamento);
+        hash = 97 * hash + Objects.hashCode(this.data);
+        hash = 97 * hash + Objects.hashCode(this.prescricao);
+        hash = 97 * hash + this.quantidade;
         return hash;
     }
 
@@ -111,6 +109,12 @@ public class SaidaMedicamento implements Entidade{
         if (this.id != other.id) {
             return false;
         }
+        if (this.quantidade != other.quantidade) {
+            return false;
+        }
+        if (!Objects.equals(this.prescricao, other.prescricao)) {
+            return false;
+        }
         if (!Objects.equals(this.paciente, other.paciente)) {
             return false;
         }
@@ -120,18 +124,13 @@ public class SaidaMedicamento implements Entidade{
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
-        if (!Objects.equals(this.itens, other.itens)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "SaidaMedicamento{" + "id=" + id + ", paciente=" + paciente + ", medicamento=" + medicamento + ", data=" + data + ", itens=" + itens + '}';
+        return "SaidaMedicamento{" + "id=" + id + ", paciente=" + paciente + ", medicamento=" + medicamento + ", data=" + data + ", prescricao=" + prescricao + ", quantidade=" + quantidade + '}';
     }
-
-       
     
     
 }

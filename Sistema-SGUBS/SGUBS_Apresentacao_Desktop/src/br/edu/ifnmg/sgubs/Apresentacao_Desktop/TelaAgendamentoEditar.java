@@ -496,7 +496,7 @@ public class TelaAgendamentoEditar extends javax.swing.JInternalFrame {
     }
     
     private void preencheObjeto() throws ParseException{
-       // entidade.setPaciente( txtPaciente.getText());
+        //entidade.setPaciente((Object).toString().txtPaciente.getText());
         entidade.setUnidadeSaude((UnidadesDeSaude)cbxUnidade.getSelectedItem());
         entidade.setMedico((Medico)cbxMedico.getSelectedItem());
         entidade.setTurno((String) cbxTurno.getSelectedItem());

@@ -7,6 +7,7 @@ package br.edu.ifnmg.sgubs.Apresentacao_Desktop;
 
 import br.edu.ifnmg.sgubs.Aplicacao.SaidaMedicamento;
 import br.edu.ifnmg.sgubs.Aplicacao.SaidaMedicamentoRepositorio;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -73,13 +74,14 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnNovo))
-                .addContainerGap(247, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(btnNovo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,15 +103,17 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
      private void preencheTabela(List<SaidaMedicamento> lista){
      
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
         modelo.addColumn("Cliente");
+        modelo.addColumn("Medicamento");
+        modelo.addColumn("Qtde ");
         modelo.addColumn("Data");
       
         
         for(SaidaMedicamento s : lista){
             Vector linha = new Vector();
-            linha.add(s.getId());
-            linha.add(s.getPaciente().getId());
+            linha.add(s.getPaciente());
+            linha.add(s.getMedicamento());
+            linha.add(s.getQuantidade());
             linha.add(s.getData().toString());
             modelo.addRow(linha);
         }
@@ -119,9 +123,10 @@ public class TelaSaidaMedicamentoListagem extends javax.swing.JInternalFrame {
     
     public void editarSaida(int id){
         SaidaMedicamento entidade;
-        
+   
         if(id == 0)
-            entidade = new SaidaMedicamento(0,null,null,null,null);
+            entidade = new SaidaMedicamento(id,null,null,new Date(),null,0);
+
         else
             entidade = dao.Abrir(id);
         

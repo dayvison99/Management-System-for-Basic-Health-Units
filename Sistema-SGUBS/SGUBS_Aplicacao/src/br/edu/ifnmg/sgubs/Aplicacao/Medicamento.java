@@ -98,7 +98,7 @@ public class Medicamento implements Entidade{
 
     @Override
     public String toString() {
-        return "Medicamento{" + "id=" + id + ", descricao=" + descricao + ", quantidade=" + quantidade + ", nome=" + nome + '}';
+        return  nome;
     }
     
     
