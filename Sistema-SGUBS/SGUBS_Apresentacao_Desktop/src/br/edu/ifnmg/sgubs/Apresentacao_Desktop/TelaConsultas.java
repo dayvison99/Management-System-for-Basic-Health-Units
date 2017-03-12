@@ -10,6 +10,7 @@ import br.edu.ifnmg.sgubs.Aplicacao.AgendamentoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.ConsultaHistorico;
 import br.edu.ifnmg.sgubs.Aplicacao.ConsultaHistoricoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.ErroValidacao;
+import br.edu.ifnmg.sgubs.Aplicacao.Medico;
 import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
@@ -45,7 +46,7 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
     
     //Calendar calendario = GregorianCalendar.getInstance();
     
-    //SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     
     TelaAgendamentoListagem listagem;
     
@@ -61,17 +62,26 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         
         Calendar data = Calendar.getInstance();
         Date d = data.getTime();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        dateFormat.format(d);
+        SimpleDateFormat dh = new SimpleDateFormat("dd/MM/yyyy");
+        dh.format(d);
         
         String dtHoje;
-        dtHoje = dateFormat.format(d);
+        dtHoje = dh.format(d);
         
         String status = "Aberto";
         
-        preencheTabela(daoAgendamento.Buscar(null));
+        //preencheTabela(daoAgendamento.Buscar(null));
         
          
+    }
+    
+    public void buscar(Date data){
+        Agendamento filtro = new Agendamento(0,null,null,null,null,data,null);
+
+        List<Agendamento> busca = daoAgendamento.Buscar(filtro);
+        
+        preencheTabela(busca);
+        
     }
     
     private void preencheTabela(List<Agendamento> lista){
@@ -128,6 +138,10 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtPrescricao = new javax.swing.JTextPane();
+        jLabel8 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        TextData = new javax.swing.JTextField();
+        dtdata = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -169,9 +183,30 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Altura :");
 
+        txtdata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdataActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Prescrição Medica");
 
         jScrollPane2.setViewportView(txtPrescricao);
+
+        jLabel8.setText("Data da Consulta :");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        TextData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,7 +218,6 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPaciente1)
@@ -213,7 +247,16 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(3, 3, 3)
-                                .addComponent(txtTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(3, 3, 3)
+                                .addComponent(TextData, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(btnBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(313, 313, 313)
                         .addComponent(jLabel7)))
@@ -222,9 +265,17 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscar)
+                            .addComponent(TextData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPaciente))
@@ -297,6 +348,18 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         txtdata.setText(data);
     }//GEN-LAST:event_tblAgendaMouseClicked
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        buscar(dtdata.getDate());
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextDataActionPerformed
+
+    private void txtdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdataActionPerformed
+
   /*  private void preencheObjeto() throws ErroValidacao{
         entidade.setPaciente(txtPaciente.getText());
         entidade.set( txtCpf.getText());
@@ -311,6 +374,9 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TextData;
+    private javax.swing.JButton btnBuscar;
+    private com.toedter.calendar.JDateChooser dtdata;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -318,6 +384,7 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

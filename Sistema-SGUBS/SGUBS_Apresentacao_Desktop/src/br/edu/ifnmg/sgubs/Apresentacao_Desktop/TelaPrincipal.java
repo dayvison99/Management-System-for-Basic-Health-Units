@@ -36,9 +36,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
-        TelaPrincipal menu = new TelaPrincipal();
-        MenuCadastros.setEnabled(true);
-        AcessoRapido.enable();        
+        //MenuCadastros.setEnabled(true);
+        //AcessoRapido.enable();        
     }
 
     

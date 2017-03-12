@@ -85,6 +85,7 @@ public class DAOAgendamento extends DAOGenerico<Agendamento> implements Agendame
         if(filtro.getUnidadeSaude()!=null)adicionarFiltro("unidadeDeSaude_idUnidadeDeSaude", "like");
         if(filtro.getMedico()!=null) adicionarFiltro("medico_idMedico", "like");
         if(filtro.getPaciente()!=null) adicionarFiltro("paciente_idpaciente", "like");
+        if(filtro.getData()!=null) adicionarFiltro("data_2", "like");
         
     }
     
