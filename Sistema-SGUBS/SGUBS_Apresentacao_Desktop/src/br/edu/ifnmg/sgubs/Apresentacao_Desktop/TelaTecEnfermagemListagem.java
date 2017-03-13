@@ -75,6 +75,7 @@ public class TelaTecEnfermagemListagem extends javax.swing.JInternalFrame {
         setTitle("Consulta Téc Enfermagem");
         setToolTipText("");
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIcon (cópia).png"))); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,7 @@ public class TelaTecEnfermagemListagem extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisa.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

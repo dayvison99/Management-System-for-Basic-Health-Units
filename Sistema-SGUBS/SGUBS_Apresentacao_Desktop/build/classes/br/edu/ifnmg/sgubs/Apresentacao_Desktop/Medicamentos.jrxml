@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/dayvison/NetBeansProjects/SGUBS_Apresentacao_Desktop/src/br/edu/ifnmg/sgubs/Apresentacao_Desktop/"]]></defaultValueExpression>
+	</parameter>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="descricao" class="java.lang.String"/>
@@ -65,7 +68,13 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<subreport>
+				<reportElement x="307" y="0" width="200" height="100" uuid="5c5270e6-d522-419b-aae6-e387f16d6016"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "RelatorioMedicamentos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

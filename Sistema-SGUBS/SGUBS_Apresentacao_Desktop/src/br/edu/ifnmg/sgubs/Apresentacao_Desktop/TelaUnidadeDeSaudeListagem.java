@@ -79,6 +79,7 @@ public class TelaUnidadeDeSaudeListagem extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Consultas de Unidades de Saúde");
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIcon (cópia).png"))); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +93,7 @@ public class TelaUnidadeDeSaudeListagem extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisa.png"))); // NOI18N
         btnBusca.setText("Buscar");
         btnBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -4,6 +4,9 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<field name="data" class="java.util.Date"/>
+	<field name="Paciente" class="java.lang.Object"/>
+	<field name="Medico" class="java.lang.Object"/>
+	<field name="UnidadeSaude" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -36,41 +39,6 @@
 			<line>
 				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="51587f9a-8111-4d1c-a68e-ce771e107034"/>
 			</line>
-			<staticText>
-				<reportElement x="444" y="0" width="100" height="20" uuid="5f2c2113-7017-4143-aca3-f27229450a7d"/>
-				<textElement>
-					<font size="11" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[DATA AGENDADA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="18" y="1" width="100" height="20" uuid="7b25f52d-51e9-4d74-aad5-52a54c3a0185"/>
-				<textElement>
-					<font size="11" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[PACIENTE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="138" y="1" width="100" height="20" uuid="c1cd20d5-10a9-4851-a4a9-a09e56b35945"/>
-				<textElement>
-					<font size="11" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[MÉDICO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="258" y="1" width="72" height="20" uuid="f34d7a0f-d159-4236-8eb4-323eb1ee56db"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<text><![CDATA[LOCAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="361" y="1" width="62" height="20" uuid="e9717154-1c59-4945-98a6-8be1c86f8abb"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<text><![CDATA[PERÍODO]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -78,13 +46,6 @@
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="-1" y="5" width="555" height="1" uuid="1eee7f4a-1d15-434d-b94b-10d9fa4ac726"/>
 			</line>
-			<textField>
-				<reportElement x="446" y="9" width="100" height="20" uuid="9e7ea43b-3bc5-482b-ae70-4265f2de56a4"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<columnFooter>

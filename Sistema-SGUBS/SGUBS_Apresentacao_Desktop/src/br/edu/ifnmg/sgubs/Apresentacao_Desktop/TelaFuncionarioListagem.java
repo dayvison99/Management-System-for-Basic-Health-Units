@@ -78,6 +78,7 @@ public class TelaFuncionarioListagem extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Consultas de Funcionarios");
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIcon (cópia).png"))); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +92,7 @@ public class TelaFuncionarioListagem extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisa.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,17 +163,9 @@ public class TelaFuncionarioListagem extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        editarFuncionario(0);
-    }//GEN-LAST:event_btnNovoActionPerformed
-
     private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        buscar( txtBusca.getText() );
-    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
         int selecionada =tblBusca.getSelectedRow();
@@ -180,6 +174,14 @@ public class TelaFuncionarioListagem extends javax.swing.JInternalFrame {
 
         editarFuncionario(id);
     }//GEN-LAST:event_tblBuscaMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        buscar( txtBusca.getText() );
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        editarFuncionario(0);
+    }//GEN-LAST:event_btnNovoActionPerformed
 
 
     public void editarFuncionario(int id){

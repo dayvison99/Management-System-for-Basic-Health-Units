@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Paciente implements Entidade{
     private int id;
-    private String nome;
+    public String nome;
     private String cpf;
     private String rua;
     private String bairro;

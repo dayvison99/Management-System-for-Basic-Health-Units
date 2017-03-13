@@ -49,17 +49,16 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         btnNovo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListagem = new javax.swing.JTable();
-        txtBusca = new javax.swing.JTextField();
-        btnBuscarPaciente = new javax.swing.JButton();
-        btnBuscarData = new javax.swing.JButton();
-        btnBuscarMedico = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        dtdata = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Agendamentos Marcados");
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIcon (cópia).png"))); // NOI18N
         btnNovo.setText("Novo Agendamento");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,81 +84,50 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblListagem);
 
-        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisa.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscaActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
-        btnBuscarPaciente.setText("Paciente");
-        btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarPacienteActionPerformed(evt);
-            }
-        });
-
-        btnBuscarData.setText("Data");
-        btnBuscarData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarDataActionPerformed(evt);
-            }
-        });
-
-        btnBuscarMedico.setText("Médico");
-        btnBuscarMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarMedicoActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Buscar Por:");
+        jLabel1.setText("Buscar por data:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnNovo)
-                                .addGap(158, 158, 158)
-                                .addComponent(btnBuscarPaciente)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscarData)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscarMedico))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(btnNovo)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dtdata, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar)
+                        .addGap(22, 22, 22)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBuscarPaciente)
-                            .addComponent(btnBuscarData)
-                            .addComponent(btnBuscarMedico)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
                         .addComponent(btnNovo)))
-                .addGap(25, 25, 25)
+                .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(666, 490));
@@ -177,22 +145,10 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         editarAgendamento(0);
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscaActionPerformed
-
-    private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
-        //buscarPaciente(txtBusca.getText());
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        buscarPaciente(dtdata.getDate());
         
-    }//GEN-LAST:event_btnBuscarPacienteActionPerformed
-
-    private void btnBuscarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarDataActionPerformed
-
-    private void btnBuscarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMedicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarMedicoActionPerformed
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
      private void preencheTabela(List<Agendamento> lista){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -239,26 +195,22 @@ public class TelaAgendamentoListagem extends javax.swing.JInternalFrame {
         this.setVisible(false);
     }
      
-    /*public void buscarPaciente(String nome){
+    public void buscarPaciente(Date nome){
         
-        Object a = nome; 
-        
-        Agendamento filtro = new Agendamento (0, null, null, (Paciente) a,null, null,null);
+        Agendamento filtro = new Agendamento (0, null, null, null,null, nome,null);
         
         List<Agendamento> busca = dao.Buscar(filtro);
         
         preencheTabela(busca);
-        }*/
+        }
      
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarData;
-    private javax.swing.JButton btnBuscarMedico;
-    private javax.swing.JButton btnBuscarPaciente;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnNovo;
+    private com.toedter.calendar.JDateChooser dtdata;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblListagem;
-    private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }

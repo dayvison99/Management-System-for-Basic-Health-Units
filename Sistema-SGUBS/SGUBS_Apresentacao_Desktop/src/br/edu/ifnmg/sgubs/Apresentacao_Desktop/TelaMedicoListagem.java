@@ -76,6 +76,7 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Listagem De Medicos");
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/NovoIcon (cópia).png"))); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +126,7 @@ public class TelaMedicoListagem extends javax.swing.JInternalFrame {
             tblBusca.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        bntBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisa.png"))); // NOI18N
         bntBuscar.setText("Buscar");
         bntBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

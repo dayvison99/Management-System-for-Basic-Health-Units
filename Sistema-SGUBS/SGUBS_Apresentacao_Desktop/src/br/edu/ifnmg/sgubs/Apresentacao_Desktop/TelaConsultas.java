@@ -15,11 +15,14 @@ import br.edu.ifnmg.sgubs.Aplicacao.MedicoRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.PacienteRepositorio;
 import br.edu.ifnmg.sgubs.Aplicacao.UnidadesDeSaudeRepositorio;
 import br.edu.ifnmg.sgubs.Persistencia.conexaoBD;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -142,7 +145,8 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         TextData = new javax.swing.JTextField();
         dtdata = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        btnVolta = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -306,7 +310,21 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setText("Consultas Agendadas");
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar.png"))); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnVolta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listar.png"))); // NOI18N
+        btnVolta.setText("Volta");
+        btnVolta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,15 +335,19 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addComponent(jLabel1)
+                .addGap(286, 286, 286)
+                .addComponent(btnSalvar)
+                .addGap(68, 68, 68)
+                .addComponent(btnVolta)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnVolta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -360,8 +382,40 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdataActionPerformed
 
-  /*  private void preencheObjeto() throws ErroValidacao{
-        entidade.setPaciente(txtPaciente.getText());
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+         try {
+            
+            //this.Validacao();
+
+            if(javax.swing.JOptionPane.showConfirmDialog(rootPane, "Deseja salvar alterações ?") == 0){
+                
+                preencheObjeto();
+              
+                if(dao.Salvar(entidade))
+                
+                    javax.swing.JOptionPane.showMessageDialog(rootPane, "Dados salvos com sucesso !");
+
+                else
+                
+                    javax.swing.JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante o processo !");
+            }
+            else{
+                javax.swing.JOptionPane.showMessageDialog(rootPane, "Operação cancelada !");
+            }
+
+        } catch (ErroValidacao ex) {
+            javax.swing.JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
+        //    listagem.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVoltaActionPerformed
+
+    private void preencheObjeto() throws ErroValidacao{
+       /* entidade.setPaciente(txtPaciente.getText());
         entidade.set( txtCpf.getText());
         entidade.setRua( txtRua.getText());
         entidade.setBairro( txtBairro.getText());
@@ -369,15 +423,16 @@ public class TelaConsultas extends javax.swing.JInternalFrame {
         entidade.setCelular(Integer.parseInt(txtCelular.getText()));
         entidade.setTelefone( Integer.parseInt(txtTelefone.getText()));
         entidade.setTipoSanguineo( (String) cbxTipoSanguineo.getSelectedItem());
-        entidade.setLocalTrabalho(txtLocalTrabalho.getText());
+        entidade.setLocalTrabalho(txtLocalTrabalho.getText());*/
                 
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TextData;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVolta;
     private com.toedter.calendar.JDateChooser dtdata;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

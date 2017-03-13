@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -36,8 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
-        //MenuCadastros.setEnabled(true);
-        //AcessoRapido.enable();        
+        
     }
 
     
@@ -76,7 +77,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuConsultasAgendadas = new javax.swing.JMenuItem();
         menuRalAgendamntos = new javax.swing.JMenuItem();
         MenuFarmacia = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         MenuSaidaMedicamento = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
         MenuRelatorioMedico = new javax.swing.JMenuItem();
@@ -312,9 +312,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuFarmacia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/farmacia.png"))); // NOI18N
         MenuFarmacia.setText("Farmacia");
 
-        jMenuItem2.setText("EntradaMedicamento");
-        MenuFarmacia.add(jMenuItem2);
-
         MenuSaidaMedicamento.setText("SaídaMedicamento");
         MenuSaidaMedicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,10 +392,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.add(tela);    
         tela.setVisible(true); 
         AcessoRapido.dispose();
-        MenuCadastros.setEnabled(false);
        
         
     }//GEN-LAST:event_MenuPacientesActionPerformed
+       
+       
 
     private void MenuMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMedicosActionPerformed
         TelaMedicoListagem tela=new TelaMedicoListagem();
@@ -483,6 +481,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.add(tela);
         tela.setVisible(true);
         AcessoRapido.dispose();
+        
     }//GEN-LAST:event_bntPacienteActionPerformed
 
     private void btnMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentosActionPerformed
@@ -531,7 +530,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void MenuRelatorioMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioMedicoActionPerformed
         MedicoRepositorio dao = GerenciadorReferencias.getMedico();
         
-        exibeRelatorioJasper("Medicos.jasper", dao.Buscar(null));
+        exibeRelatorioJasper("RelatorioMedicos.jasper", dao.Buscar(null));
     }//GEN-LAST:event_MenuRelatorioMedicoActionPerformed
 
     private void MenuConsultasAgendadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultasAgendadasActionPerformed
@@ -551,15 +550,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void MenuRelatorioMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRelatorioMedicamentosActionPerformed
        MedicamentoRepositorio dao = GerenciadorReferencias.getMedicamentos();
         
-        exibeRelatorioJasper("Medicamentos.jasper", dao.Buscar(null));
+        exibeRelatorioJasper("RelatorioMedicamentos.jasper", dao.Buscar(null));
     }//GEN-LAST:event_MenuRelatorioMedicamentosActionPerformed
 
     private void menuRalAgendamntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRalAgendamntosActionPerformed
         AgendamentoRepositorio dao = GerenciadorReferencias.getAgendamento();
         
-        exibeRelatorioJasper("AgendamentoGeral.jasper", dao.Buscar(null));// TODO add your handling code here:
+        exibeRelatorioJasper("Agendamento.jasper", dao.Buscar(null));
     }//GEN-LAST:event_menuRalAgendamntosActionPerformed
 
+    
+
+    
     /**
      * @param args the command line arguments
      */
@@ -657,7 +659,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuRalAgendamntos;
     // End of variables declaration//GEN-END:variables
+
+   
 }
